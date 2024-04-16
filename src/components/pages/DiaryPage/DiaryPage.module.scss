@@ -1,0 +1,16 @@
+@import '@styles';
+
+.root {
+    display: grid;
+    grid-template-columns: auto 312px;
+    gap: var(--space_xl);
+
+    align-items: start;
+    // padding: var(--space_2xl);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_xl);
+}

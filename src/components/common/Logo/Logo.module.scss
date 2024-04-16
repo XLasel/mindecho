@@ -1,0 +1,13 @@
+@import '@styles';
+
+.root {
+    @include font(normal 400 48px / 100% 'Inter');
+    // @include font(normal 500 48px / 100% 'Inter');
+    display: flex;
+    align-items: center;
+}
+
+.accent {
+    // @include font(normal 800 48px / 100% 'Inter');
+    @include font(normal 800 48px / 100% 'Inter');
+}

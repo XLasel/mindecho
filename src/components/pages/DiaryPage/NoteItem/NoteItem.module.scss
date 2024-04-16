@@ -1,0 +1,35 @@
+@import '@styles';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_2xs);
+    cursor: pointer;
+
+    padding: var(--space_m);
+    border-radius: var(--border-radius-s);
+    background-color: hsl(var(--card));
+
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space_3xs);
+}
+
+.subtitle {
+    display: flex;
+    gap: var(--space_xs);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space_3xs);
+}
+
+.modify {
+    display: flex;
+    gap: var(--space_3xs);
+}

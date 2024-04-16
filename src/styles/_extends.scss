@@ -1,0 +1,44 @@
+%text-display {
+    @include font(normal 500 100px / 110% 'Inter', -1.2px);
+}
+
+%text-display-subtitle {
+    @include font(normal 500 42px / 150% 'Inter');
+}
+
+%h3-subtitle {
+    @include font(normal 500 24px / 122% 'Inter', -1%);
+
+    // @include tablet() {
+    //     @include font(normal 400 16px / 23px 'Roboto');
+    // }
+}
+
+%text-button-l {
+    @include font(normal 500 18px / 24px 'Inter');
+}
+
+%text-button-m {
+    @include font(normal 500 16px / 18px 'Inter');
+}
+
+%text-button-s {
+    @include font(normal 500 14px / 18px 'Inter');
+}
+
+
+// %p-big {
+//     @include font(normal 700 23px / 28px 'Roboto');
+
+//     @include tablet() {
+//         @include font(normal 700 16px / 23px 'Roboto');
+//     }
+// }
+
+// %p-small {
+//     @include font(normal 400 17px / 24px 'Roboto', -0.17px);
+
+//     @include tablet() {
+//         @include font(normal 400 16px / 23px 'Roboto', -0.16px);
+//     }
+// }
