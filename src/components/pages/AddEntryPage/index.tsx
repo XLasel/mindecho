@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { addNote } from "@/redux/noteSlice";
 import { useAppDispatch } from "@/redux/hook";
+import { useEffect } from "react";
 
 const schemaNote = yup.object().shape({
   title: yup.string(),
@@ -64,6 +65,7 @@ export const AddEntryPage = () => {
     watch,
     reset,
     setValue,
+    setFocus,
     getValues,
     formState: { errors },
   } = useForm<IFormInput>({
@@ -78,6 +80,10 @@ export const AddEntryPage = () => {
     dispatch(addNote(data));
   };
   console.log(getValues("discomfortLevel"));
+
+  useEffect(() => {
+    setFocus("title");
+  }, [setFocus]);
 
   return (
     <div>
