@@ -1,0 +1,23 @@
+@import '@styles';
+
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    & textarea {
+        width: 100%;
+        background-color: transparent;
+        border-radius: var(--border-radius-s);
+        border: 2px;
+        border-color: hsl(var(--white) / 0.8);
+        resize: none;
+    }
+}
+
+
+.title {
+    @include font(normal 700 48px / 52px 'Inter');
+
+    display: block;
+    background-color: transparent;
+}

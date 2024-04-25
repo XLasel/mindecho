@@ -1,14 +1,15 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 
-import s from "./AddEntryPage.module.scss";
-import { useNavigate } from "react-router-dom";
+import s from "./DiaryForm.module.scss";
 import { Button } from "@/components/common/Button";
-import FeatherIcon from "feather-icons-react";
+// import FeatherIcon from "feather-icons-react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { addNote } from "@/redux/noteSlice";
+import { Note, addNote, updateNote } from "@/redux/noteSlice";
 import { useAppDispatch } from "@/redux/hook";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { redirectDocument, useNavigate } from "react-router-dom";
+import { TitleField } from "./TitleField";
 
 const schemaNote = yup.object().shape({
   title: yup.string(),
@@ -22,43 +23,16 @@ const schemaNote = yup.object().shape({
   adaptiveResponse: yup.string(),
 });
 
-// const schema = yup.object({
-//   firstName: yup.string().required(),
-//   age: yup.number().positive().integer().required(),
-// }).required();
-
 type IFormInput = yup.InferType<typeof schemaNote>;
 
-// interface DairyEntry extends IFormInput {
-//   id: string;
-//   date: string;
-// }
-
-// enum GenderEnum {
-//   female = "female",
-//   male = "male",
-//   other = "other",
-// }
-
-// interface IFormInput {
-//   firstName: string;
-//   gender: GenderEnum;
-// }
-
-// interface IFormInput {
-//   situation: string;
-//   automaticThoughts: string;
-//   emotions: string[];
-//   physicalSensations: string;
-//   behavior: string;
-//   discomfortLevel: number;
-//   cognitiveDistortions: string[];
-//   adaptiveResponse: string;
-// }
-
-export const AddEntryPage = () => {
-  const dispatch = useAppDispatch();
+export const DiaryForm = ({ noteToEdit }: { noteToEdit: Note | null }) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const isEditMode = !!noteToEdit;
+  console.log(isEditMode);
+  console.log(noteToEdit);
+
   const {
     register,
     handleSubmit,
@@ -70,14 +44,31 @@ export const AddEntryPage = () => {
     formState: { errors },
   } = useForm<IFormInput>({
     defaultValues: {
-      discomfortLevel: 1,
-      title: "Новая запись",
+      title: noteToEdit?.title || "Новая запись",
+      situation: noteToEdit?.situation || "",
+      automaticThoughts: noteToEdit?.automaticThoughts || "",
+      emotions: noteToEdit?.emotions || [],
+      physicalSensations: noteToEdit?.physicalSensations || "",
+      behavior: noteToEdit?.behavior || "",
+      discomfortLevel: noteToEdit?.discomfortLevel || 1,
+      cognitiveDistortions: noteToEdit?.cognitiveDistortions || [],
+      adaptiveResponse: noteToEdit?.adaptiveResponse || "",
     },
     resolver: yupResolver(schemaNote),
   });
+
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-    dispatch(addNote(data));
+    if (isEditMode) {
+      const currentData = { ...noteToEdit, ...data };
+      dispatch(updateNote(currentData));
+      navigate("/diary");
+    } else {
+      // Обработка добавления
+      console.log(data);
+      dispatch(addNote(data));
+      navigate("/diary");
+    }
+    //   reset();
   };
   console.log(getValues("discomfortLevel"));
 
@@ -85,18 +76,29 @@ export const AddEntryPage = () => {
     setFocus("title");
   }, [setFocus]);
 
+  const [readOnly, setReadOnly] = useState(true);
+  console.log(readOnly);
+
+  const handleFocus = () => {
+    setReadOnly(false);
+  };
+
+  const handleBlur = () => {
+    setReadOnly(true);
+  };
+
   return (
     <div>
-      <Button
-        onClick={() => navigate(-1)}
-        variant="link"
-        className="self-start gap-1"
-      >
-        <FeatherIcon icon="chevron-left" /> Назад к записям
-      </Button>
-      <input className={s.title} maxLength="22" {...register("title")} />
-      {/* <h2>Новая запись</h2> */}
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <TitleField {...register("title")} />
+        {/* <input
+          {...register("title2")}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          className={s.title}
+          maxLength={22}
+          autoComplete="off"
+        /> */}
         <label>
           <h4>Ситуация</h4>
           <textarea {...register("situation")} />
@@ -177,7 +179,7 @@ export const AddEntryPage = () => {
         </label>
         <p>Когнетивные искажение, которые вы наблюдаете вы своих мыслях</p>
         <Button onClick={() => reset()}>Сбросить</Button>
-        <Button type="submit">Отправить</Button>
+        <Button type="submit">{isEditMode ? "Сохранить" : "Отправить"}</Button>
       </form>
     </div>
   );

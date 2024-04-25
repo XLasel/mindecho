@@ -1,11 +1,12 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { format } from "date-fns";
+import { RootState } from "./store";
 
 interface NoteState {
   notes: Note[];
 }
 
-interface Note {
+export interface Note {
   id: string;
   date: string;
   title: string;
@@ -55,5 +56,7 @@ const noteSlice = createSlice({
 });
 
 export const { addNote, updateNote, deleteNote } = noteSlice.actions;
+
+export const selectAllNotes = (state: RootState) => state.notes.notes;
 
 export default noteSlice.reducer;

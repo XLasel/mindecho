@@ -1,0 +1,8 @@
+@import '@styles';
+
+.title {
+    @include font(normal 700 48px / 52px 'Inter');
+
+    display: block;
+    background-color: transparent;
+}

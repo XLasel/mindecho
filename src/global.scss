@@ -134,11 +134,11 @@ button {
   outline: 0;
 }
 
-a,
-a:link,
-a:visited {
-  color: inherit;
-}
+// a,
+// a:link,
+// a:visited {
+//   color: inherit;
+// }
 
 h1 {
   @extend %text-display;
