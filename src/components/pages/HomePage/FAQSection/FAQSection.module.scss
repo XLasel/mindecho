@@ -1,0 +1,20 @@
+@import '@styles';
+
+.root {
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    width: 100%;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_l);
+}

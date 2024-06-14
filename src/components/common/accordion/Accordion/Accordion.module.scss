@@ -1,0 +1,24 @@
+@import '@styles';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    min-width: 100%;
+    // padding: var(--space_l);
+
+    // border-radius: var(--border-radius-m);
+}
+
+.container {
+    padding: var(--space_l);
+
+    border-radius: var(--border-radius-m);
+
+    background-color: hsl(var(--card));
+}
+
+.flow {
+    background-color: transparent;
+}

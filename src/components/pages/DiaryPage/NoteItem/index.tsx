@@ -1,41 +1,58 @@
-import React from "react";
-import s from "./NoteItem.module.scss";
-import FeatherIcon from "feather-icons-react";
-import { Button, buttonVariants } from "@/components/common/Button";
-import { useAppDispatch } from "@/redux/hook";
-import { deleteNote } from "@/redux/noteSlice";
 import { Link } from "react-router-dom";
-import clsx from "clsx";
+import FeatherIcon from "feather-icons-react";
 
-export const NoteItem = ({ id, title, date, situation, emotions }) => {
-  const dispatch = useAppDispatch();
+import { cn } from "@/lib/utils";
+
+import { CognitiveBiasList } from "@/components/common/CognitiveBiasList";
+import { NoteActions } from "@/components/common/NoteActions";
+import { buttonVariants } from "@/components/common/Button";
+
+import s from "./NoteItem.module.scss";
+import { Note } from "@/redux/noteSlice";
+
+interface NoteItemProps {
+  id: Note["id"];
+  title: Note["title"];
+  date: Note["date"];
+  situation?: Note["situation"];
+  cognitiveDistortions?: Note["cognitiveDistortions"];
+}
+
+export const NoteItem: React.FC<NoteItemProps> = ({
+  id,
+  title,
+  date,
+  situation,
+  cognitiveDistortions,
+}) => {
+  const hasContent =
+    situation || (cognitiveDistortions && cognitiveDistortions.length);
 
   return (
     <div className={s.root}>
       <div className={s.title}>
-        <h4>{title}</h4>
-        <Link to={`/diary/${id}`}>
+        <div>
+          <h4>{title}</h4>
+        </div>
+        <Link
+          to={`/diary/${id}`}
+          className={cn(
+            buttonVariants({ size: "icon", variant: "ghostMuted" }),
+            "p-0"
+          )}
+        >
           <FeatherIcon icon="arrow-up-right" size={32} />
         </Link>
       </div>
-      <div className={s.subtitle}>
-        <span>{date}</span>
-        <p>{situation}</p>
-      </div>
-      <div className={s.footer}>
-        <p>{emotions}</p>
-        <div className={s.modify}>
-          <Link
-            to={`/diary/${id}/edit`}
-            className={clsx(buttonVariants({ size: "icon" }))}
-          >
-            <FeatherIcon icon="edit-2" />
-          </Link>
-          <Button size="icon" onClick={() => dispatch(deleteNote(id))}>
-            <FeatherIcon icon="trash-2" />
-          </Button>
+      {hasContent && (
+        <div className={s.content}>
+          {situation && <p>{situation}</p>}
+          {cognitiveDistortions && (
+            <CognitiveBiasList cognitiveDistortions={cognitiveDistortions} />
+          )}
         </div>
-      </div>
+      )}
+      <NoteActions date={date} id={id} />
     </div>
   );
 };

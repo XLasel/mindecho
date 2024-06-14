@@ -1,16 +1,32 @@
 @import '@styles';
 
+// .root {
+// display: grid;
+// grid-template-columns: auto 400px;
+// gap: var(--space_xl);
+
+// align-items: start;
+// padding: var(--space_2xl);
+// }
+
 .root {
-    display: grid;
-    grid-template-columns: auto 312px;
-    gap: var(--space_xl);
-
-    align-items: start;
-    // padding: var(--space_2xl);
-}
-
-.content {
     display: flex;
     flex-direction: column;
     gap: var(--space_xl);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_l);
+}
+
+.filter-panel {
+    display: grid;
+    // grid-template-columns: auto 312px;
+    gap: var(--space_xl);
+    padding: var(--space_xl);
+    border-radius: var(--border-radius-l);
+    margin-top: 50px;
+    // background-color: hsl(var(--card));
 }

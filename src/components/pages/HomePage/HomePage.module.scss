@@ -1,6 +1,56 @@
 @import '@styles';
 
 .root {
-  background-color: #111;
-  /* // background-color: var(--bg-color); */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space_6xl);
+  margin-top: var(--space_3xl);
+  margin-bottom: var(--space_6xl);
+
+  & h1 {
+    @extend %text-display;
+
+  }
+
+  & h2 {
+    @extend %h2;
+
+    margin-bottom: var(--space_l);
+  }
+
+  & h3 {
+    margin-bottom: var(--space_s);
+  }
+}
+
+.section-accent {
+  display: grid;
+  place-items: center;
+  // height: 100vh; 
+  width: 100%;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+
+  & p {
+    // font-size: 36px;
+    @include font(normal 400 36px / 140% "Inter Variable");
+
+    // @include font(normal 400 36px / 140% "Bad Script");
+    // font-family: "Bad Script";
+
+    & span {
+      // @include font(normal 600 36px / 140% "Bad Script");
+      font-family: "Bad Script";
+
+      color: hsl(var(--accent))
+    }
+  }
+}
+
+.content-accent {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: center;
+  justify-items: center;
 }

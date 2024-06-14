@@ -1,8 +1,13 @@
 @import '@styles';
 
-.title {
-    @include font(normal 700 48px / 52px 'Inter');
+.root {
+    @extend %diary-title;
 
     display: block;
     background-color: transparent;
+
+    &::placeholder {
+        font-style: italic;
+        color: hsl(var(--white)/ 0.5);
+    }
 }

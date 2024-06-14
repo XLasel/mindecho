@@ -1,29 +1,80 @@
+// %text-display {
+//     @include font(normal 700 96px / 85% "Inter Variable", -1.2px);
+// }
+
 %text-display {
-    @include font(normal 500 100px / 110% 'Inter', -1.2px);
+    // @include font(normal 500 100px / 110% "Inter Variable", -1.2px);
+    // @include font(normal 700 96px / 95% "Inter Variable", -1.5px);
+    @include font(normal 700 74px / 100% "Inter Variable");
 }
 
+// %text-display-subtitle {
+//     // @include font(normal 500 42px / 150% "Inter Variable");
+//     @include font(normal 500 34px / 120% "Inter Variable");
+// }
+
 %text-display-subtitle {
-    @include font(normal 500 42px / 150% 'Inter');
+    // @include font(normal 500 42px / 150% "Inter Variable");
+    // @include font(normal 400 28px / 130% "Inter Variable");
+    @include font(normal 400 28px / 140% "Inter Variable");
+
+}
+
+%h2 {
+    @include font(normal 700 48px / 64px "Inter Variable");
+}
+
+// %h2-subtitle {
+//     @include font(normal 400 28px / 140% "Inter Variable");
+// }
+
+%h3 {
+    @include font(normal 700 36px / 110% "Inter Variable", -1%);
+}
+
+%h4 {
+    @include font(normal 700 24px / 32px "Inter Variable");
+}
+
+%h5 {
+    // @include font(normal 600 22px / 28px "Inter Variable");
+    @include font(normal 600 20px / 28px "Inter Variable");
 }
 
 %h3-subtitle {
-    @include font(normal 500 24px / 122% 'Inter', -1%);
+    @include font(normal 500 24px / 122% "Inter Variable", -1%);
 
     // @include tablet() {
     //     @include font(normal 400 16px / 23px 'Roboto');
     // }
 }
 
+%diary-title {
+    @include font(normal 700 48px / 64px "Inter Variable");
+}
+
+%body-small {
+    @include font(normal 400 16px / 140% "Inter Variable", -1%);
+}
+
+%body-large {
+    @include font(normal 400 20px / 140% "Inter Variable", -1%);
+}
+
+%text-button-lg {
+    @include font(normal 500 20px / 24px "Inter Variable");
+}
+
 %text-button-l {
-    @include font(normal 500 18px / 24px 'Inter');
+    @include font(normal 500 18px / 24px "Inter Variable");
 }
 
 %text-button-m {
-    @include font(normal 500 16px / 18px 'Inter');
+    @include font(normal 500 16px / 18px "Inter Variable");
 }
 
-%text-button-s {
-    @include font(normal 500 14px / 18px 'Inter');
+%text-button-sm {
+    @include font(normal 500 14px / 18px "Inter Variable");
 }
 
 

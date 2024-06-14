@@ -3,15 +3,11 @@
 .root {
     @apply shadow-md;
     z-index: 50;
-    width: 18rem
-        /* 288px */
-    ;
+    width: 18rem;
     border-radius: calc(var(--radius) - 2px);
     border-width: 1px;
     background-color: hsl(var(--popover));
-    padding: 1rem
-        /* 16px */
-    ;
+    padding: 1rem;
     color: hsl(var(--popover-foreground));
     outline: 2px solid transparent;
     outline-offset: 2px;

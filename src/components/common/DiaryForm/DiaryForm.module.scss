@@ -1,23 +1,107 @@
 @import '@styles';
 
-.form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_l);
 
-    & textarea {
-        width: 100%;
-        background-color: transparent;
-        border-radius: var(--border-radius-s);
-        border: 2px;
-        border-color: hsl(var(--white) / 0.8);
-        resize: none;
+    margin-bottom: var(--space_2xl);
+
+    // & textarea {
+    //     width: 100%;
+    //     background-color: transparent;
+    //     border-radius: var(--border-radius-s);
+    //     border: 2px;
+    //     border-color: hsl(var(--white) / 0.8);
+    //     resize: none;
+    // }
+
+    & hr {
+        // background-color: hsl(var(--secondary));
+        height: 2px;
+        background-color: hsl(var(--white) / 0.2);
     }
 }
 
 
-.title {
-    @include font(normal 700 48px / 52px 'Inter');
+// .input-group {
+//     display: grid;
+//     grid-template-columns: 2fr 1fr;
 
-    display: block;
-    background-color: transparent;
+//     gap: var(--space_m);
+
+//     & textarea {
+//         padding: 12px 24px;
+//         background-color: hsl(var(--card));
+//     }
+// }
+
+.input-group,
+.fieldset-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space_xs);
+    gap: var(--space_m);
+
+
+    & label,
+    .fake-legend {
+        @extend %h4;
+    }
+
+    // & p {
+    //     @extend %body-small;
+    //     // font-style: italic;
+    //     color: hsl(var(--white) / 0.7);
+    // }
+
+    // & textarea {
+    //     padding: 12px 24px;
+    //     background-color: hsl(var(--card));
+    //     // color: hsl(var(--white) / 0.8);
+
+    //     &::placeholder {
+    //         color: hsl(var(--white) / 0.5);
+    //         font-style: italic;
+    //     }
+    // }
 }
+
+
+.description {
+    @extend %body-small;
+
+    color: hsl(var(--white) / 0.7);
+
+    & ol {
+        @include styled-list;
+
+    }
+
+    & p:not(:last-child) {
+        margin-bottom: var(--base-margin);
+
+    }
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_2xs);
+
+}
+
+
+// .label {
+//     display: flex;
+//     flex-direction: column;
+//     gap: var(--space_s);
+// }
+
+// .description {
+//     display: flex;
+//     align-items: center;
+//     border-left: 2px solid hsl(var(--secondary));
+//     padding-left: var(--space_m);
+// }

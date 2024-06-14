@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 
-const useImage = (fileName) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [image, setImage] = useState(null);
+interface UseImageResult {
+  loading: boolean;
+  error: Error | null;
+  image: string | null;
+}
+
+export const useImage = (fileName: string): UseImageResult => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
+  const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -11,7 +17,7 @@ const useImage = (fileName) => {
         const response = await import(`../../assets/img/${fileName}`); // change relative path to suit your needs
         setImage(response.default);
       } catch (err) {
-        setError(err);
+        setError(err as Error);
       } finally {
         setLoading(false);
       }
@@ -26,5 +32,3 @@ const useImage = (fileName) => {
     image,
   };
 };
-
-export default useImage;

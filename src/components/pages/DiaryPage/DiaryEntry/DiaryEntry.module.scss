@@ -1,0 +1,66 @@
+@import '@styles';
+
+.root {
+    width: 100%;
+
+    h4 {
+        // @include font(normal 600 18px / 28px "Inter Variable");
+
+    }
+}
+
+.section {
+    // background-color: hsl(var(--card));
+    // border-radius: 16px;
+    padding: 12px;
+}
+
+.title {
+    @extend %diary-title;
+    // @include font(normal 600 18px / 28px "Inter Variable");
+
+
+}
+
+.content {
+    padding: 12px;
+
+    // background-color: hsl(var(--card));
+    border-radius: 16px;
+    // @include font(normal 400 22px / 28px "Inter Variable");
+}
+
+.text-list {
+
+    @include numbered-list()
+}
+
+.cognitive-distortions {
+    display: grid;
+    grid-template-columns: auto;
+    gap: var(--space_2xs);
+}
+
+.bias {
+    display: flex;
+    gap: var(--space_2xs);
+
+    @include tablet() {
+        flex-direction: column;
+    }
+}
+
+.bias-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_2xs);
+}
+
+.form {
+    padding: var(--space_m);
+    border-radius: var(--border-radius-m);
+    // padding: 12px;
+    background-color: hsl(var(--card));
+    // border-radius: 24px;
+}

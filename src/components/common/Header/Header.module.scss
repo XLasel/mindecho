@@ -1,0 +1,32 @@
+@import '@styles';
+
+.root {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: var(--header-height);
+
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space_xl);
+
+    padding: var(--space_2xs) var(--space_xs);
+    margin: var(--space_s) var(--space_m);
+
+    border-radius: var(--border-radius-m);
+    background-color: hsl(var(--background) / 0.8);
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}

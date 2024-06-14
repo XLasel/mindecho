@@ -1,5 +1,8 @@
+import plugin from 'tailwindcss/plugin';
+import tailwindcssAnimate from 'tailwindcss-animate';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -16,8 +19,22 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      'display': ['100px', {
+        lineHeight: '110%',
+        letterSpacing: '-1.2px',
+      }],
+      'base': ['18px', '28px'],
+      'xl': ['20px', '24px'],
+      'lg': ['18px', '24px'],
+      'sm': ['16px', '18px'],
+      'xs': ['14px', '18px'],
+    },
     extend: {
       colors: {
+        purple: "hsl(var(--purple))",
+        green: "hsl(var(--green))",
+        pink: "hsl(var(--pink))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -53,9 +70,11 @@ module.exports = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: 'var(--border-radius-xxs)',
+        sm: 'var(--border-radius-xs)',
+        md: 'var(--border-radius-s)',
+        lg: 'var(--border-radius-m)',
+        xl: 'var(--border-radius-l)',
       },
       keyframes: {
         "accordion-down": {
@@ -73,5 +92,14 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    tailwindcssAnimate,
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        // '.text-button-l': {
+        //   font: theme('fontSize.l'),
+        // }
+      })
+    })
+  ]
 }

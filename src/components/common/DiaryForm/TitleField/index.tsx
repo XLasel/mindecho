@@ -3,10 +3,6 @@ import React, { useState } from "react";
 import s from "./TitleField.module.scss";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
-// interface InputTitleProps extends React.InputHTMLAttributes<HTMLInputElement>{
-//     label: string
-// }
-
 export const TitleField = React.forwardRef<
   HTMLInputElement,
   ReturnType<UseFormRegister<FieldValues>>
@@ -33,7 +29,8 @@ export const TitleField = React.forwardRef<
       onChange={onChange}
       onBlur={handleBlur}
       onFocus={handleFocus}
-      className={s.title}
+      placeholder="Новая запись"
+      className={s.root}
       maxLength={22}
       autoComplete="off"
     />

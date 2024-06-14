@@ -1,0 +1,46 @@
+@import '@styles';
+
+.root {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space_xs);
+    gap: var(--space_m);
+
+
+    h3 {
+        @extend %h4;
+    }
+}
+
+.description {
+    @extend %body-small;
+
+    color: hsl(var(--text-muted));
+
+    & ol {
+        @include styled-list;
+
+    }
+
+    & p:not(:last-child) {
+        margin-bottom: var(--base-margin);
+
+    }
+}
+
+// .description {
+//     @extend %body-small;
+
+//     color: hsl(var(--white) / 0.7);
+
+//     & ol {
+//         @include styled-list;
+
+//     }
+
+//     & p:not(:last-child) {
+//         margin-bottom: var(--base-margin);
+
+//     }
+// }

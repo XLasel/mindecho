@@ -1,186 +1,299 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import {
+  useForm,
+  SubmitHandler,
+  FormProvider,
+  useFieldArray,
+} from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+import { Button } from "@/components/common/Button";
+import { TitleField } from "./TitleField";
+import { EmotionField } from "./EmotionField";
+import { CognitiveBiasField } from "./CognitiveBiasField";
+
+import { useAppDispatch } from "@/redux/hook";
+import { Note, addNote, updateNote } from "@/redux/noteSlice";
 
 import s from "./DiaryForm.module.scss";
-import { Button } from "@/components/common/Button";
-// import FeatherIcon from "feather-icons-react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { Note, addNote, updateNote } from "@/redux/noteSlice";
-import { useAppDispatch } from "@/redux/hook";
-import { useEffect, useState } from "react";
-import { redirectDocument, useNavigate } from "react-router-dom";
-import { TitleField } from "./TitleField";
+import { DynamicInputForm } from "./DynamicInputForm";
+import { AdaptiveResponseField } from "./AdaptiveResponseField";
+import { ResizableTextarea } from "../ResizableTextarea";
+import { RangeInput } from "../RangeInput";
+import { SpoilerText } from "../SpoilerText";
+import { NoteActions } from "../NoteActions";
+import { SectionForm } from "./SectionForm";
+import { sectionData } from "@/constants";
 
-const schemaNote = yup.object().shape({
-  title: yup.string(),
-  situation: yup.string(),
-  automaticThoughts: yup.string(),
-  emotions: yup.array().of(yup.string()),
-  physicalSensations: yup.string(),
-  behavior: yup.string(),
-  discomfortLevel: yup.number().min(1).max(10),
-  cognitiveDistortions: yup.array().of(yup.string()),
-  adaptiveResponse: yup.string(),
+const cognitiveDistortionSchema = z.object({
+  everythingOrNothing: z.boolean(),
+  overgeneralization: z.boolean(),
+  negativeFilter: z.boolean(),
+  discountingThePositive: z.boolean(),
+  mindreading: z.boolean(),
+  fortuneTelling: z.boolean(),
+  catastrophizing: z.boolean(),
+  magnificationAndMinimization: z.boolean(),
+  emotionalReasoning: z.boolean(),
+  shouldStatements: z.boolean(),
+  labeling: z.boolean(),
+  personalization: z.boolean(),
+  retrospectiveDistortion: z.boolean(),
 });
 
-type IFormInput = yup.InferType<typeof schemaNote>;
+const emotionsSchema = z.record(z.boolean());
 
-export const DiaryForm = ({ noteToEdit }: { noteToEdit: Note | null }) => {
+const automaticThoughtsSchema = z.array(
+  z.object({
+    thought: z.string(),
+    response: z.string(),
+  })
+);
+
+const schemaNote = z.object({
+  title: z.string().optional(),
+  situation: z.string().optional(),
+  automaticThoughts: automaticThoughtsSchema,
+  emotions: emotionsSchema,
+  physicalSensations: z.string(),
+  behavior: z.string(),
+  discomfortLevel: z.coerce.number().min(0).max(10),
+  cognitiveDistortions: cognitiveDistortionSchema,
+});
+
+export type FormFieldsType = z.infer<typeof schemaNote>;
+
+interface DiaryFormProps {
+  noteToEdit?: Note | null;
+}
+
+export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const isEditMode = !!noteToEdit;
-  console.log(isEditMode);
-  console.log(noteToEdit);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    setValue,
-    setFocus,
-    getValues,
-    formState: { errors },
-  } = useForm<IFormInput>({
+  const methods = useForm<FormFieldsType>({
     defaultValues: {
-      title: noteToEdit?.title || "Новая запись",
+      title: noteToEdit?.title || "",
       situation: noteToEdit?.situation || "",
-      automaticThoughts: noteToEdit?.automaticThoughts || "",
-      emotions: noteToEdit?.emotions || [],
+      automaticThoughts: noteToEdit?.automaticThoughts || [
+        { thought: "", response: "" },
+      ],
+      emotions: noteToEdit?.emotions || {},
       physicalSensations: noteToEdit?.physicalSensations || "",
       behavior: noteToEdit?.behavior || "",
       discomfortLevel: noteToEdit?.discomfortLevel || 1,
-      cognitiveDistortions: noteToEdit?.cognitiveDistortions || [],
-      adaptiveResponse: noteToEdit?.adaptiveResponse || "",
+      cognitiveDistortions: noteToEdit?.cognitiveDistortions || {},
     },
-    resolver: yupResolver(schemaNote),
+    resolver: zodResolver(schemaNote),
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const {
+    register,
+    getValues,
+    control,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { dirtyFields, errors },
+  } = methods;
+
+  const thoughtsArray = useFieldArray<FormFieldsType, "automaticThoughts">({
+    control, // control props comes from useForm (optional: if you are using FormProvider)
+    name: "automaticThoughts", // unique name for your Field Array
+  });
+
+  const onSubmit: SubmitHandler<FormFieldsType> = (data) => {
+    console.log(errors);
+    if (!data.title) {
+      data.title = "Новая запись";
+    }
     if (isEditMode) {
       const currentData = { ...noteToEdit, ...data };
       dispatch(updateNote(currentData));
       navigate("/diary");
     } else {
       // Обработка добавления
+
       console.log(data);
       dispatch(addNote(data));
       navigate("/diary");
     }
     //   reset();
   };
-  console.log(getValues("discomfortLevel"));
-
-  useEffect(() => {
-    setFocus("title");
-  }, [setFocus]);
-
-  const [readOnly, setReadOnly] = useState(true);
-  console.log(readOnly);
-
-  const handleFocus = () => {
-    setReadOnly(false);
-  };
-
-  const handleBlur = () => {
-    setReadOnly(true);
-  };
+  console.log(errors);
 
   return (
-    <div>
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <TitleField {...register("title")} />
-        {/* <input
-          {...register("title2")}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          className={s.title}
-          maxLength={22}
-          autoComplete="off"
-        /> */}
-        <label>
-          <h4>Ситуация</h4>
-          <textarea {...register("situation")} />
-        </label>
-        <p>
-          Опишите обстоятельства, при которых возникла автоматическая мысль или
-          появился дискомфорт.
-        </p>
-        <label>
-          <h4>Автоматические мысли</h4>
-          <textarea {...register("automaticThoughts")} />
-        </label>
-        <p>
-          Иррациональные пугающие, обесценивающие и огорчающие мысли, которые
-          проносятся у Вас в голове, когда Вы расстроены или встревожены.
-        </p>
-        <legend>
-          <h4>Ваши эмоции</h4>
-          <label>
-            Грусть
-            <input {...register("emotions")} type="checkbox" value="sad" />
-          </label>
-          <label>
-            Радость
-            <input {...register("emotions")} type="checkbox" value="joy" />
-          </label>
-        </legend>
-        <p>
-          Выберете эмоции которые наболее точно отражают то, что вы испытали
-        </p>
-        <label>
-          <h4>Ощущения в теле</h4>
-          <textarea {...register("physicalSensations")} />
-        </label>
-        <p>Телесные проявления</p>
-        <label>
-          <h4>Поведение</h4>
-          <textarea {...register("behavior")} />
-        </label>
-        <p>Что делали, чтобы справиться с чувствами</p>
-        <label>
-          <h4>Уровень дискомфорта</h4>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            {...register("discomfortLevel")}
+    <FormProvider {...methods}>
+      <form className={s.root} onSubmit={handleSubmit(onSubmit)}>
+        <header>
+          {isEditMode && (
+            <NoteActions
+              date={noteToEdit?.date}
+              id={noteToEdit?.id}
+              isEditMode
+              saveEdit={handleSubmit(onSubmit)}
+            />
+          )}
+          <TitleField {...register("title")} />
+        </header>
+        <SectionForm
+          section={sectionData.situation}
+          ref={sectionsRefs.current[sectionData.situation.idFormInput]}
+          description={
+            <p>
+              Опишите обстоятельства, при которых возникла автоматическая мысль
+              или появился дискомфорт
+            </p>
+          }
+        >
+          <ResizableTextarea
+            id="situation"
+            name="situation"
+            placeholder="Опишите ситуацию"
           />
-          {watch("discomfortLevel")}
-        </label>
-        <p>
-          Крайняя левая точка - не волнует, крайняя правая - очень сильно
-          волнует
-        </p>
-        <legend>
-          <h4>Когнитивные искажения</h4>
-          <label>
-            Грусть
-            <input
-              {...register("cognitiveDistortions")}
-              type="checkbox"
-              value="sad"
-            />
-          </label>
-          <label>
-            Радость
-            <input
-              {...register("cognitiveDistortions")}
-              type="checkbox"
-              value="joy"
-            />
-          </label>
-        </legend>
-        <p>Когнетивные искажение, которые вы наблюдаете вы своих мыслях</p>
-        <label>
-          <h4>Адаптивный ответ</h4>
-          <textarea {...register("adaptiveResponse")} />
-        </label>
-        <p>Когнетивные искажение, которые вы наблюдаете вы своих мыслях</p>
-        <Button onClick={() => reset()}>Сбросить</Button>
-        <Button type="submit">{isEditMode ? "Сохранить" : "Отправить"}</Button>
+        </SectionForm>
+        <hr />
+        <SectionForm
+          section={sectionData.emotions}
+          ref={sectionsRefs.current[sectionData.emotions.idFormInput]}
+          description={
+            <p>
+              Отметьте эмоции, которые наиболее точно отражают то, что вы
+              почувствовали
+            </p>
+          }
+        >
+          <EmotionField name="emotions" control={control} />
+        </SectionForm>
+        <hr />
+        <SectionForm
+          section={sectionData.automaticThoughts}
+          ref={sectionsRefs.current[sectionData.automaticThoughts.idFormInput]}
+          description={
+            <p>Какая мысль или мысли вертелись у вас в голове в тот момент?</p>
+          }
+        >
+          <DynamicInputForm
+            label="automaticThoughts"
+            pattern={{ thought: "", response: "" }}
+            fieldArray={thoughtsArray}
+          />
+        </SectionForm>
+        <hr />
+        <SectionForm
+          section={sectionData.physicalSensations}
+          ref={sectionsRefs.current[sectionData.physicalSensations.idFormInput]}
+          description={
+            <p>
+              Что Вы чувствовали в теле? Тошноту, головокружение, боль,
+              слабость?
+            </p>
+          }
+        >
+          <ResizableTextarea
+            name="physicalSensations"
+            placeholder="Ваши ощущения"
+          />
+        </SectionForm>
+        <hr />
+        <SectionForm
+          section={sectionData.behavior}
+          ref={sectionsRefs.current[sectionData.behavior.idFormInput]}
+          description={
+            <p>Опишите, что вы сделали в этот момент или сразу после</p>
+          }
+        >
+          <ResizableTextarea name="behavior" placeholder="Ваши действия" />
+        </SectionForm>
+        <hr />
+        <SectionForm
+          section={sectionData.discomfortLevel}
+          ref={sectionsRefs.current[sectionData.discomfortLevel.idFormInput]}
+          description={
+            <p>
+              С помощью ползунка оцените уровень неприятных ощущений от 0 до 10
+            </p>
+          }
+        >
+          <RangeInput id="discomfort-level" name="discomfortLevel" />
+        </SectionForm>
+
+        <hr />
+        <SectionForm
+          section={sectionData.cognitiveDistortions}
+          ref={
+            sectionsRefs.current[sectionData.cognitiveDistortions.idFormInput]
+          }
+          role="group"
+          description={
+            <p>Когнетивные искажение, которые вы наблюдаете вы своих мыслях</p>
+          }
+        >
+          <CognitiveBiasField name="cognitiveDistortions" control={control} />
+        </SectionForm>
+
+        <hr />
+        <SectionForm
+          section={sectionData.adaptiveResponse}
+          ref={sectionsRefs.current[sectionData.adaptiveResponse.idFormInput]}
+          role="group"
+          description={
+            <>
+              <p>
+                Дайте отпор автоматическим мыслям. Замените их на более
+                рациональные и правдоподобные.
+              </p>
+              <SpoilerText titleClosed="Подробнее">
+                <>
+                  <p>
+                    Например, в ответ на мысль "У меня всегда всё не так", Вы
+                    можете сказать себе "Всё не может быть не так. У меня, по
+                    крайней мере, иногда все получается хорошо"
+                  </p>
+                  <p>
+                    Вот несколько вопросов, которые можно задать себе при
+                    ведении дневника:
+                  </p>
+                  <ol>
+                    <li>
+                      Какие есть доказательства того, что какая-то мысль —
+                      правда? А каковы доказательства, что это не так?
+                    </li>
+                    <li>Чем мешает мне эта мысль?</li>
+                    <li>
+                      Что самое страшное случится, если это правда? Как я это
+                      самое страшное переживу?
+                    </li>
+                    <li>
+                      Как я могу отреагировать на ситуацию таким образом, чтобы
+                      достичь наилучшего результата для себя и других?
+                    </li>
+                  </ol>
+                </>
+              </SpoilerText>
+            </>
+          }
+        >
+          <AdaptiveResponseField fieldArray={thoughtsArray} />
+        </SectionForm>
+        <hr />
+        <div className={s.buttons}>
+          <Button type="submit" size="lg" className="text-xl h-12">
+            {isEditMode ? "Сохранить" : "Отправить"}
+          </Button>
+          <Button
+            variant="ghost"
+            size="lg"
+            className="text-xl h-12"
+            onClick={() => reset()}
+          >
+            Сбросить
+          </Button>
+        </div>
       </form>
-    </div>
+    </FormProvider>
   );
 };

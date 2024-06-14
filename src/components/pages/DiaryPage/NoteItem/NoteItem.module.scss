@@ -3,13 +3,13 @@
 .root {
     display: flex;
     flex-direction: column;
-    gap: var(--space_2xs);
+    gap: var(--space_s);
     cursor: pointer;
 
     padding: var(--space_m);
-    border-radius: var(--border-radius-s);
+    border-radius: var(--border-radius-m);
     background-color: hsl(var(--card));
-
+    color: hsl(var(--card-foreground))
 }
 
 .title {
@@ -18,18 +18,20 @@
     gap: var(--space_3xs);
 }
 
-.subtitle {
+.content {
     display: flex;
-    gap: var(--space_xs);
+    flex-direction: column;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space_3xs);
-}
+// .subtitle {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: var(--space_xs);
+// }
 
-.modify {
-    display: flex;
-    gap: var(--space_3xs);
-}
+// .footer {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     gap: var(--space_3xs);
+// }

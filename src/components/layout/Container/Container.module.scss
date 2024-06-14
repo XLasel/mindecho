@@ -1,0 +1,28 @@
+@import '@styles';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    margin: 0 auto;
+    padding: 0 var(--space_m);
+
+    &>* {
+        width: 100%;
+    }
+}
+
+.default {
+    max-width: 1400px;
+}
+
+.full {
+    max-width: none;
+}
+
+.small {
+    max-width: 832px;
+}

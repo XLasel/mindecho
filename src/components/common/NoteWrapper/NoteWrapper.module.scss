@@ -1,0 +1,9 @@
+@import '@styles';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_xl);
+
+    width: 100%;
+}

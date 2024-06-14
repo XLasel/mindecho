@@ -1,6 +1,6 @@
 import { Middleware } from "@reduxjs/toolkit";
 
-import { RootState } from "@redux/store";
+import { RootState } from "@/redux/store";
 
 export const reHydrateStore = () => {
   const storedState = localStorage.getItem("reduxState");

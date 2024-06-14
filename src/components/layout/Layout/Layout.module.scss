@@ -1,0 +1,28 @@
+@import '@styles';
+
+.root {
+    min-height: 100vh;
+    max-width: 100%;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    display: grid;
+    // grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: 1fr min-content;
+
+    gap: var(--space_2xl);
+    min-height: 100vh;
+}
+
+.main {
+    // padding: var(--space_2xl);
+    width: 100%;
+    padding-top: var(--header-height);
+    flex-grow: 1;
+}

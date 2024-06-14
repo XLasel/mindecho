@@ -1,0 +1,25 @@
+@import '@styles';
+
+.root {
+    position: fixed;
+    max-width: 230px;
+
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--base-padding);
+}
+
+.item {
+    cursor: pointer;
+    color: hsl(var(--text-muted));
+
+}
+
+.item-active {
+    font-weight: 500;
+    color: hsl(var(--white));
+
+}

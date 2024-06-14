@@ -1,6 +1,5 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { format } from "date-fns";
-import { RootState } from "./store";
+import { formatISO } from "date-fns";
 
 interface NoteState {
   notes: Note[];
@@ -11,13 +10,14 @@ export interface Note {
   date: string;
   title: string;
   situation: string;
-  automaticThoughts: string;
-  emotions: string[];
+  automaticThoughts: { thought: string; response: string }[];
+  emotions: { [key: string]: boolean };
   physicalSensations: string;
   behavior: string;
   discomfortLevel: number;
-  cognitiveDistortions: string[];
-  adaptiveResponse: string;
+  cognitiveDistortions: { [key: string]: boolean };
+  postComment?: string;
+  newDiscomfortLevel?: number;
 }
 
 const initialState: NoteState = {
@@ -34,13 +34,10 @@ const noteSlice = createSlice({
       },
       prepare: (note) => {
         const id = nanoid();
-        const date = format(new Date(), "dd-MM-yyyy");
+        const date = formatISO(new Date());
         return { payload: { id, date, ...note } };
       },
     },
-    // addNote: (state, action: PayloadAction<Note>) => {
-    //   state.notes.push(action.payload);
-    // },
     updateNote: (state, action: PayloadAction<Note>) => {
       const index = state.notes.findIndex(
         (note) => note.id === action.payload.id
@@ -56,7 +53,5 @@ const noteSlice = createSlice({
 });
 
 export const { addNote, updateNote, deleteNote } = noteSlice.actions;
-
-export const selectAllNotes = (state: RootState) => state.notes.notes;
 
 export default noteSlice.reducer;

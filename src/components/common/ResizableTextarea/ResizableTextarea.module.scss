@@ -1,0 +1,15 @@
+.root {
+    padding: 12px 24px;
+    background-color: hsl(var(--card));
+    width: 100%;
+    // background-color: transparent;
+    border-radius: var(--border-radius-s);
+    border: 2px;
+    border-color: hsl(var(--white) / 0.8);
+    resize: none;
+
+    &::placeholder {
+        color: hsl(var(--white) / 0.5);
+        font-style: italic;
+    }
+}

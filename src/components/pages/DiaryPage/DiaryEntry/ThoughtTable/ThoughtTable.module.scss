@@ -1,0 +1,46 @@
+@import '@styles';
+
+.root {
+
+    --separator-border: 2px solid hsl(var(--background) / 0.4);
+    // border: 1px solid grey;
+    background-color: hsl(var(--card));
+    border-radius: var(--border-radius-s);
+    // border-collapse: collapse;
+
+
+    padding: 10px;
+
+    table {
+        width: 100%;
+    }
+
+    th {
+        text-align: left;
+        // border: 2px solid hsl(var(--white) / 0.2);
+        // border-radius: var(--border-radius-s);
+    }
+
+    tr {
+        // padding: var(--space_s);
+    }
+
+    tr:not(:last-child) {
+        // border-bottom: 2px solid hsl(var(--secondary));
+        border-bottom: var(--separator-border);
+
+
+    }
+
+    td {
+        padding: var(--space_s);
+        border-left: var(--separator-border);
+        // border: 1px solid rgb(0, 255, 85);
+        // border-radius: var(--border-radius-s);
+
+    }
+
+    ol {
+        @include numbered-list;
+    }
+}

@@ -1,0 +1,11 @@
+@import '@styles';
+
+.root {
+    position: relative;
+}
+
+.aside {
+    position: absolute;
+    // max-width: 230px;
+    left: -330px;
+}

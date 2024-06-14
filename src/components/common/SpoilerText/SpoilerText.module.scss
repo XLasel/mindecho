@@ -1,0 +1,7 @@
+@import '@styles';
+
+.content {
+    &>div {
+        padding: var(--space_xs) var(--space_m);
+    }
+}

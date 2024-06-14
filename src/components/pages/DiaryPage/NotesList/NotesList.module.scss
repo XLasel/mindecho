@@ -6,11 +6,20 @@
     gap: var(--space_l);
 }
 
-.info {
+.list-group {
     display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 24px;
+    flex-direction: column;
+    gap: var(--space_m);
+}
 
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_s);
+}
 
+.pagination-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: (--space_2xs);
 }

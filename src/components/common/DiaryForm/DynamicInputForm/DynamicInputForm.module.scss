@@ -1,0 +1,60 @@
+@import '@styles';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_2xs);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_3xs);
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 24px auto;
+
+    align-items: center;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+
+    padding: 12px 24px;
+    border-radius: var(--border-radius-s);
+    background-color: hsl(var(--card));
+
+    & .icon-delete {
+        flex: 0 0 auto;
+    }
+
+    & .textarea {
+        flex: 1 1 auto;
+        max-width: 100%;
+        border-radius: 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+
+.button {
+    align-self: center;
+    gap: var(--space_2xs);
+
+    &:hover .icon {
+        color: hsl(var(--secondary) / 0.8);
+    }
+}
+
+.icon-add {
+    color: hsl(var(--secondary));
+}
