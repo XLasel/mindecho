@@ -1,7 +1,10 @@
-import { Container } from "@/components/layout/Container";
+import { motion } from "framer-motion";
+
+import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
+
+import { aimationSlideUp } from "../anim";
 
 import s from "./BenefitsSection.module.scss";
-import { motion } from "framer-motion";
 
 const benefitsData = [
   {
@@ -34,7 +37,7 @@ const benefitsData = [
     ),
     title: "Научный подход",
     description:
-      "Наши методы основаны на доказанной эффективности когнитивно-поведенческой терапии.",
+      "Наши методы основаны на\xa0доказанной эффективности когнитивно-поведенческой терапии.",
   },
   {
     icon: (
@@ -62,9 +65,9 @@ const benefitsData = [
         </defs>
       </>
     ),
-    title: "Удобство и доступность",
+    title: "Удобство и\xa0доступность",
     description:
-      "Используйте MindEcho в любое время и в любом месте - на компьютере, планшете или смартфоне.",
+      "Используйте MindEcho в\xa0любое время и\xa0в\xa0любом месте\xa0\u2014 на\xa0компьютере, планшете или смартфоне.",
   },
   {
     icon: (
@@ -88,8 +91,9 @@ const benefitsData = [
         </defs>
       </>
     ),
-    title: "Безопасность и конфиденциальность",
-    description: "Мы заботимся о вашей приватности и безопасности данных.",
+    title: "Безопасность и\xa0конфиденциальность",
+    description:
+      "Мы\xa0заботимся о\xa0вашей приватности и\xa0безопасности данных.",
   },
   {
     icon: (
@@ -121,80 +125,32 @@ const benefitsData = [
     ),
     title: "Поддержка сообщества",
     description:
-      "Присоединяйтесь к сообществу пользователей, делитесь своими успехами и получайте поддержку.",
+      "Присоединяйтесь к\xa0сообществу пользователей, делитесь своими успехами и\xa0получайте поддержку.",
   },
 ];
 
-const variantsCardAnimate = {
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      bounce: 0.4,
-      delay: 0.3 + i * 0.1,
-    },
-  }),
-
-  hidden: { opacity: 0, y: 50 },
-};
-
-const variantsTitle = {
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      bounce: 0.4,
-      delay: 0.3,
-    },
-  },
-
-  hidden: { opacity: 0, x: 50 },
-};
-
 export const BenefitsSection = () => (
-  <section className={s.root}>
-    <Container>
-      <div className={s.content}>
-        <motion.h2
-          initial={"hidden"}
-          whileInView={"visible"}
-          variants={variantsTitle}
-          viewport={{ once: true, amount: 0.8 }}
-        >
-          Почему стоит выбрать MindEcho?
-        </motion.h2>
-        <div className={s.benefits}>
-          {benefitsData.map((benefit, i) => (
-            <motion.div
-              className={s.benefit}
-              key={i}
-              custom={i}
-              variants={variantsCardAnimate}
-              initial={"hidden"}
-              whileInView={"visible"}
-              viewport={{ once: true, amount: 0.8 }}
-            >
-              <svg
-                width="400"
-                height="200"
-                viewBox="0 0 400 200"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={s.svg}
-              >
-                {benefit?.icon}
-              </svg>
-
-              <div className={s.text}>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  </section>
+  <SectionWrapper>
+    <SectionTitle>Почему стоит выбрать MindEcho?</SectionTitle>
+    <SectionContent direction="default" className={s.benefits}>
+      {benefitsData.map((benefit) => (
+        <motion.div className={s.benefit} variants={aimationSlideUp}>
+          <svg
+            width="400"
+            height="200"
+            viewBox="0 0 400 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={s.svg}
+          >
+            {benefit?.icon}
+          </svg>
+          <div className={s.text}>
+            <h3>{benefit.title}</h3>
+            <p>{benefit.description}</p>
+          </div>
+        </motion.div>
+      ))}
+    </SectionContent>
+  </SectionWrapper>
 );

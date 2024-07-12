@@ -1,5 +1,6 @@
-import clsx from "clsx";
 import React from "react";
+
+import { cn } from "@/lib/utils";
 
 import s from "./EmotionChip.module.scss";
 
@@ -18,7 +19,7 @@ export const EmotionChip: React.FC<EmotionChipProps> = ({
 }) => {
   return (
     <div
-      className={clsx(s.root, selected && s.selected, !!onClick && s.clickable)}
+      className={cn(s.root, selected && s.selected, !!onClick && s.clickable)}
       onClick={onClick}
     >
       <span role="img" aria-label={label}>

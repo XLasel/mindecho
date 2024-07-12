@@ -1,90 +1,66 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    @extend %body-small;
+  @extend %body-small;
 
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_xl);
 
-    height: max-content;
-    padding: 22px;
+  height: max-content;
+  padding: var(--space_xl);
 
-    border: 2px solid transparent;
-    border-radius: 24px;
-    background-color: hsl(var(--card));
-
-    // &:has(input:checked) {
-    //     border-color: hsl(var(--secondary));
-    // }
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-l);
+  background-color: hsl(var(--card));
 }
 
 .root-checked {
-    border-color: hsl(var(--secondary));
+  border-color: hsl(var(--secondary));
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
-    width: 100%;
-
+  width: 100%;
 }
 
 .title {
-    text-transform: uppercase;
-
-    &+label:has(input:checked) {
-        color: hsl(var(--secondary));
-    }
+  text-transform: uppercase;
 }
 
 .checkbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
 
-    width: 26px;
-    height: 26px;
-    padding: 1px;
+  width: 26px;
+  height: 26px;
+  padding: 1px;
 
-    border: 2px solid;
-    border-radius: 6px;
+  border: 2px solid;
+  border-radius: 6px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    &:has(input:checked) {
-        border-color: hsl(var(--secondary));
-    }
+  &:has(input:checked) {
+    border-color: hsl(var(--secondary));
+  }
 
-}
-
-input[type="checkbox"] {
+  & input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
 }
 
 .icon-checked {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 
-    border-radius: 4px;
-    background-color: hsl(var(--secondary));
+  border-radius: 4px;
+  background-color: hsl(var(--secondary));
 }
-
-// .description {
-//     @extend %body-small;
-// }
-
-// .list {
-//     list-style-type: disc;
-//     margin-left: var(--base-margin);
-//     font-style: italic;
-// }
-
-// .list li {
-//     list-style-type: disc;
-// }

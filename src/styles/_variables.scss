@@ -45,7 +45,7 @@
   --content-padding-xl: 32px;
   --content-padding-xxl: 40px;
   --content-max-width: 520px;
-  --content-width-sm-up: calc(520px + var(--content-padding-m)*2);
+  --content-width-sm-up: calc(520px + var(--content-padding-m) * 2);
   --header-height-xs: 56px;
   --header-height-s: 60px;
   --header-height-m: 76px;
@@ -60,10 +60,13 @@
   --checkbox-size-l: 32px;
   --snackbar-top: calc(var(--sait, 0px) + 6px);
   --snackbar-top-sm-up: calc(var(--sait, 0px) + 16px);
-  --drawer-max-height: calc(var(--yabank-layout-app-height)*0.83);
-  --drawer-fullscreen-height: calc(var(--yabank-layout-app-height)*0.93);
+  --drawer-max-height: calc(var(--yabank-layout-app-height) * 0.83);
+  --drawer-fullscreen-height: calc(var(--yabank-layout-app-height) * 0.93);
   --yabank-layout-app-height: 100vh;
-  --dialog-layout-safe-padding-bottom: max(calc(var(--saib, 0px) + 8px), var(--dialog-padding));
+  --dialog-layout-safe-padding-bottom: max(
+    calc(var(--saib, 0px) + 8px),
+    var(--dialog-padding)
+  );
   --headline0-bold-font-size: 128px;
   --headline0-bold-line-height: 0.82;
   --headline0-bold-letter-spacing: -1.2px;
@@ -176,6 +179,73 @@
   --general-safe-area-inset-bottom: calc(var(--saib, 0) + 8px);
 }
 
+// $font-sizes: (
+//   'display': (
+//     'desktop': (size: 74px, line-height: 100%, weight: 700),
+//     'tablet': (size: 48px, line-height: 140%, weight: 700)
+//   )
+//   'h1': (
+//     'desktop': (size: 48px, line-height: 64px, weight: 700),
+//     'tablet': (size: 28px, line-height: 140%, weight: 700)
+//   ),
+//   'h2': (
+//     'desktop': (size: 36px, line-height: 110%, weight: 700),
+//     'tablet': (size: 28px, line-height: 140%, weight: 700)
+//   ),
+//   'h3': (
+//     'desktop': (size: 24px, line-height: 32px, weight: 700),
+//     'tablet': (size: 24px, line-height: 122%, weight: 500)
+//   ),
+//   'h4': (
+//     'desktop': (size: 24px, line-height: 32px, weight: 700),
+//     'tablet': (size: 18px, line-height: 140%, weight: 700)
+//   ),
+//   'display-subtitle': (
+//     'desktop': (size: 28px, line-height: 140%, weight: 400),
+//     'tablet': (size: 24px, line-height: 140%, weight: 400)
+//   ),
+//   'h3-subtitle': (
+//     'desktop': (size: 28px, line-height: 140%, weight: 500),
+//     'tablet': (size: 24px, line-height: 140%, weight: 400)
+//   ),
+//   // Define other headings and body sizes similarly
+// );
+
 $desktopScreenSize: 1280;
 $tabletScreenSize: 1000;
 $mobileScreenSize: 550;
+
+// $gradient-primary: linear-gradient(45deg, #ff6b6b, #f94d6a);
+// $gradient-secondary: linear-gradient(45deg, #1fddff, #25a9e0);
+// $gradient-tertiary: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+
+$gradient-primary: linear-gradient(
+  45deg,
+  hsl(var(--purple)),
+  hsl(var(--blue-300))
+);
+$gradient-secondary: linear-gradient(
+  45deg,
+  hsl(var(--green)),
+  hsl(var(--blue-300))
+);
+$gradient-accent: linear-gradient(
+  45deg,
+  hsl(var(--pink)),
+  hsl(var(--blue-100))
+);
+$gradient-background: linear-gradient(
+  45deg,
+  hsl(var(--blue)),
+  hsl(var(--blue-100))
+);
+$gradient-background: linear-gradient(
+  20deg,
+  hsl(var(--green) / 0.5),
+  hsl(var(--blue)),
+  hsl(var(--blue-100))
+);
+
+// $desktopScreenSize: 1280;
+// $tabletScreenSize: 1000;
+// $mobileScreenSize: 550;

@@ -1,19 +1,17 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    overflow: hidden;
+  overflow: hidden;
 
-    & ul {
-        @include styled-list;
-    }
+  & ul {
+    @extend %styled-list;
+  }
 
-    & ol {
-        @include numbered-list;
-    }
+  & ol {
+    @extend %numbered-list;
+  }
 }
 
 .inner {
-    padding: var(--space_m) 0;
-
-    // padding: var(--space_xs) var(--space_m);
+  padding: var(--space_m) 0;
 }

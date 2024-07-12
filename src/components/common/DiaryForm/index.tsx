@@ -7,15 +7,12 @@ import {
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
 import { Button } from "@/components/common/Button";
 import { TitleField } from "./TitleField";
 import { EmotionField } from "./EmotionField";
 import { CognitiveBiasField } from "./CognitiveBiasField";
-
 import { useAppDispatch } from "@/redux/hook";
 import { Note, addNote, updateNote } from "@/redux/noteSlice";
-
 import s from "./DiaryForm.module.scss";
 import { DynamicInputForm } from "./DynamicInputForm";
 import { AdaptiveResponseField } from "./AdaptiveResponseField";
@@ -25,6 +22,8 @@ import { SpoilerText } from "../SpoilerText";
 import { NoteActions } from "../NoteActions";
 import { SectionForm } from "./SectionForm";
 import { sectionData } from "@/constants";
+import { useBackNavigation } from "@/hook/useBackNavigation";
+import { type SectionsRefs } from "@/components/pages/DiaryPage/NoteEditorLayout";
 
 const cognitiveDistortionSchema = z.object({
   everythingOrNothing: z.boolean(),
@@ -48,7 +47,7 @@ const automaticThoughtsSchema = z.array(
   z.object({
     thought: z.string(),
     response: z.string(),
-  })
+  }),
 );
 
 const schemaNote = z.object({
@@ -66,12 +65,12 @@ export type FormFieldsType = z.infer<typeof schemaNote>;
 
 interface DiaryFormProps {
   noteToEdit?: Note | null;
+  sectionsRefs: SectionsRefs;
 }
 
 export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
   const isEditMode = !!noteToEdit;
 
   const methods = useForm<FormFieldsType>({
@@ -92,56 +91,49 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
 
   const {
     register,
-    getValues,
     control,
     handleSubmit,
-    watch,
     reset,
-    formState: { dirtyFields, errors },
+    formState: { errors },
   } = methods;
 
   const thoughtsArray = useFieldArray<FormFieldsType, "automaticThoughts">({
-    control, // control props comes from useForm (optional: if you are using FormProvider)
-    name: "automaticThoughts", // unique name for your Field Array
+    control,
+    name: "automaticThoughts",
   });
 
   const onSubmit: SubmitHandler<FormFieldsType> = (data) => {
-    console.log(errors);
     if (!data.title) {
       data.title = "Новая запись";
     }
     if (isEditMode) {
       const currentData = { ...noteToEdit, ...data };
       dispatch(updateNote(currentData));
-      navigate("/diary");
+      navigate(`/diary/${noteToEdit?.id}`);
     } else {
-      // Обработка добавления
-
-      console.log(data);
       dispatch(addNote(data));
       navigate("/diary");
     }
-    //   reset();
   };
-  console.log(errors);
 
   return (
     <FormProvider {...methods}>
       <form className={s.root} onSubmit={handleSubmit(onSubmit)}>
-        <header>
+        <header className={s.header}>
           {isEditMode && (
             <NoteActions
               date={noteToEdit?.date}
               id={noteToEdit?.id}
               isEditMode
               saveEdit={handleSubmit(onSubmit)}
+              resetChanges={reset}
             />
           )}
           <TitleField {...register("title")} />
         </header>
         <SectionForm
           section={sectionData.situation}
-          ref={sectionsRefs.current[sectionData.situation.idFormInput]}
+          ref={sectionsRefs[sectionData.situation.idFormInput]}
           description={
             <p>
               Опишите обстоятельства, при которых возникла автоматическая мысль
@@ -158,7 +150,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.emotions}
-          ref={sectionsRefs.current[sectionData.emotions.idFormInput]}
+          ref={sectionsRefs[sectionData.emotions.idFormInput]}
           description={
             <p>
               Отметьте эмоции, которые наиболее точно отражают то, что вы
@@ -171,7 +163,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.automaticThoughts}
-          ref={sectionsRefs.current[sectionData.automaticThoughts.idFormInput]}
+          ref={sectionsRefs[sectionData.automaticThoughts.idFormInput]}
           description={
             <p>Какая мысль или мысли вертелись у вас в голове в тот момент?</p>
           }
@@ -185,10 +177,10 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.physicalSensations}
-          ref={sectionsRefs.current[sectionData.physicalSensations.idFormInput]}
+          ref={sectionsRefs[sectionData.physicalSensations.idFormInput]}
           description={
             <p>
-              Что Вы чувствовали в теле? Тошноту, головокружение, боль,
+              Что вы чувствовали в теле? Тошноту, головокружение, боль,
               слабость?
             </p>
           }
@@ -201,7 +193,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.behavior}
-          ref={sectionsRefs.current[sectionData.behavior.idFormInput]}
+          ref={sectionsRefs[sectionData.behavior.idFormInput]}
           description={
             <p>Опишите, что вы сделали в этот момент или сразу после</p>
           }
@@ -211,7 +203,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.discomfortLevel}
-          ref={sectionsRefs.current[sectionData.discomfortLevel.idFormInput]}
+          ref={sectionsRefs[sectionData.discomfortLevel.idFormInput]}
           description={
             <p>
               С помощью ползунка оцените уровень неприятных ощущений от 0 до 10
@@ -224,12 +216,10 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.cognitiveDistortions}
-          ref={
-            sectionsRefs.current[sectionData.cognitiveDistortions.idFormInput]
-          }
+          ref={sectionsRefs[sectionData.cognitiveDistortions.idFormInput]}
           role="group"
           description={
-            <p>Когнетивные искажение, которые вы наблюдаете вы своих мыслях</p>
+            <p>Когнетивные искажение, которые вы наблюдаете в своих мыслях</p>
           }
         >
           <CognitiveBiasField name="cognitiveDistortions" control={control} />
@@ -238,20 +228,20 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <SectionForm
           section={sectionData.adaptiveResponse}
-          ref={sectionsRefs.current[sectionData.adaptiveResponse.idFormInput]}
+          ref={sectionsRefs[sectionData.adaptiveResponse.idFormInput]}
           role="group"
           description={
             <>
               <p>
                 Дайте отпор автоматическим мыслям. Замените их на более
-                рациональные и правдоподобные.
+                рациональные и правдоподобные
               </p>
               <SpoilerText titleClosed="Подробнее">
                 <>
                   <p>
-                    Например, в ответ на мысль "У меня всегда всё не так", Вы
-                    можете сказать себе "Всё не может быть не так. У меня, по
-                    крайней мере, иногда все получается хорошо"
+                    Например, в ответ на мысль «У меня всегда всё не так», вы
+                    можете сказать себе «Всё не может быть не так. У меня, по
+                    крайней мере, иногда все получается хорошо»
                   </p>
                   <p>
                     Вот несколько вопросов, которые можно задать себе при

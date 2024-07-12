@@ -1,12 +1,12 @@
 .root {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space_3xs);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space_s);
 }
 
 .modify {
-    display: flex;
-    gap: var(--space_2xs);
+  display: flex;
+  gap: var(--space_2xs);
 }

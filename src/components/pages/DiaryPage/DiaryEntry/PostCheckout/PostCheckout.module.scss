@@ -1,0 +1,31 @@
+@import "@styles";
+
+.root {
+  padding: var(--space_xl);
+  border-radius: var(--border-radius-l);
+
+  background: $gradient-primary;
+  background: $gradient-background;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_s);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_xs);
+}
+
+.area {
+  padding: var(--space_s) var(--space_xl);
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+  gap: var(--space_xs);
+}

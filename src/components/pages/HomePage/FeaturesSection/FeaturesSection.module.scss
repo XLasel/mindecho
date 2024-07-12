@@ -1,51 +1,63 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    width: 100%;
+  width: 100%;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space_l);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space_l);
 }
 
 .cards {
-    counter-reset: feature 0;
+  counter-reset: feature 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space_xl);
+  // display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  gap: var(--space_xl);
+
+  @include tablet() {
+    // flex-wrap: wrap;
+    // grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: repeat(2, 1fr);
+  }
 }
 
 .card {
-    position: relative;
+  flex: 1 1 calc(33.33% - 16px);
+  /* 33.33% для равного распределения с учетом gap */
+  // max-width: calc(33.33% - 24px);
+  position: relative;
 
-    counter-increment: feature 1;
+  counter-increment: feature 1;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
-    padding: var(--space_2xl);
-    border-radius: var(--border-radius-l);
+  padding: var(--space_2xl);
+  border-radius: var(--border-radius-l);
 
+  background-color: hsl(var(--card));
 
-    background-color: hsl(var(--card));
+  text-align: left;
 
-    text-align: left;
+  & p::before {
+    content: counter(feature);
 
-    & p::before {
-        content: counter(feature);
+    position: absolute;
+    top: var(--space_2xl);
+    right: var(--space_2xl);
 
-        position: absolute;
-        top: var(--space_2xl);
-        right: var(--space_2xl);
+    font-size: 50px;
+    line-height: 100%;
+    font-weight: 600;
 
-        font-size: 50px;
-        font-weight: 600;
-
-        color: hsl(var(--foreground) / 0.4)
-    }
+    color: hsl(var(--foreground) / 0.4);
+  }
 }

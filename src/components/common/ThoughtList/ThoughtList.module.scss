@@ -1,0 +1,10 @@
+@import "@styles";
+
+.root {
+  @extend %numbered-list;
+}
+
+.thought {
+  text-decoration: line-through;
+  color: hsl(var(--text-muted));
+}

@@ -1,6 +1,7 @@
 import { HeroSection } from "./HeroSection";
 import { AboutCBT } from "./AboutCBT";
 import { AboutAutomaticThoughts } from "./AboutAutomaticThoughts";
+import { IllustrationSection } from "./IllustrationSection";
 import { FeaturesSection } from "./FeaturesSection";
 import { BenefitsSection } from "./BenefitsSection";
 import { FAQSection } from "./FAQSection";
@@ -13,6 +14,7 @@ export const HomePage = () => {
     <div className={s.root}>
       <HeroSection />
       <AboutCBT />
+      <IllustrationSection />
       <AboutAutomaticThoughts />
       <FeaturesSection />
       <BenefitsSection />

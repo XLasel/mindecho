@@ -1,18 +1,21 @@
 import { useFormContext } from "react-hook-form";
 
+import { cn } from "@/lib/utils";
+
 import s from "./RangeInput.module.scss";
 
 type RangeInputProps = {
   name: string;
+  className?: string;
 };
 
 export const RangeInput: React.FC<
   React.ComponentPropsWithoutRef<"input"> & RangeInputProps
-> = ({ name, ...props }) => {
+> = ({ name, className, ...props }) => {
   const { register, watch } = useFormContext();
   const value = watch(name);
   return (
-    <div className={s.root}>
+    <div className={cn(s.root, className)}>
       <span aria-live="polite">{value}</span>
       <input
         type="range"

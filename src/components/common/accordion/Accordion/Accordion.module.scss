@@ -1,24 +1,19 @@
-@import '@styles';
-
 .root {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 
-    min-width: 100%;
-    // padding: var(--space_l);
-
-    // border-radius: var(--border-radius-m);
+  min-width: 100%;
 }
 
 .container {
-    padding: var(--space_l);
+  padding: var(--space_l);
 
-    border-radius: var(--border-radius-m);
+  border-radius: var(--border-radius-m);
 
-    background-color: hsl(var(--card));
+  background-color: hsl(var(--card));
 }
 
 .flow {
-    background-color: transparent;
+  background-color: transparent;
 }

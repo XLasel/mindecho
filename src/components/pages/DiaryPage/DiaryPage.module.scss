@@ -1,32 +1,44 @@
-@import '@styles';
-
-// .root {
-// display: grid;
-// grid-template-columns: auto 400px;
-// gap: var(--space_xl);
-
-// align-items: start;
-// padding: var(--space_2xl);
-// }
+@import "@styles";
 
 .root {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space_xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-space-1lv);
+  padding: var(--section-space-1lv) 0;
 }
 
 .controls {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space_l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-space-4lv);
 }
 
-.filter-panel {
-    display: grid;
-    // grid-template-columns: auto 312px;
-    gap: var(--space_xl);
-    padding: var(--space_xl);
-    border-radius: var(--border-radius-l);
-    margin-top: 50px;
-    // background-color: hsl(var(--card));
+.plug {
+  @extend %body-large;
+
+  display: flex;
+  gap: var(--space_s);
+
+  justify-content: center;
+  align-items: end;
+
+  font-style: italic;
+
+  & img {
+    width: 250px;
+    padding: 0 24px;
+  }
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: var(--space_xs);
+
+  width: 300px;
+}
+
+.svg-container {
+  padding-top: 32px;
 }

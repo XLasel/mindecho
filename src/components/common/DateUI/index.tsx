@@ -8,8 +8,8 @@ export const DateUI = ({ date }: { date: string }) => {
   const formattedDate = formatDateForUI(date);
 
   return (
-    <span className={s.root}>
-      <FeatherIcon icon="clock" size={20} />
+    <span className={s.root} aria-label={`Дата записи: ${formattedDate}`}>
+      <FeatherIcon icon="clock" size={20} aria-hidden="true" />
       {formattedDate}
     </span>
   );

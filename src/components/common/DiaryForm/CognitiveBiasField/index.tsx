@@ -1,39 +1,46 @@
 import React from "react";
-import { Controller } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 
 import { CognitiveBiasCard } from "@/components/common/CognitiveBiasCard";
 
+import { type FormFieldsType } from "..";
 import { splitArrayInHalf } from "@/lib/utils";
-import { biases } from "@/constants";
+import { biases, CognitiveBias } from "@/constants";
 
 import s from "./CognitiveBiasField.module.scss";
 
 interface CognitiveBiasFieldProps {
-  name: string;
-  control: any;
+  name: keyof FormFieldsType;
+  control: Control<FormFieldsType>;
 }
 
+type CognitiveBiasNameProps =
+  `cognitiveDistortions.${keyof FormFieldsType["cognitiveDistortions"]}`;
+
 const BiasColumn: React.FC<{
-  biases: typeof biases;
-  name: string;
-  control: any;
+  biases: CognitiveBias[];
+  name: keyof FormFieldsType;
+  control: Control<FormFieldsType>;
 }> = ({ biases, name, control }) => (
   <>
-    {biases.map((bias) => (
-      <Controller
-        key={bias.id}
-        name={`${name}.${bias.id}`}
-        control={control}
-        defaultValue={false}
-        render={({ field: { onChange, value } }) => (
-          <CognitiveBiasCard
-            bias={bias}
-            onChange={() => onChange(!value)}
-            checked={value}
-          />
-        )}
-      />
-    ))}
+    {biases.map((bias) => {
+      const fieldName = `${name}.${bias.id}` as CognitiveBiasNameProps;
+      return (
+        <Controller
+          key={bias.id}
+          name={fieldName}
+          control={control}
+          defaultValue={false}
+          render={({ field: { onChange, value } }) => (
+            <CognitiveBiasCard
+              bias={bias}
+              onChange={() => onChange(!value)}
+              checked={!!value}
+            />
+          )}
+        />
+      );
+    })}
   </>
 );
 

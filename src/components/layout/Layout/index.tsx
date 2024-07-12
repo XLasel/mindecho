@@ -12,7 +12,12 @@ export const Layout = () => {
         <Header className={s.header} />
         <main className={s.main}>
           <Outlet />
-          <ScrollRestoration getKey={(location) => location.pathname} />
+          <ScrollRestoration
+            getKey={(location) => {
+              const isEditOrAddPage = /\/(edit|add)$/.test(location.pathname);
+              return isEditOrAddPage ? location.key : location.pathname;
+            }}
+          />
         </main>
         <Footer />
       </div>

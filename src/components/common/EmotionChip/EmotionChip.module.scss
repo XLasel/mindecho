@@ -1,54 +1,50 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    @extend %text-button-m;
+  @extend %text-button-m;
 
-    display: inline-flex;
-    gap: var(--space_xs);
+  display: inline-flex;
+  gap: var(--space_2xs);
 
-    // border: 2px solid hsl(var(--white) / 0.7);
-    // background-color: hsl(var(--card));
-    // border: 2px solid transparent;
-    border: 2px solid hsl(var(--secondary));
-    border: 2px solid hsl(var(--white));
-    border: 2px solid transparent;
-    background-color: hsl(var(--card));
+  // border: 2px solid hsl(var(--white) / 0.7);
+  // background-color: hsl(var(--card));
+  // border: 2px solid transparent;
+  border: 2px solid hsl(var(--secondary));
+  border: 2px solid hsl(var(--white));
+  border: 2px solid transparent;
+  background-color: hsl(var(--card));
 
-    // border-color: hsl(var(--black2));
-    border-radius: var(--border-radius-full);
-    // background-color: hsl(var(--white) / 0.4);
-    padding: var(--space_2xs) var(--space_s);
-    box-shadow: 1px 1px 30px -4px rgba(43, 18, 73, 0.2);
+  // border-color: hsl(var(--black2));
+  border-radius: var(--border-radius-full);
+  // background-color: hsl(var(--white) / 0.4);
+  padding: var(--space_2xs) var(--space_s);
+  box-shadow: 1px 1px 30px -4px rgba(43, 18, 73, 0.2);
 
-    color: hsl(var(--white));
-    // color: hsl(var(--secondary));
+  color: hsl(var(--white));
+  // color: hsl(var(--secondary));
 
+  transition: all 0.3s ease-out;
 
-
-    transition: all 0.3s ease-out;
-
-    &:hover {
-        // background-color: hsl(var(--white) / 0.22);
-        // background-color: hsl(var(--secondary));
-        // color: hsl(var(--secondary-foreground));
-    }
+  &:hover {
+    // background-color: hsl(var(--white) / 0.22);
+    // background-color: hsl(var(--secondary));
+    // color: hsl(var(--secondary-foreground));
+  }
 }
 
 .selected {
-    border-color: transparent;
-    // background-color: hsl(var(--white));
-    background-color: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
-    // color: hsl(var(--black));
-    // color: hsl(var(--blue));
+  border-color: transparent;
+  // background-color: hsl(var(--white));
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  // color: hsl(var(--black));
+  // color: hsl(var(--blue));
 
-
-    &:hover {
-        // background-color: hsl(var(--white) / 0.9);
-    }
-
+  &:hover {
+    // background-color: hsl(var(--white) / 0.9);
+  }
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }

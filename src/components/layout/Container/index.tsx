@@ -1,10 +1,8 @@
 import React from "react";
-import s from "./Container.module.scss";
 import { cva, type VariantProps } from "class-variance-authority";
 
-interface ContainerProps extends VariantProps<typeof containerVariants> {
-  children: React.ReactNode;
-}
+import s from "./Container.module.scss";
+
 const containerVariants = cva(s.root, {
   variants: {
     width: {
@@ -17,6 +15,10 @@ const containerVariants = cva(s.root, {
     width: "default",
   },
 });
+
+export interface ContainerProps extends VariantProps<typeof containerVariants> {
+  children: React.ReactNode;
+}
 
 export const Container: React.FC<ContainerProps> = ({ children, width }) => {
   return <div className={containerVariants({ width })}>{children}</div>;

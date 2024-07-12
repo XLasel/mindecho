@@ -40,7 +40,7 @@ const noteSlice = createSlice({
     },
     updateNote: (state, action: PayloadAction<Note>) => {
       const index = state.notes.findIndex(
-        (note) => note.id === action.payload.id
+        (note) => note.id === action.payload.id,
       );
       if (index !== -1) {
         state.notes[index] = action.payload;

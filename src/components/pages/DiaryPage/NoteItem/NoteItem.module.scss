@@ -1,26 +1,60 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space_s);
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_m);
+  // cursor: pointer;
 
-    padding: var(--space_m);
-    border-radius: var(--border-radius-m);
-    background-color: hsl(var(--card));
-    color: hsl(var(--card-foreground))
+  padding: var(--space_l);
+  border-radius: var(--border-radius-m);
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
 }
 
 .title {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space_3xs);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space_s);
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_s);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.group {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space_xs);
+
+  & ol {
+    @extend %numbered-list;
+    // @include numbered-list;
+  }
+
+  & ul {
+    // @include styled-list;
+    @extend %styled-list;
+  }
+}
+
+.field-name {
+  @extend %text-explaining-style;
+  font-style: italic;
+}
+
+.thought {
+  text-decoration: line-through;
+  // @extend %text-explaining-style;
+
+  // font-style: italic;
+  color: hsl(var(--text-muted));
 }
 
 // .subtitle {

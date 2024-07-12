@@ -1,57 +1,68 @@
 @mixin font($font, $letter-spacing: 0px) {
-    font: $font, sans-serif;
-    letter-spacing: $letter-spacing;
+  font: $font, sans-serif;
+  letter-spacing: $letter-spacing;
 }
 
 @mixin hover {
-    @media (hover: hover) and (pointer: fine) and (min-width: #{$tabletScreenSize}px) {
-        @content;
-    }
+  @media (hover: hover) and (pointer: fine) and (min-width: #{$tabletScreenSize}px) {
+    @content;
+  }
 }
 
 @mixin desktop() {
-    @media only screen and (max-width: #{$desktopScreenSize}px) {
-        @content;
-    }
+  @media only screen and (max-width: #{$desktopScreenSize}px) {
+    @content;
+  }
 }
 
 @mixin tablet() {
-    @media only screen and (max-width: #{$tabletScreenSize}px) {
-        @content;
-    }
+  @media only screen and (max-width: #{$tabletScreenSize}px) {
+    @content;
+  }
 }
 
 @mixin mobile() {
-    @media only screen and (max-width: #{$mobileScreenSize}px) {
-        @content;
-    }
+  @media only screen and (max-width: #{$mobileScreenSize}px) {
+    @content;
+  }
 }
 
-@mixin reset-list($font-size: 1rem) {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: $font-size;
-}
+// @mixin reset-list($font-size: 1rem) {
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
+//     font-size: $font-size;
+// }
 
-@mixin styled-list($font-size: 1rem) {
-    list-style: disc;
-    display: flex;
-    flex-direction: column;
-    // gap: var(--base-margin);
-    gap: calc(#{$font-size} * 0.75);
-    // margin: calc(#{$font-size} * 1) 0;
-    margin-left: calc(#{$font-size} * 1.25); // 1.25rem padding-left
-    font-size: $font-size;
-}
+// @mixin styled-list($font-size: 1rem) {
+//     list-style: disc;
+//     display: flex;
+//     flex-direction: column;
+//     // gap: var(--base-margin);
+//     gap: calc(#{$font-size} * 0.75);
+//     // margin: calc(#{$font-size} * 1) 0;
+//     margin-left: calc(#{$font-size} * 1.25); // 1.25rem padding-left
+//     font-size: $font-size;
+// }
 
-@mixin numbered-list($font-size: 1rem) {
-    list-style: decimal;
-    display: flex;
-    flex-direction: column;
-    // gap: var(--base-margin);
-    gap: calc(#{$font-size} * 0.5);
-    // margin: calc(#{$font-size} * 1) 0; 
-    margin-left: calc(#{$font-size} * 1.25); // 1.25rem padding-left
-    font-size: $font-size;
-}
+// // @mixin numbered-list($font-size: 1rem) {
+// //     list-style: decimal;
+// //     display: flex;
+// //     flex-direction: column;
+// //     // gap: var(--base-margin);
+// //     gap: calc(#{$font-size} * 0.5);
+// //     // margin: calc(#{$font-size} * 1) 0;
+// //     margin-left: calc(#{$font-size} * 1.25); // 1.25rem padding-left
+// //     font-size: $font-size;
+// // }
+
+// @mixin numbered-list($font-size: 1rem) {
+//     list-style: decimal;
+//     display: flex;
+//     flex-direction: column;
+//     // gap: var(--base-margin);
+//     gap: calc(1em * 0.5);
+//     // margin: calc(#{$font-size} * 1) 0;
+//     margin-left: calc(1em * 1.25); // 1.25rem padding-left
+//     font-size: 1em;
+// }

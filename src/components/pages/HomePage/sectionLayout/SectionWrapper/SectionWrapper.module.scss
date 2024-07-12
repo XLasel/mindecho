@@ -1,0 +1,14 @@
+@import "@styles";
+
+.root {
+  width: 100%;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space_l);
+
+  padding: 0 var(--space_s);
+}

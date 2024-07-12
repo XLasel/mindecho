@@ -1,27 +1,27 @@
-import { useContext } from "react";
 import { motion } from "framer-motion";
-import clsx from "clsx";
+
+import { cn } from "@/lib/utils";
 
 import { sectionData } from "@/constants";
-import { SectionContext } from "@/context/useSectionContextValues";
+import { useSectionContext } from "@/context/SectionContext";
 
 import s from "./NavigationSection.module.scss";
 
 const itemAnimate = {
-  initial: { opacity: 0, translateX: 0.5 },
+  initial: { opacity: 0, x: 0.5 },
   enter: (i: number) => ({
     opacity: 1,
-    translateX: 0.4,
+    x: 0.4,
     transition: { delay: 0.3 + i * 0.1 },
   }),
   exit: { opacity: 0 },
 };
 
 export const NavigationSection = ({ scrollToSection }) => {
-  const sectionContext = useContext(SectionContext);
-  const { activeSection } = sectionContext;
+  const { activeSection } = useSectionContext();
   return (
     <motion.nav className={s.root}>
+      <h5>Быстрая навигация</h5>
       <motion.ul className={s.list}>
         {Object.values(sectionData).map((section, i) => (
           <motion.li
@@ -31,12 +31,9 @@ export const NavigationSection = ({ scrollToSection }) => {
             initial="initial"
             animate="enter"
             exit="exit"
-            whileHover={{
-              scale: 1.05,
-            }}
-            className={clsx(
+            className={cn(
               s.item,
-              activeSection === section.idFormInput && s.itemActive
+              activeSection === section.idFormInput && s.itemActive,
             )}
             onClick={() => scrollToSection(section.idFormInput)}
           >

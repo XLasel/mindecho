@@ -1,19 +1,20 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    display: flex;
+  display: flex;
+  align-items: center;
 
-    & input[type="range"] {
-        flex: 1 0 auto;
-        accent-color: hsl(var(--secondary));
-    }
+  & input[type="range"] {
+    flex: 1 0 auto;
+    accent-color: hsl(var(--secondary));
+  }
 
-    & span {
-        @extend %text-button-l;
+  & span {
+    @extend %text-button-l;
 
-        color: hsl(var(--secondary));
+    color: hsl(var(--secondary));
 
-        flex: 0 0 28px;
-        text-align: center;
-    }
+    flex: 0 0 28px;
+    text-align: center;
+  }
 }

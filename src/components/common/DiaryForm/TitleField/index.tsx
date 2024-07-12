@@ -22,17 +22,18 @@ export const TitleField = React.forwardRef<
   };
 
   return (
-    <input
-      name={name}
-      ref={ref}
-      readOnly={readOnly}
-      onChange={onChange}
-      onBlur={handleBlur}
-      onFocus={handleFocus}
-      placeholder="Новая запись"
-      className={s.root}
-      maxLength={22}
-      autoComplete="off"
-    />
+    <div className={s.root}>
+      <input
+        name={name}
+        ref={ref}
+        readOnly={readOnly}
+        onChange={onChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        placeholder="Новая запись"
+        // maxLength={22}
+        autoComplete="off"
+      />
+    </div>
   );
 });

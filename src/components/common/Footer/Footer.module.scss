@@ -1,33 +1,33 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    // align-items: center;
-    gap: var(--space_l);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  // align-items: center;
+  gap: var(--space_l);
 
-    padding: var(--space_xl);
-    background-color: hsl(var(--secondary));
+  padding: var(--space_xl);
+  background-color: hsl(var(--secondary));
 
-    color: hsl(var(--secondary-foreground));
+  color: hsl(var(--secondary-foreground));
 
-    // border-radius: var(--border-radius-l);
+  // border-radius: var(--border-radius-l);
 
-    // margin-left: 300px;
+  // margin-left: 300px;
 
-    // width: 1000px;
-    // align-self: flex-end;
+  // width: 1000px;
+  // align-self: flex-end;
 
-    // text-align: center;
-
+  // text-align: center;
 }
 
 .logo-panel {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .copy {
-    align-self: flex-end;
+  align-self: flex-end;
 }

@@ -1,0 +1,40 @@
+@import "@styles";
+
+.root {
+  display: grid;
+  grid-template-columns: 69px auto 20%;
+  grid-template-areas:
+    "calendar calendar reset"
+    "export submit submit";
+  gap: var(--space_s);
+
+  padding: var(--space_m);
+
+  border-radius: var(--border-radius-m);
+  background-color: hsl(var(--card));
+
+  @include tablet() {
+    grid-template-columns: 69px auto 20%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "calendar calendar calendar"
+      "export submit submit"
+      "reset reset reset";
+  }
+}
+
+.calendar {
+  grid-area: calendar;
+}
+
+.export {
+  grid-area: export;
+}
+
+.submit {
+  grid-area: submit;
+}
+
+.reset {
+  grid-area: reset;
+}

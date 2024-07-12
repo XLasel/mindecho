@@ -21,7 +21,7 @@ interface DynamicInputFormProps<T extends FieldValues, K extends ArrayPath<T>> {
 
 export const DynamicInputForm = <
   T extends FieldValues,
-  K extends ArrayPath<T>
+  K extends ArrayPath<T>,
 >({
   label,
   pattern,
@@ -38,7 +38,7 @@ export const DynamicInputForm = <
 
   const removeInput = (
     event: React.MouseEvent<HTMLButtonElement>,
-    index: number
+    index: number,
   ) => {
     event.preventDefault();
     if (fields.length === 1) {

@@ -1,66 +1,59 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-space-4lv);
 
-    h4 {
-        // @include font(normal 600 18px / 28px "Inter Variable");
-
-    }
+  width: 100%;
 }
 
 .section {
-    // background-color: hsl(var(--card));
-    // border-radius: 16px;
-    padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-space-5lv);
 }
 
 .title {
-    @extend %diary-title;
-    // @include font(normal 600 18px / 28px "Inter Variable");
-
-
+  @extend %diary-title;
 }
 
 .content {
-    padding: 12px;
-
-    // background-color: hsl(var(--card));
-    border-radius: 16px;
-    // @include font(normal 400 22px / 28px "Inter Variable");
+  // padding: 12px;
+  padding: var(--space_s) var(--space_xl);
 }
 
 .text-list {
-
-    @include numbered-list()
+  // @include numbered-list()
+  @extend %numbered-list;
 }
 
 .cognitive-distortions {
-    display: grid;
-    grid-template-columns: auto;
-    gap: var(--space_2xs);
+  display: grid;
+  grid-template-columns: auto;
+  gap: var(--space_2xs);
 }
 
 .bias {
-    display: flex;
-    gap: var(--space_2xs);
+  display: flex;
+  gap: var(--space_2xs);
 
-    @include tablet() {
-        flex-direction: column;
-    }
+  @include tablet() {
+    flex-direction: column;
+  }
 }
 
 .bias-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space_2xs);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_2xs);
 }
 
-.form {
-    padding: var(--space_m);
-    border-radius: var(--border-radius-m);
-    // padding: 12px;
-    background-color: hsl(var(--card));
-    // border-radius: 24px;
-}
+// .form {
+//     padding: var(--space_m);
+//     border-radius: var(--border-radius-m);
+//     // padding: 12px;
+//     background-color: hsl(var(--card));
+//     // border-radius: 24px;
+// }

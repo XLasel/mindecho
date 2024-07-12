@@ -1,25 +1,32 @@
-@import '@styles';
+@import "@styles";
 
 .root {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--space_6xl);
-  margin-top: var(--space_3xl);
-  margin-bottom: var(--space_6xl);
+  gap: var(--section-space-home-1lv);
+  padding-top: var(--space_2xl);
+  padding-bottom: var(--space_6xl);
+
+  // overflow: hidden;
+  @include tablet() {
+    padding-top: var(--space_xl);
+    padding-bottom: var(--space_4xl);
+  }
 
   & h1 {
-    @extend %text-display;
-
+    @extend %h1-home;
   }
 
   & h2 {
-    @extend %h2;
+    @extend %h2-home;
 
     margin-bottom: var(--space_l);
   }
 
   & h3 {
+    @extend %h3-home;
+
     margin-bottom: var(--space_s);
   }
 }
@@ -27,14 +34,14 @@
 .section-accent {
   display: grid;
   place-items: center;
-  // height: 100vh; 
+  // height: 100vh;
   width: 100%;
   background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
 
   & p {
     // font-size: 36px;
-    @include font(normal 400 36px / 140% "Inter Variable");
+    @include font(normal 400 36px / 140% "Inter");
 
     // @include font(normal 400 36px / 140% "Bad Script");
     // font-family: "Bad Script";
@@ -43,7 +50,7 @@
       // @include font(normal 600 36px / 140% "Bad Script");
       font-family: "Bad Script";
 
-      color: hsl(var(--accent))
+      color: hsl(var(--accent));
     }
   }
 }

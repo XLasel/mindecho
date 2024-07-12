@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import clsx from "clsx";
-
 import FeatherIcon from "feather-icons-react";
 
-import s from "./Search.module.scss";
+import { cn } from "@/lib/utils";
+
 import { Button } from "../Button";
+
+import s from "./Search.module.scss";
 
 export interface SearchInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
@@ -43,23 +44,27 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
         <FeatherIcon className={s.iconSearch} icon="search" size={24} />
         <input
           type={type}
-          className={clsx(s.input, className)}
+          className={cn(s.input, className)}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           ref={ref}
           {...props}
         />
         <Button
+          type="button"
+          aria-label="Сбросить запрос"
+          title="Сбросить запрос"
           variant="ghost"
           size="icon"
           className="p-0"
           onClick={handleReset}
+          disabled={!query}
         >
           <FeatherIcon icon="x-circle" size={24} />
         </Button>
       </div>
     );
-  }
+  },
 );
 SearchInput.displayName = "SearchInput";
 

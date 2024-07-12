@@ -1,32 +1,32 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    gap: var(--space_xs);
-    gap: var(--space_m);
-
-
-    h3 {
-        @extend %h4;
-    }
+  gap: var(--space_xs);
+  gap: var(--space_m);
 }
 
 .description {
-    @extend %body-small;
+  @extend %text-explaining-style;
+  // @extend %body-small;
 
-    color: hsl(var(--text-muted));
+  // color: hsl(var(--text-muted));
 
-    & ol {
-        @include styled-list;
+  // & ol {
+  //     @include numbered-list;
 
-    }
+  // }
 
-    & p:not(:last-child) {
-        margin-bottom: var(--base-margin);
+  // & li {
+  //     @include styled-list;
+  // }
 
-    }
+  // & p:not(:last-child) {
+  //     margin-bottom: var(--base-margin);
+
+  // }
 }
 
 // .description {

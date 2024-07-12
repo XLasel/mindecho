@@ -27,12 +27,12 @@ export const selectFilteredNotes = createSelector(
       filteredEntries = filteredEntries.filter(
         (note: Note) =>
           new Date(note.date) >= new Date(startDate) &&
-          new Date(note.date) <= new Date(endDate)
+          new Date(note.date) <= new Date(endDate),
       );
     }
 
     return filteredEntries;
-  }
+  },
 );
 
 // export const selectFilteredNotes = createSelector(

@@ -3,25 +3,18 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/inter/800.css";
-import "@fontsource/inter/900.css";
-import "@fontsource-variable/inter/slnt.css";
-import "@fontsource/bad-script";
-
 import store from "./redux/store";
 
+// import "./fonts.scss";
 import "./global.scss";
 
 import { Layout } from "@/components/layout/Layout";
 import { HomePage } from "@/components/pages/HomePage/index.tsx";
-import { DiaryPageLayout } from "@/components/pages/DiaryPage/DiaryPageLayout";
 import { DiaryPage } from "@/components/pages/DiaryPage/index.tsx";
 import { DiaryEntry } from "@/components/pages/DiaryPage/DiaryEntry";
 import { NoteEditorLayout } from "@/components/pages/DiaryPage/NoteEditorLayout";
+import NotFoundPage from "@/components/pages/NotFoundPage";
+import ValidateSearchParams from "@/components/common/ValidateSearchParams";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +24,7 @@ const router = createBrowserRouter([
 
       {
         path: "/diary",
-        element: <DiaryPageLayout />,
+        element: <ValidateSearchParams />,
         children: [
           { index: true, element: <DiaryPage /> },
           { path: "add", element: <NoteEditorLayout /> },
@@ -40,6 +33,7 @@ const router = createBrowserRouter([
             element: <DiaryEntry />,
           },
           { path: ":id/edit", element: <NoteEditorLayout /> },
+          { path: "404", element: <NotFoundPage /> },
         ],
       },
     ],

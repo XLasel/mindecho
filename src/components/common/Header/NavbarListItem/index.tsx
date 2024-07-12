@@ -1,19 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 import s from "./NavbarListItem.module.scss";
 
 type NavbarListItemProps = {
   label: string;
   route: string;
-  img?: string;
+  onClick?: () => void;
 };
 
 export const NavbarListItem = React.forwardRef<
   HTMLLIElement,
   NavbarListItemProps
->(({ label, route }, ref) => {
+>(({ label, route, onClick }, ref) => {
   return (
-    <li className={s.root} ref={ref}>
+    <li className={s.root} ref={ref} onClick={onClick}>
       <NavLink to={route} className={s.link}>
         {label}
       </NavLink>

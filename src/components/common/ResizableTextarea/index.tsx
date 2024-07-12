@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useFormContext, RegisterOptions } from "react-hook-form";
-import clsx from "clsx";
+
+import { cn } from "@/lib/utils";
 
 import s from "./ResizableTextarea.module.scss";
 
@@ -18,8 +19,8 @@ export const ResizableTextarea: React.FC<
 > = ({ name, placeholder, classNames, ...props }) => {
   const { register, getValues, setValue } = useFormContext();
   const [init, setInit] = useState(true);
-  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
   const [text, setText] = useState<string>(getValues(name) || "");
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const { ref, ...rest } = register(name, {
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => handleChange(e),
@@ -62,7 +63,7 @@ export const ResizableTextarea: React.FC<
         textAreaRef.current = e;
       }}
       placeholder={placeholder}
-      className={clsx(s.root, classNames)}
+      className={cn(s.root, classNames)}
       {...props}
     />
   );

@@ -1,24 +1,23 @@
-@import '@styles';
+@import "@styles";
 
 .root {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space_m);
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    // flex-direction: column;
-    gap: var(--space_s);
-    // flex-wrap: wrap;
-    // gap: var(--space_3xs);
-
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
 }
 
 .group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space_xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_xs);
 }
 
-.emotionGroup {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: var(--space_3xs);
+.emotion-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space_2xs);
 }

@@ -46,7 +46,7 @@ export const sectionData: SectionDataProps = {
 };
 
 export const idFormInputArray = Object.values(sectionData).map(
-  (section) => section.idFormInput
+  (section) => section.idFormInput,
 );
 
 // export const sectionData: SectionDataProps[] = [
@@ -70,7 +70,29 @@ export const idFormInputArray = Object.values(sectionData).map(
 //   },
 // ];
 
-export const emotionGroups = {
+export interface Emoji {
+  name: string;
+  emoji: string;
+  label: string;
+}
+
+export interface EmotionGroup {
+  label: string;
+  emojis: Emoji[];
+}
+
+export interface EmotionGroups {
+  joy: EmotionGroup;
+  sadness: EmotionGroup;
+  anger: EmotionGroup;
+  fear: EmotionGroup;
+  shame: EmotionGroup;
+  disgust: EmotionGroup;
+  surprise: EmotionGroup;
+  other: EmotionGroup;
+}
+
+export const emotionGroups: EmotionGroups = {
   joy: {
     label: "Счастье",
     emojis: [
@@ -141,7 +163,14 @@ export const emotionGroups = {
   },
 };
 
-export const biases = [
+export interface CognitiveBias {
+  id: string;
+  title: string;
+  description: string;
+  examples?: string[];
+}
+
+export const biases: CognitiveBias[] = [
   {
     id: "everythingOrNothing",
     title: "Мышление «Всё Или Ничего»",

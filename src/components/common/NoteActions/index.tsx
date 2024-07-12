@@ -1,44 +1,51 @@
-import FeatherIcon from "feather-icons-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Button, buttonVariants } from "../Button";
-import { DateUI } from "../DateUI";
-
-import { cn } from "@/lib/utils";
-import { useAppDispatch } from "@/redux/hook";
-import { deleteNote } from "@/redux/noteSlice";
-
-import s from "./NoteActions.module.scss";
-import { useState } from "react";
-import { Modal } from "../Modal";
+import { useDeleteNote } from "@/hook/useDeleteNote";
 import { useBackNavigation } from "@/hook/useBackNavigation";
 
-export const NoteActions = ({ date, id, isEditMode, saveEdit }) => {
-  const dispatch = useAppDispatch();
+import { Button } from "@/components/common/Button";
+import { DateUI } from "@/components/common/DateUI";
+import { ModalForDeletion } from "@/components/common/ModalForDeletion";
+
+import FeatherIcon from "feather-icons-react";
+
+import s from "./NoteActions.module.scss";
+
+interface NoteActionsProps {
+  date: string;
+  id: string;
+  isEditMode?: boolean;
+  saveEdit?: () => void;
+  resetChanges?: () => void;
+}
+
+export const NoteActions: React.FC<NoteActionsProps> = ({
+  date,
+  id,
+  isEditMode = false,
+  saveEdit,
+  resetChanges,
+}) => {
   const navigate = useNavigate();
   const { goBack } = useBackNavigation();
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [taskToDelete, setTaskToDelete] = useState(id);
-
-  const handleDeleteClick = (id) => {
-    setTaskToDelete(id);
-    setIsModalOpen(true);
-  };
-
-  const handleConfirmDelete = () => {
-    dispatch(deleteNote(taskToDelete));
-    navigate("/diary");
-    setIsModalOpen(false);
-  };
+  const { isModalOpen, handleDeleteClick, handleConfirmDelete, closeModal } =
+    useDeleteNote(id);
 
   const handleEditMode = () => {
-    if (isEditMode) {
+    if (isEditMode && saveEdit) {
       saveEdit();
       goBack();
       return;
     }
     navigate(`/diary/${id}/edit`);
+  };
+
+  const resetChange = () => {
+    if (resetChanges) {
+      resetChanges();
+    }
+    goBack();
   };
 
   return (
@@ -51,21 +58,37 @@ export const NoteActions = ({ date, id, isEditMode, saveEdit }) => {
           animation="scale"
           type="button"
           onClick={() => handleDeleteClick(id)}
+          aria-label="Удалить запись"
+          title="Удалить запись"
         >
           <FeatherIcon icon="trash-2" size={22} />
         </Button>
+        {isEditMode && (
+          <Button
+            size="icon"
+            variant="ghostMuted"
+            animation="scale"
+            onClick={resetChange}
+            aria-label="Сбросить изменения"
+            title="Сбросить изменения"
+          >
+            <FeatherIcon icon="x" size={22} />
+          </Button>
+        )}
         <Button
           size="icon"
           variant="ghostMuted"
           animation="scale"
           onClick={handleEditMode}
+          aria-label={isEditMode ? "Сохранить" : "Редактировать"}
+          title={isEditMode ? "Сохранить" : "Редактировать"}
         >
           <FeatherIcon icon={isEditMode ? "check" : "edit-2"} size={22} />
         </Button>
       </div>
-      <Modal
+      <ModalForDeletion
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={closeModal}
         onConfirm={handleConfirmDelete}
       />
     </div>

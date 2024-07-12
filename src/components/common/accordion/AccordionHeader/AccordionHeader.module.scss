@@ -1,19 +1,18 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    @extend %body-large;
+  @extend %body-large;
 
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space_s);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space_s);
 
-    font-weight: 600;
-    text-align: left;
+  width: 100%;
 
+  font-weight: 600;
+  text-align: left;
 
-    width: 100%;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }

@@ -1,0 +1,29 @@
+@import "@styles";
+
+.root {
+  width: 100%;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+
+  & p {
+    // @include font(normal 600 36px / 140% "Inter");
+    @extend %h1-home-subtitle-bold;
+
+    & em {
+      color: hsl(var(--accent));
+    }
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: center;
+  justify-items: center;
+
+  padding: var(--space_3xl) 0;
+
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
+}

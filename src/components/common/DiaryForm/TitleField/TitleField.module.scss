@@ -1,13 +1,22 @@
-@import '@styles';
+@import "@styles";
 
 .root {
+  display: flex;
+
+  & input {
     @extend %diary-title;
 
-    display: block;
+    // display: block;
     background-color: transparent;
+    flex-grow: 1;
+    width: min(60vw, 800px);
+    max-width: 100%;
+    // max-width: 50%;
+    // overflow: hidden;
 
     &::placeholder {
-        font-style: italic;
-        color: hsl(var(--white)/ 0.5);
+      font-style: italic;
+      color: hsl(var(--white) / 0.5);
     }
+  }
 }

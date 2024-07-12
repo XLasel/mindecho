@@ -1,37 +1,53 @@
+import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
+import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/common/Button";
 import { SearchInput } from "@/components/common/Search";
+import { DatePickerPanel } from "@/components/common/DatePickerPanel";
+import { NotesList } from "./NotesList";
+import Arrow from "@/assets/arrow.svg";
+
+import { useAppSelector } from "@/redux/hook";
 
 import s from "./DiaryPage.module.scss";
-import { NotesList } from "./NotesList";
-import { Link } from "react-router-dom";
-import { DatePickerWithRange } from "@/components/common/DatePicker";
+import IMAGE from "@/images";
 
 export const DiaryPage = () => {
+  const notes = useAppSelector((state) => state.notes.notes);
   return (
-    <div className={s.root}>
-      {/* <Button variant="link" className="self-start gap-1">
-          <FeatherIcon icon="chevron-left" /> Назад к записям
-        </Button> */}
-      <h2>Все записи</h2>
-      <div className={s.controls}>
-        <SearchInput placeholder="Найти запись" />
-        <DatePickerWithRange />
-        <Link to="add">
-          <Button
-            size="lg"
-            className="inline-flex gap-2 text-xl rounded-lg text-white border-2 border-dashed w-full h-12 bg-transparent hover:text-black  hover:border-transparent hover:bg-secondary"
-          >
-            {/* <div className="text-black rounded-full bg-secondary"> */}
-            <div className="">
-              <FeatherIcon icon="plus" />
+    <Container width="small">
+      <div className={s.root}>
+        <h1>Дневник эмоций</h1>
+        <div className={s.controls}>
+          {notes.length > 0 ? (
+            <>
+              <SearchInput placeholder="Найти запись" />
+              <DatePickerPanel />
+            </>
+          ) : (
+            <div className={s.plug}>
+              <img src={IMAGE.notesImage} />
+              <div className={s.message}>
+                <span>Нажмите, чтобы добавить перую запись</span>
+                <span className={s.svgContainer}>
+                  <Arrow />
+                </span>
+              </div>
             </div>
-            Новая запись
-          </Button>
-        </Link>
+          )}
+          <Link to="add">
+            <Button
+              size="lg"
+              className="inline-flex gap-2 text-xl rounded-lg text-white border-2 border-dashed w-full h-12 bg-transparent hover:text-black  hover:border-transparent hover:bg-secondary"
+            >
+              <FeatherIcon icon="plus" />
+              Новая запись
+            </Button>
+          </Link>
+        </div>
+        <NotesList />
       </div>
-      <NotesList />
-    </div>
+    </Container>
   );
 };

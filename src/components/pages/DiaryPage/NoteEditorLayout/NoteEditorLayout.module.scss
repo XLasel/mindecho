@@ -1,11 +1,15 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space_xl);
+
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
 }
 
 .aside {
-    position: absolute;
-    // max-width: 230px;
-    left: -330px;
+  max-width: 230px;
 }

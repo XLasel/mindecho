@@ -2,13 +2,13 @@ import { useState, useMemo, useEffect } from "react";
 
 export const usePagination = (
   totalItems: number,
-  itemsPerPage: number = 10
+  itemsPerPage: number = 10,
 ) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(totalItems / itemsPerPage)),
-    [totalItems, itemsPerPage]
+    [totalItems, itemsPerPage],
   );
 
   useEffect(() => {

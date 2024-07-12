@@ -1,11 +1,9 @@
-@import '@styles';
+@import "@styles";
 
 .root {
-    @extend %body-small;
+  @extend %text-explaining-style;
 
-    display: inline-flex;
-    gap: var(--space_xs);
-    align-items: center;
-
-    color: hsl(var(--white) / 0.6);
+  display: inline-flex;
+  gap: var(--space_xs);
+  align-items: center;
 }

@@ -1,23 +1,30 @@
 // @import 'normalize.css/normalize.css';
 // @config "./../tailwind.config.js";
 
+@import "./fonts.scss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import '@styles';
+@import "@styles";
 
 html {
   font-size: 18px;
-  overflow-y: scroll;
-  // overflow-y: overlay;
+  // overflow-y: scroll;
 
+  // @include mobile() {
+  //   font-size: 16px;
+  // }
+
+  // overflow-y: overlay;
 }
 
-// body {
-//   padding-left: 17px;
-//   width: calc(100vw - 17px);
-// }
+body {
+  overflow-x: hidden;
+  // padding-left: 17px;
+  // width: calc(100vw - 17px);
+}
 
 html,
 body {
@@ -30,14 +37,13 @@ body {
 @layer base {
   :root {
     --white: 0 0% 100%;
-    --white-100: 0 0% 100% / .18;
-    --white-900: 0 0% 100% / .3;
-    --white-700: 0 0% 100% / .7;
-
+    --white-100: 0 0% 100% / 0.18;
+    --white-900: 0 0% 100% / 0.3;
+    --white-700: 0 0% 100% / 0.7;
 
     --black: 240 62% 5%;
-    --black-100: 240 62% 5% / .1;
-    --black-200: 240 62% 5% / .18;
+    --black-100: 240 62% 5% / 0.1;
+    --black-200: 240 62% 5% / 0.18;
 
     --blue: 241 41% 39%;
     --blue-100: 242 27% 50%;
@@ -147,6 +153,10 @@ body {
 
 /* bank.yandex.ru/pay */
 :root {
+  --desktop-screen-size: 1280px;
+  --tablet-screen-size: 1000px;
+  --mobile-screen-size: 550px;
+
   --header-height: 96px;
 
   --base-font-size: 18px;
@@ -188,6 +198,23 @@ body {
   --section-space-intro: var(--space_4xl);
   --section-space: var(--space_6xl);
 
+  --section-space-1lv: var(--space_3xl);
+  --section-space-2lv: var(--space_2xl);
+  --section-space-3lv: var(--space_xl);
+  --section-space-4lv: var(--space_l);
+  --section-space-5lv: var(--space_m);
+
+  --section-space-home-1lv: var(--space_6xl);
+  --section-space-home-2lv: var(--space_5xl);
+  --section-space-home-3lv: var(--space_4xl);
+
+  @include tablet() {
+    --section-space-home-1lv: var(--space_4xl);
+
+    --section-space-1lv: var(--space_2xl);
+    --section-space-4lv: var(--space_m);
+  }
+
   --list-item-block-padding: 10px;
   --list-item-gap: 12px;
   --shadow-low: 0 2px 5px var(--shadow-color);
@@ -199,6 +226,7 @@ body {
   --border-radius-s: 12px;
   --border-radius-m: 16px;
   --border-radius-l: 24px;
+  --border-radius-xl: 32px;
   --border-radius-full: 999px;
 
   --button-height-l: 56px;
@@ -227,7 +255,7 @@ body {
   --content-padding-xl: 32px;
   --content-padding-xxl: 40px;
   --content-max-width: 520px;
-  --content-width-sm-up: calc(520px + var(--content-padding-m)*2);
+  --content-width-sm-up: calc(520px + var(--content-padding-m) * 2);
   --header-height-xs: 56px;
   --header-height-s: 60px;
   --header-height-m: 76px;
@@ -242,10 +270,13 @@ body {
   --checkbox-size-l: 32px;
   --snackbar-top: calc(var(--sait, 0px) + 6px);
   --snackbar-top-sm-up: calc(var(--sait, 0px) + 16px);
-  --drawer-max-height: calc(var(--yabank-layout-app-height)*0.83);
-  --drawer-fullscreen-height: calc(var(--yabank-layout-app-height)*0.93);
+  --drawer-max-height: calc(var(--yabank-layout-app-height) * 0.83);
+  --drawer-fullscreen-height: calc(var(--yabank-layout-app-height) * 0.93);
   --yabank-layout-app-height: 100vh;
-  --dialog-layout-safe-padding-bottom: max(calc(var(--saib, 0px) + 8px), var(--dialog-padding));
+  --dialog-layout-safe-padding-bottom: max(
+    calc(var(--saib, 0px) + 8px),
+    var(--dialog-padding)
+  );
   --headline0-bold-font-size: 128px;
   --headline0-bold-line-height: 0.82;
   --headline0-bold-letter-spacing: -1.2px;
@@ -403,8 +434,9 @@ button {
 // }
 body {
   position: relative;
-  font-family: Inter Variable, sans-serif;
-  font: normal 400 var(--base-font-size) / var(--base-line-height) "Inter Variable";
+  // font-family: Inter Variable, sans-serif;
+  // font: normal 400 var(--base-font-size) / var(--base-line-height) "Inter Variable";
+  font: normal 400 var(--base-font-size) / var(--base-line-height) "Inter";
   // background-image: url("@/assets/noise.png");
   // background-image: url("@/assets/noise-texture2.png");
   // background-image: url("@/assets/noise-texture1.jpg");
@@ -454,13 +486,13 @@ body {
   // }
 }
 
-// h1 {
-//   @extend %text-display;
-// }
+h1 {
+  @extend %h1;
+}
 
-// h2 {
-//   @extend %h2;
-// }
+h2 {
+  @extend %h2;
+}
 
 h3 {
   @extend %h3;
@@ -473,8 +505,6 @@ h4 {
 h5 {
   @extend %h5;
 }
-
-
 
 input::placeholder {
   color: hsl(var(--foreground) / 0.8);
@@ -494,8 +524,6 @@ input::placeholder {
 main {
   flex: 1;
 }
-
-
 
 // a {
 //   font-weight: 500;

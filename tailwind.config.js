@@ -75,6 +75,7 @@ export default {
         md: 'var(--border-radius-s)',
         lg: 'var(--border-radius-m)',
         xl: 'var(--border-radius-l)',
+        // 2xl: 'var(--border-radius-xl)',
       },
       keyframes: {
         "accordion-down": {

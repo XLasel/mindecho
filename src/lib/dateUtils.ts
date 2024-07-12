@@ -11,15 +11,14 @@ export const sortNotesByDate = (notes: Note[]) => {
   });
 };
 
-export const formatDateForUI = (dateString: string) => {
-  const date = new Date(dateString);
-  return format(date, "d MMMM yyyy", { locale: ru });
+export const formatDateForUI = (date: string | Date) => {
+  const dateObj = typeof date === "string" ? new Date(date) : date;
+  return format(dateObj, "d MMMM yyyy", { locale: ru });
 };
-
 export const filterNotesByDateRange = (
   notes: Note[],
   from: Date | string,
-  to: Date | string
+  to: Date | string,
 ): Note[] => {
   if (!from || !to) return notes;
 
@@ -27,6 +26,6 @@ export const filterNotesByDateRange = (
   const endDate = typeof to === "string" ? parseISO(to) : to;
 
   return notes.filter((note) =>
-    isWithinInterval(parseISO(note.date), { start: startDate, end: endDate })
+    isWithinInterval(parseISO(note.date), { start: startDate, end: endDate }),
   );
 };

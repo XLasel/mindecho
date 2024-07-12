@@ -1,15 +1,16 @@
 .root {
-    padding: 12px 24px;
-    background-color: hsl(var(--card));
-    width: 100%;
-    // background-color: transparent;
-    border-radius: var(--border-radius-s);
-    border: 2px;
-    border-color: hsl(var(--white) / 0.8);
-    resize: none;
+  width: 100%;
+  border: 2px;
+  padding: var(--space_s) var(--space_xl);
 
-    &::placeholder {
-        color: hsl(var(--white) / 0.5);
-        font-style: italic;
-    }
+  border-radius: var(--border-radius-s);
+  border-color: hsl(var(--white) / 0.8);
+  background-color: hsl(var(--card));
+
+  resize: none;
+
+  &::placeholder {
+    color: hsl(var(--white) / 0.5);
+    font-style: italic;
+  }
 }

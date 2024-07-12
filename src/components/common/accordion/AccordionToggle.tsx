@@ -3,7 +3,8 @@ import FeatherIcon from "feather-icons-react";
 
 const variants = {
   show: { rotate: 45 },
-  hidden: { rotate: 0 },
+
+  shelter: { rotate: 0 },
 };
 
 export const AccordionMotionToggle = ({
@@ -17,7 +18,7 @@ export const AccordionMotionToggle = ({
     <motion.div
       style={{ width: size, height: size }}
       variants={variants}
-      animate={isOpen ? "show" : "hidden"}
+      animate={isOpen ? "show" : "shelter"}
       transition={{ duration: 0.2 }}
     >
       <FeatherIcon icon="plus" size={size} />
