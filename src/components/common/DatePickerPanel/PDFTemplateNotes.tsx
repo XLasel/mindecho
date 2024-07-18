@@ -1,15 +1,14 @@
 import {
+  Document,
+  Font,
   Page,
+  StyleSheet,
   Text,
   View,
-  Document,
-  StyleSheet,
-  Font,
 } from "@react-pdf/renderer";
 
-import { prepareTableData } from "@/lib/utils";
 import { formatDateForUI } from "@/lib/dateUtils";
-
+import { prepareTableData } from "@/lib/utils";
 import { Note } from "@/redux/noteSlice";
 
 import InterRegular from "/fonts/Inter-Regular.ttf";

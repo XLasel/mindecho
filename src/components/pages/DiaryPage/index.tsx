@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
-import { Container } from "@/components/layout/Container";
-import { Button } from "@/components/common/Button";
-import { SearchInput } from "@/components/common/Search";
-import { DatePickerPanel } from "@/components/common/DatePickerPanel";
-import { NotesList } from "./NotesList";
 import Arrow from "@/assets/arrow.svg";
-
+import { Button } from "@/components/common/Button";
+import { DatePickerPanel } from "@/components/common/DatePickerPanel";
+import { SearchInput } from "@/components/common/Search";
+import { Container } from "@/components/layout/Container";
+import IMAGE from "@/images";
 import { useAppSelector } from "@/redux/hook";
 
+import { NotesList } from "./NotesList";
+
 import s from "./DiaryPage.module.scss";
-import IMAGE from "@/images";
 
 export const DiaryPage = () => {
   const notes = useAppSelector((state) => state.notes.notes);

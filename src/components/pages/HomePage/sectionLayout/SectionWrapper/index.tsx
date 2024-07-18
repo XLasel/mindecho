@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 import { Container, ContainerProps } from "@/components/layout/Container";
+import { cn } from "@/lib/utils";
 
 import { baseAimation } from "../../anim";
 

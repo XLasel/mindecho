@@ -1,4 +1,4 @@
-import { parseISO, format, isWithinInterval } from "date-fns";
+import { format, isWithinInterval,parseISO } from "date-fns";
 import { ru } from "date-fns/locale";
 
 import { Note } from "@/redux/noteSlice";

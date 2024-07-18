@@ -2,9 +2,9 @@ import React from "react";
 import { type Control, Controller } from "react-hook-form";
 
 import { EmotionChip } from "@/components/common/EmotionChip";
-import { type FormFieldsType } from "..";
-
 import { emotionGroups } from "@/constants";
+
+import { type FormFieldsType } from "..";
 
 import s from "./EmotionField.module.scss";
 

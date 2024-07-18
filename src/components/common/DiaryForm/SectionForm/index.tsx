@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 
 import { type NameSectionProps } from "@/constants";
-import { useSectionContext } from "@/context/SectionContext";
+import { useSectionContext } from "@/context/section";
 
 import s from "./SectionForm.module.scss";
 
@@ -18,6 +18,7 @@ export const SectionForm = forwardRef<HTMLElement, SectionFormProps>(
     const { scrollYProgress } = useScroll({
       target: ref,
     });
+    console.log(ref);
     // const { scrollY } = useScroll();
 
     useMotionValueEvent(scrollYProgress, "change", (value) => {

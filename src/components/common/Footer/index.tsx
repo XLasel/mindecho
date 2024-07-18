@@ -1,6 +1,8 @@
 import FeatherIcon from "feather-icons-react";
+
 import { Button } from "../Button";
 import { Logo } from "../Logo";
+
 import s from "./Footer.module.scss";
 
 export const Footer = () => {

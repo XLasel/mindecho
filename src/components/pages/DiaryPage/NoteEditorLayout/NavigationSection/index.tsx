@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 
-import { cn } from "@/lib/utils";
-
 import { sectionData } from "@/constants";
-import { useSectionContext } from "@/context/SectionContext";
+import { useSectionContext } from "@/context/section";
+import { cn } from "@/lib/utils";
 
 import s from "./NavigationSection.module.scss";
 
@@ -33,7 +32,7 @@ export const NavigationSection = ({ scrollToSection }) => {
             exit="exit"
             className={cn(
               s.item,
-              activeSection === section.idFormInput && s.itemActive,
+              activeSection === section.idFormInput && s.itemActive
             )}
             onClick={() => scrollToSection(section.idFormInput)}
           >

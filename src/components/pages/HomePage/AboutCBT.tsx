@@ -1,4 +1,4 @@
-import { SectionWrapper, SectionTitle, SectionContent } from "./sectionLayout";
+import { SectionContent,SectionTitle, SectionWrapper } from "./sectionLayout";
 
 export const AboutCBT = () => {
   return (

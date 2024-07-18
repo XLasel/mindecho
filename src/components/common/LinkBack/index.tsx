@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
-import { cn } from "@/lib/utils";
-import { useBackNavigation } from "@/hook/useBackNavigation";
-
 import { buttonVariants } from "@/components/common/Button";
+import { useBackNavigation } from "@/hook/useBackNavigation";
+import { cn } from "@/lib/utils";
 
 export const LinkBack = () => {
   const { href } = useBackNavigation();

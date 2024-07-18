@@ -1,8 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import noteReducer from "./noteSlice";
-
 import { localStorageMiddleware, reHydrateStore } from "./api";
+import noteReducer from "./noteSlice";
 
 const rootReducer = combineReducers({
   notes: noteReducer,

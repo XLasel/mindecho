@@ -1,29 +1,32 @@
-import { useNavigate } from "react-router-dom";
 import {
-  useForm,
-  SubmitHandler,
   FormProvider,
+  SubmitHandler,
   useFieldArray,
+  useForm,
 } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+
 import { Button } from "@/components/common/Button";
-import { TitleField } from "./TitleField";
-import { EmotionField } from "./EmotionField";
-import { CognitiveBiasField } from "./CognitiveBiasField";
-import { useAppDispatch } from "@/redux/hook";
-import { Note, addNote, updateNote } from "@/redux/noteSlice";
-import s from "./DiaryForm.module.scss";
-import { DynamicInputForm } from "./DynamicInputForm";
-import { AdaptiveResponseField } from "./AdaptiveResponseField";
-import { ResizableTextarea } from "../ResizableTextarea";
-import { RangeInput } from "../RangeInput";
-import { SpoilerText } from "../SpoilerText";
-import { NoteActions } from "../NoteActions";
-import { SectionForm } from "./SectionForm";
-import { sectionData } from "@/constants";
-import { useBackNavigation } from "@/hook/useBackNavigation";
 import { type SectionsRefs } from "@/components/pages/DiaryPage/NoteEditorLayout";
+import { sectionData } from "@/constants";
+import { useAppDispatch } from "@/redux/hook";
+import { addNote, Note, updateNote } from "@/redux/noteSlice";
+
+import { NoteActions } from "../NoteActions";
+import { RangeInput } from "../RangeInput";
+import { ResizableTextarea } from "../ResizableTextarea";
+import { SpoilerText } from "../SpoilerText";
+
+import { AdaptiveResponseField } from "./AdaptiveResponseField";
+import { CognitiveBiasField } from "./CognitiveBiasField";
+import { DynamicInputForm } from "./DynamicInputForm";
+import { EmotionField } from "./EmotionField";
+import { SectionForm } from "./SectionForm";
+import { TitleField } from "./TitleField";
+
+import s from "./DiaryForm.module.scss";
 
 const cognitiveDistortionSchema = z.object({
   everythingOrNothing: z.boolean(),
@@ -47,7 +50,7 @@ const automaticThoughtsSchema = z.array(
   z.object({
     thought: z.string(),
     response: z.string(),
-  }),
+  })
 );
 
 const schemaNote = z.object({
@@ -115,7 +118,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
       navigate("/diary");
     }
   };
-
+  console.log(sectionsRefs);
   return (
     <FormProvider {...methods}>
       <form className={s.root} onSubmit={handleSubmit(onSubmit)}>

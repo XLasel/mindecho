@@ -1,9 +1,9 @@
+import { motion } from "framer-motion";
+
 import IMAGE from "@/images";
 
-import { motion } from "framer-motion";
-import { SectionContent, SectionWrapper } from "../sectionLayout";
-
 import { aimationScaleDown, aimationSlideLeft } from "../anim";
+import { SectionContent, SectionWrapper } from "../sectionLayout";
 
 import s from "./IllustrationSection.module.scss";
 

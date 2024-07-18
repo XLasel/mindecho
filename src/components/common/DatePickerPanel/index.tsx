@@ -1,9 +1,10 @@
 import React from "react";
-import { format, parse } from "date-fns";
 import { DateRange } from "react-day-picker";
 import { useSearchParams } from "react-router-dom";
+import { format, parse } from "date-fns";
 
 import { Button } from "@/components/common/Button";
+
 import { DateRangePicker } from "./DateRangePicker";
 import { ExportButton } from "./ExportButton";
 
@@ -16,7 +17,7 @@ export const DatePickerPanel = () => {
       ? parse(
           searchParams.get("start_date") as string,
           "yyyy-MM-dd",
-          new Date(),
+          new Date()
         )
       : undefined,
     to: searchParams.get("end_date")
@@ -24,7 +25,7 @@ export const DatePickerPanel = () => {
       : undefined,
   };
   const [dateRange, setDateRange] = React.useState<DateRange | undefined>(
-    defaultValue,
+    defaultValue
   );
 
   const handleSearch = (e: React.FormEvent) => {

@@ -2,15 +2,13 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-import { type Note } from "@/redux/noteSlice";
-import { updateNote } from "@/redux/noteSlice";
-import { useAppDispatch } from "@/redux/hook";
-
 import { Button } from "@/components/common/Button";
 import { RangeInput } from "@/components/common/RangeInput";
 import { ResizableTextarea } from "@/components/common/ResizableTextarea";
-
 import { normalizeRangeValue } from "@/lib/utils";
+import { useAppDispatch } from "@/redux/hook";
+import { type Note } from "@/redux/noteSlice";
+import { updateNote } from "@/redux/noteSlice";
 
 import s from "./PostCheckoutForm.module.scss";
 

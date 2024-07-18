@@ -1,20 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import store from "./redux/store";
-
-// import "./fonts.scss";
-import "./global.scss";
-
+import { ValidateSearchParams } from "@/components/common/ValidateSearchParams";
 import { Layout } from "@/components/layout/Layout";
-import { HomePage } from "@/components/pages/HomePage/index.tsx";
-import { DiaryPage } from "@/components/pages/DiaryPage/index.tsx";
 import { DiaryEntry } from "@/components/pages/DiaryPage/DiaryEntry";
+import { DiaryPage } from "@/components/pages/DiaryPage/index.tsx";
 import { NoteEditorLayout } from "@/components/pages/DiaryPage/NoteEditorLayout";
-import NotFoundPage from "@/components/pages/NotFoundPage";
-import ValidateSearchParams from "@/components/common/ValidateSearchParams";
+import { HomePage } from "@/components/pages/HomePage/index.tsx";
+import { NotFoundPage } from "@/components/pages/NotFoundPage";
+import store from "@/redux/store";
+
+import "./global.scss";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +22,7 @@ const router = createBrowserRouter([
 
       {
         path: "/diary",
+        // element: <DiaryProvider />,
         element: <ValidateSearchParams />,
         children: [
           { index: true, element: <DiaryPage /> },

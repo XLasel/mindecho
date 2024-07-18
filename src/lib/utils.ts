@@ -1,8 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { cloneDeep } from "lodash";
-
-import { formatDateForUI } from "./dateUtils";
+import { twMerge } from "tailwind-merge";
 
 import {
   biases,
@@ -13,6 +11,8 @@ import {
   emotionGroups,
 } from "@/constants";
 import { type Note } from "@/redux/noteSlice";
+
+import { formatDateForUI } from "./dateUtils";
 
 // Function to merge class names using clsx and tailwind-merge
 export const cn = (...inputs: ClassValue[]) => {

@@ -1,7 +1,7 @@
-import { useState, ReactNode } from "react";
+import { ReactNode,useState } from "react";
 
-import { Button } from "../Button";
 import { AnimatedCollapse } from "../AnimatedCollapse";
+import { Button } from "../Button";
 
 import s from "./SpoilerText.module.scss";
 

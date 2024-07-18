@@ -1,16 +1,16 @@
 import { createRef, useEffect, useRef } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { useAppSelector } from "@/redux/hook";
 
-import { Container } from "@/components/layout/Container";
-import { NoteWrapper } from "@/components/common/NoteWrapper";
 import { DiaryForm } from "@/components/common/DiaryForm";
-import { NavigationSection } from "./NavigationSection";
-
-import { useMediaQueries } from "@/hook/useMediaQueries";
-import { SectionProvider } from "@/context/SectionContext";
-import { selectAllNotes } from "@/redux/selectors";
+import { NoteWrapper } from "@/components/common/NoteWrapper";
+import { Container } from "@/components/layout/Container";
 import { sectionData } from "@/constants";
+import { SectionProvider } from "@/context/section";
+import { useMediaQueries } from "@/hook/useMediaQueries";
+import { useAppSelector } from "@/redux/hook";
+import { selectAllNotes } from "@/redux/selectors";
+
+import { NavigationSection } from "./NavigationSection";
 
 import s from "./NoteEditorLayout.module.scss";
 
@@ -53,6 +53,8 @@ export const NoteEditorLayout = () => {
     }
   };
 
+  console.log(sectionsRefs);
+  console.log(sectionsRefs.current);
   return (
     <Container>
       <SectionProvider>

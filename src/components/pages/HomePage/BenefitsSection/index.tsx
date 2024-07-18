@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 
-import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
-
 import { aimationSlideUp } from "../anim";
+import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
 
 import s from "./BenefitsSection.module.scss";
 

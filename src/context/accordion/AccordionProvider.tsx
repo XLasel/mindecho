@@ -1,13 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
 
-interface AccordionContextProps {
-  isOpen: boolean;
-  toggle: () => void;
-}
-
-const AccordionContext = createContext<AccordionContextProps | undefined>(
-  undefined,
-);
+import { AccordionContext } from "./AccordionContext";
 
 interface AccordionProviderProps {
   children: React.ReactNode;
@@ -30,14 +23,4 @@ export const AccordionProvider: React.FC<AccordionProviderProps> = ({
       {children}
     </AccordionContext.Provider>
   );
-};
-
-export const useAccordionContext = () => {
-  const context = useContext(AccordionContext);
-  if (!context) {
-    throw new Error(
-      "useAccordionContext must be used within an AccordionProvider",
-    );
-  }
-  return context;
 };

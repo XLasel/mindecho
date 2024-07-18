@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
+import { Button } from "@/components/common/Button";
+import { ModalForDeletion } from "@/components/common/ModalForDeletion";
+import { useDeleteNote } from "@/hook/useDeleteNote";
 import { cn } from "@/lib/utils";
 import { useAppDispatch } from "@/redux/hook";
 import { Note, updateNote } from "@/redux/noteSlice";
 
-import { Button } from "@/components/common/Button";
-import { ModalForDeletion } from "@/components/common/ModalForDeletion";
 import { PostCheckoutForm } from "./PostCheckoutForm";
 
 import s from "./PostCheckout.module.scss";
-import { useDeleteNote } from "@/hook/useDeleteNote";
 
 interface PostCheckoutProps extends React.ComponentPropsWithoutRef<"section"> {
   note: Note;

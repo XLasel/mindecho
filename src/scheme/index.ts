@@ -20,3 +20,5 @@ export const searchParamsSchema = z.object({
       "Invalid date format. Expected yyyy-MM-dd"
     ),
 });
+
+export type SearchParamsType = z.infer<typeof searchParamsSchema>;

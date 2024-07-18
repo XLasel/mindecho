@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useEffect,useMemo, useState } from "react";
 
 export const usePagination = (
   totalItems: number,

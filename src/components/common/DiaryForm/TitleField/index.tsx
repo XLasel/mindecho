@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import s from "./TitleField.module.scss";
-import { FieldValues, UseFormRegister } from "react-hook-form";
 
 export const TitleField = React.forwardRef<
   HTMLInputElement,

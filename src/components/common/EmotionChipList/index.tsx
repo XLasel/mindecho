@@ -1,7 +1,6 @@
 import { EmotionChip } from "../EmotionChip";
 
 // import { biases } from "@/constants";
-
 import s from "./EmotionChipList.module.scss";
 
 export const EmotionChipList = ({ emotionData }) => {

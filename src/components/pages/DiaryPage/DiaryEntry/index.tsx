@@ -1,21 +1,20 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
+import { buttonVariants } from "@/components/common/Button";
+import { NoteActions } from "@/components/common/NoteActions";
+import { NoteWrapper } from "@/components/common/NoteWrapper";
+import { SpoilerText } from "@/components/common/SpoilerText";
+import { ThoughtList } from "@/components/common/ThoughtList";
+import { Container } from "@/components/layout/Container";
+import { cn, filterThoughts } from "@/lib/utils";
 import { useAppSelector } from "@/redux/hook";
 import { selectAllNotes } from "@/redux/selectors";
 
-import { cn, filterThoughts } from "@/lib/utils";
-
-import { buttonVariants } from "@/components/common/Button";
-import { NoteWrapper } from "@/components/common/NoteWrapper";
-import { SpoilerText } from "@/components/common/SpoilerText";
-import { NoteActions } from "@/components/common/NoteActions";
-import { ThoughtList } from "@/components/common/ThoughtList";
 import { PostCheckout } from "./PostCheckout";
 import { ThoughtTable } from "./ThoughtTable";
 
 import s from "./DiaryEntry.module.scss";
-import { Container } from "@/components/layout/Container";
 
 export const DiaryEntry = () => {
   const { id } = useParams();

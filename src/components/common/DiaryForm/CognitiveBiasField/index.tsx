@@ -2,10 +2,10 @@ import React from "react";
 import { Control, Controller } from "react-hook-form";
 
 import { CognitiveBiasCard } from "@/components/common/CognitiveBiasCard";
+import { biases, CognitiveBias } from "@/constants";
+import { splitArrayInHalf } from "@/lib/utils";
 
 import { type FormFieldsType } from "..";
-import { splitArrayInHalf } from "@/lib/utils";
-import { biases, CognitiveBias } from "@/constants";
 
 import s from "./CognitiveBiasField.module.scss";
 

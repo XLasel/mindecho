@@ -1,20 +1,18 @@
 import { useSearchParams } from "react-router-dom";
-
-import { RootState } from "@/redux/store";
-import { useAppSelector } from "@/redux/hook";
+import { z } from "zod";
 
 import { Button } from "@/components/common/Button";
-import { NoteItem } from "../NoteItem";
-
 import { useFilteredNotes } from "@/hook/useFilteredNotes";
-import { sortNotesByDate } from "@/lib/dateUtils";
-import { usePagination } from "@/hook/usePagination";
 import { useGroupedNotes } from "@/hook/useGroupedNotes";
-
+import { usePagination } from "@/hook/usePagination";
+import { sortNotesByDate } from "@/lib/dateUtils";
+import { useAppSelector } from "@/redux/hook";
+import { RootState } from "@/redux/store";
 import { searchParamsSchema } from "@/scheme";
 
+import { NoteItem } from "../NoteItem";
+
 import s from "./NotesList.module.scss";
-import { z } from "zod";
 
 export const NotesList: React.FC = () => {
   const notes = useAppSelector((state: RootState) => state.notes.notes);

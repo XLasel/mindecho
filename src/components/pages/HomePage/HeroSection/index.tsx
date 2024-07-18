@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/common/Button";
-import { SectionContent, SectionWrapper } from "../sectionLayout";
+import IMAGE from "@/images";
 
 import { aimationButton, aimationSlideLeft, aimationSlideUp } from "../anim";
-import IMAGE from "@/images";
+import { SectionContent, SectionWrapper } from "../sectionLayout";
 
 import s from "./HeroSection.module.scss";
 

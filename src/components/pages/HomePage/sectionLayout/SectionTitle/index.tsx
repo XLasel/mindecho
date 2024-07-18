@@ -1,4 +1,4 @@
-import { MotionProps, motion } from "framer-motion";
+import { motion,MotionProps } from "framer-motion";
 
 import { aimationSlideLeft } from "../../anim";
 

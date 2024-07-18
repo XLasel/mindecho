@@ -6,9 +6,9 @@ import {
   AccordionContent,
   AccordionHeader,
 } from "@/components/common/accordion";
-import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
 
 import { aimationSlideDown } from "../anim";
+import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
 
 const faqData = [
   {

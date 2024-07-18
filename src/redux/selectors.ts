@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+
 import { Note } from "./noteSlice";
+import { RootState } from "./store";
 
 export const selectAllNotes = (state: RootState) => state.notes.notes;
 

@@ -1,15 +1,13 @@
 import React from "react";
 
-import { cn } from "@/lib/utils";
-
-import { type CognitiveBias } from "@/constants";
-
 import {
   Accordion,
   AccordionContent,
   AccordionHeader,
 } from "@/components/common/accordion";
 import { SpoilerText } from "@/components/common/SpoilerText";
+import { type CognitiveBias } from "@/constants";
+import { cn } from "@/lib/utils";
 
 import s from "./CognitiveBiasCard.module.scss";
 

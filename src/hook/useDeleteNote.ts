@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "@/redux/hook";
 
+import { useAppDispatch } from "@/redux/hook";
 import { deleteNote } from "@/redux/noteSlice";
 
 export const useDeleteNote = (

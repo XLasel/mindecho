@@ -1,14 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import { useDeleteNote } from "@/hook/useDeleteNote";
-import { useBackNavigation } from "@/hook/useBackNavigation";
+import FeatherIcon from "feather-icons-react";
 
 import { Button } from "@/components/common/Button";
 import { DateUI } from "@/components/common/DateUI";
 import { ModalForDeletion } from "@/components/common/ModalForDeletion";
-
-import FeatherIcon from "feather-icons-react";
+import { useBackNavigation } from "@/hook/useBackNavigation";
+import { useDeleteNote } from "@/hook/useDeleteNote";
 
 import s from "./NoteActions.module.scss";
 

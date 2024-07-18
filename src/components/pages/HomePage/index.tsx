@@ -1,11 +1,11 @@
-import { HeroSection } from "./HeroSection";
-import { AboutCBT } from "./AboutCBT";
 import { AboutAutomaticThoughts } from "./AboutAutomaticThoughts";
-import { IllustrationSection } from "./IllustrationSection";
-import { FeaturesSection } from "./FeaturesSection";
+import { AboutCBT } from "./AboutCBT";
 import { BenefitsSection } from "./BenefitsSection";
-import { FAQSection } from "./FAQSection";
 import { CallToActionSection } from "./CallToActionSection";
+import { FAQSection } from "./FAQSection";
+import { FeaturesSection } from "./FeaturesSection";
+import { HeroSection } from "./HeroSection";
+import { IllustrationSection } from "./IllustrationSection";
 
 import s from "./HomePage.module.scss";
 

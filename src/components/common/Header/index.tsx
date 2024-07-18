@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 import { Logo } from "@/components/common/Logo";
-import { NavbarListItem } from "./NavbarListItem";
-import { BurgerToggle } from "./BurgerToggle";
-import { BurgerMenu } from "./BurgerMenu";
-
-import { useMediaQueries } from "@/hook/useMediaQueries";
 import { navLinks } from "@/constants/index";
+import { useMediaQueries } from "@/hook/useMediaQueries";
+import { cn } from "@/lib/utils";
+
+import { BurgerMenu } from "./BurgerMenu";
+import { BurgerToggle } from "./BurgerToggle";
+import { NavbarListItem } from "./NavbarListItem";
 
 import s from "./Header.module.scss";
 

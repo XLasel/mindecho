@@ -1,11 +1,10 @@
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+import { aimationScaleDown } from "../anim";
 import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
 
-import { aimationScaleDown } from "../anim";
-
 import s from "./FeaturesSection.module.scss";
-import { useRef } from "react";
 
 const cards = [
   {

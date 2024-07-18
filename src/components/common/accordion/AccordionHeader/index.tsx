@@ -1,8 +1,8 @@
 import React from "react";
 
-import { AccordionMotionToggle } from "../AccordionToggle";
+import { useAccordionContext } from "@/context/accordion";
 
-import { useAccordionContext } from "../../../../context/AccordionContext";
+import { AccordionMotionToggle } from "../AccordionToggle";
 
 import s from "./AccordionHeader.module.scss";
 

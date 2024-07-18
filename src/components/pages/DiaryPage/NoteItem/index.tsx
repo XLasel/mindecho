@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
-import { cn, filterThoughts, filteredBiases } from "@/lib/utils";
-
+import { buttonVariants } from "@/components/common/Button";
 import { CognitiveBiasBadgeList } from "@/components/common/CognitiveBiasBadgeList";
 import { NoteActions } from "@/components/common/NoteActions";
-import { buttonVariants } from "@/components/common/Button";
 import { ThoughtList } from "@/components/common/ThoughtList";
-
-import { Note } from "@/redux/noteSlice";
 import { biases } from "@/constants";
+import { cn, filteredBiases,filterThoughts } from "@/lib/utils";
+import { Note } from "@/redux/noteSlice";
 
 import s from "./NoteItem.module.scss";
 

@@ -1,10 +1,7 @@
 import React from "react";
+import { DateRange } from "react-day-picker";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { ru } from "date-fns/locale";
-import { DateRange } from "react-day-picker";
-
-import { cn } from "@/lib/utils";
-import { formatDateForUI } from "@/lib/dateUtils";
 
 import { Button } from "@/components/common/Button";
 import { Calendar } from "@/components/common/Calendar";
@@ -13,6 +10,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/common/Popover";
+import { formatDateForUI } from "@/lib/dateUtils";
+import { cn } from "@/lib/utils";
 
 import s from "./DateRangePicker.module.scss";
 

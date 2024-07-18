@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva,VariantProps } from "class-variance-authority";
 import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
 
 import { aimationSlideUp } from "../../anim";
 

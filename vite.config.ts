@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import svgrPlugin from "vite-plugin-svgr";
 import { resolve } from "path";
+import { defineConfig } from "vite";
+import svgrPlugin from "vite-plugin-svgr";
 
 const root = resolve(__dirname, "src");
 

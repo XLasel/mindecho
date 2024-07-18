@@ -1,9 +1,9 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { NavbarListItem } from "../NavbarListItem";
-
 import { navLinks } from "@/constants";
+
+import { NavbarListItem } from "../NavbarListItem";
 
 import s from "./BurgerMenu.module.scss";
 

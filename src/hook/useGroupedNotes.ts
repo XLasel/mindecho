@@ -1,4 +1,3 @@
-import { Note } from "@/redux/noteSlice";
 import {
   format,
   isThisMonth,
@@ -8,6 +7,8 @@ import {
   isYesterday,
   subDays,
 } from "date-fns";
+
+import { Note } from "@/redux/noteSlice";
 
 export const useGroupedNotes = (notes: Note[]) => {
   const grouped: { [key: string]: Note[] } = {};
