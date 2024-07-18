@@ -10,23 +10,41 @@ export default {
   ],
   customSyntax: "postcss-scss",
   rules: {
-    "prettier/prettier": true,
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "max-nesting-depth": 3,
     "block-no-empty": true,
+    "import-notation": "string",
     "block-opening-brace-space-before": "always",
     "block-opening-brace-newline-after": "always-multi-line",
     "block-closing-brace-newline-before": "always-multi-line",
+    "number-no-trailing-zeros": [true, {
+      "message": "Лишний (необязательный) нуль в дроби"
+    }],
+    'alpha-value-notation': 'number',
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "no-duplicate-at-import-rules": [true, {
+      "message": "Повторный импорт файла не хочешь ты"
+    }],
     "order/properties-alphabetical-order": null,
     "order/properties-order": [
       {
+        "emptyLineBefore": "always",
         "properties": ["composes", "@import", "@extend", "@mixin", "@at-root", "@include"]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           'grid-area',
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "content",
           "position",
@@ -39,11 +57,13 @@ export default {
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "display",
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           'grid-column',
           'grid-row',
@@ -57,6 +77,7 @@ export default {
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "flex",
           "flex-direction",
@@ -72,11 +93,13 @@ export default {
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "order",
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "width",
           "min-width",
@@ -97,6 +120,7 @@ export default {
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "background",
           "background-color",
@@ -114,6 +138,7 @@ export default {
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "font-size",
           "font-weight",
@@ -125,6 +150,7 @@ export default {
         ]
       },
       {
+        "emptyLineBefore": "always",
         "properties": [
           "filter",
           "animation",
@@ -168,19 +194,30 @@ export default {
         "except": ["first-nested"]
       }
     ],
+    "no-duplicate-selectors": [true, {
+      "message": "Селекторы дублировать не хочешь ты"
+    }],
     "scss/at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["tailwind"]
+        "ignoreAtRules": ["/^at-/",
+          "/^mixin/",
+          "/^include/",
+          "/^extend/",
+          "/^if/",
+          "/^else/",
+          "/^function/",
+          "/^return/",
+          "/^each/",
+          "/^while/",
+          "tailwind"]
       }
     ],
-    "at-rule-empty-line-before": [
-      "always",
-      {
-        "except": ["first-nested"],
-        "ignore": ["after-comment"],
-        "ignoreAtRules": ["else"]
-      }
-    ]
+    "at-rule-empty-line-before": ["always", {
+      "message": "Перед @-правилами строку пустую оставь (кроме @import и @include)",
+      "except": ["first-nested"],
+      ignoreAtRules: ["import", "include", "function", "return", "if", "else"],
+      ignore: ["after-comment"]
+    }],
   }
 };
