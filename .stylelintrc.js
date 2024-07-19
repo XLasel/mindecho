@@ -2,50 +2,44 @@ export default {
   extends: [
     "stylelint-config-standard",
     "stylelint-config-rational-order",
-    "stylelint-prettier/recommended"
+    "stylelint-prettier/recommended",
   ],
   plugins: [
+    "stylelint-scss",
+    "stylelint-prettier",
     "stylelint-order",
-    "stylelint-scss"
   ],
   customSyntax: "postcss-scss",
   rules: {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
+    "prettier/prettier": [true, {
+      endOfLine: "auto"
+    }],
     "max-nesting-depth": 3,
     "block-no-empty": true,
     "import-notation": "string",
-    "block-opening-brace-space-before": "always",
-    "block-opening-brace-newline-after": "always-multi-line",
-    "block-closing-brace-newline-before": "always-multi-line",
-    "number-no-trailing-zeros": [true, {
-      "message": "Лишний (необязательный) нуль в дроби"
-    }],
-    'alpha-value-notation': 'number',
+    "alpha-value-notation": "number",
     "selector-class-pattern": null,
     "custom-property-pattern": null,
-    "no-duplicate-at-import-rules": [true, {
-      "message": "Повторный импорт файла не хочешь ты"
-    }],
+    "declaration-empty-line-before": null,
+    "no-duplicate-at-import-rules": [
+      true,
+      {
+        "message": "Повторный импорт файла не хочешь ты"
+      }
+    ],
     "order/properties-alphabetical-order": null,
     "order/properties-order": [
-      {
-        "emptyLineBefore": "always",
-        "properties": ["composes", "@import", "@extend", "@mixin", "@at-root", "@include"]
+      [{
+        emptyLineBefore: "always",
+        properties: ["composes", "@import", "@extend", "@mixin", "@at-root", "@include"]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          'grid-area',
-        ]
+        emptyLineBefore: "always",
+        properties: ["grid-area"]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
+        emptyLineBefore: "always",
+        properties: [
           "content",
           "position",
           "top",
@@ -53,54 +47,54 @@ export default {
           "bottom",
           "left",
           "z-index",
-          "float",
+          "float"
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          "display",
+        emptyLineBefore: "always",
+        properties: ["display", "gap"]
+      },
+      {
+        emptyLineBefore: "always",
+        properties: [
+          "grid-column",
+          "grid-row",
+          "grid",
+          "grid-template-areas",
+          "grid-template-columns",
+          "grid-template-rows",
+          "grid-template",
+          "grid-gap",
+          "grid-column-gap",
+          "grid-row-gap",
+          "place-items",
+          "place-self",
+          "place-content"
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          'grid-column',
-          'grid-row',
-          'grid',
-          'grid-template-areas',
-          'grid-template-columns',
-          'grid-template-rows',
-          'grid-gap',
-          'grid-column-gap',
-          'grid-row-gap',
-        ]
-      },
-      {
-        "emptyLineBefore": "always",
-        "properties": [
+        emptyLineBefore: "always",
+        properties: [
           "flex",
           "flex-direction",
           "justify-content",
-          'align-content',
-          'flex-wrap',
+          "align-content",
+          "flex-wrap",
           "align-items",
           "align-self",
           "flex-grow",
           "flex-shrink",
           "flex-basis",
-          'flex-flow',
+          "flex-flow"
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
-          "order",
-        ]
+        emptyLineBefore: "always",
+        properties: ["order"]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
+        emptyLineBefore: "always",
+        properties: [
           "width",
           "min-width",
           "max-width",
@@ -120,8 +114,8 @@ export default {
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
+        emptyLineBefore: "always",
+        properties: [
           "background",
           "background-color",
           "background-image",
@@ -138,8 +132,8 @@ export default {
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
+        emptyLineBefore: "always",
+        properties: [
           "font-size",
           "font-weight",
           "line-height",
@@ -150,8 +144,8 @@ export default {
         ]
       },
       {
-        "emptyLineBefore": "always",
-        "properties": [
+        emptyLineBefore: "always",
+        properties: [
           "filter",
           "animation",
           "animation-name",
@@ -171,22 +165,12 @@ export default {
           "transition-property",
           "transition-timing-function"
         ]
-      }
-    ],
-    "block-closing-brace-newline-after": [
-      "always",
+      }],
       {
-        "ignoreAtRules": ["if", "else"]
+        "unspecified": "bottom"
       }
     ],
     "declaration-block-single-line-max-declarations": 0,
-    "declaration-empty-line-before": [
-      "always",
-      {
-        "except": ["after-declaration", "first-nested"],
-        "ignore": ["after-comment", "inside-single-line-block"]
-      }
-    ],
     "rule-empty-line-before": [
       "always",
       {
@@ -197,6 +181,7 @@ export default {
     "no-duplicate-selectors": [true, {
       "message": "Селекторы дублировать не хочешь ты"
     }],
+    'at-rule-no-unknown': null,
     "scss/at-rule-no-unknown": [
       true,
       {

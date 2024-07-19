@@ -6,11 +6,10 @@
 
 .link {
   padding: var(--space_xs) var(--space_m);
+  text-transform: uppercase;
+  list-style: none;
 
   border-radius: var(--border-radius-s);
-
-  list-style: none;
-  text-transform: uppercase;
 
   &:hover {
     color: hsl(var(--foreground) / 0.85);

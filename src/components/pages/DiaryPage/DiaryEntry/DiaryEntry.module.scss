@@ -2,6 +2,7 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-4lv);
 
@@ -10,6 +11,7 @@
 
 .section {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-5lv);
 }
@@ -30,6 +32,7 @@
 
 .cognitive-distortions {
   display: grid;
+
   grid-template-columns: auto;
   gap: var(--space_2xs);
 }
@@ -44,8 +47,9 @@
 }
 
 .bias-column {
-  flex: 1;
   display: flex;
+
+  flex: 1;
   flex-direction: column;
   gap: var(--space_2xs);
 }

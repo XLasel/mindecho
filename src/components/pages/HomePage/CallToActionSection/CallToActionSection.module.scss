@@ -1,32 +1,30 @@
 @import "@styles";
 
 .root {
-  min-height: 80vh;
   align-items: center;
+
+  min-height: 80vh;
 }
 
 .offer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, auto);
-  grid-template-areas:
+
+  grid-template:
     "image title"
     "image text"
-    "image button";
+    "image button" / 1fr 1fr;
   place-items: center;
   text-align: center;
 
+
   @include tablet() {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-
-    max-width: 680px;
-
-    grid-template-areas:
+    grid-template:
       "image"
       "title"
       "text"
-      "button";
+      "button" / 1fr;
+
+    max-width: 680px;
   }
 }
 
@@ -35,22 +33,22 @@
 }
 
 .text {
-  grid-area: text;
 
   display: flex;
+
   flex-direction: column;
+  grid-area: text;
+  gap: var(--space_m);
+  align-items: center;
   justify-content: center;
 
-  gap: var(--space_m);
-
   max-width: 500px;
-  align-items: center;
 
   & p {
     @extend %h1-home-subtitle;
 
-    word-break: break-word;
     word-wrap: break-word;
+    word-break: break-word;
   }
 }
 
@@ -66,15 +64,15 @@
   & img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
   }
 }
 
 .button {
-  grid-area: button;
 
   display: flex;
+  grid-area: button;
+
   justify-content: center;
 
   width: 100%;

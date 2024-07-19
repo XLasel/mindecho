@@ -1,17 +1,16 @@
 .root {
   display: flex;
+
   flex-direction: column;
-  text-align: left;
 
   min-width: 100%;
+  text-align: left;
 }
 
 .container {
   padding: var(--space_l);
-
-  border-radius: var(--border-radius-m);
-
   background-color: hsl(var(--card));
+  border-radius: var(--border-radius-m);
 }
 
 .flow {

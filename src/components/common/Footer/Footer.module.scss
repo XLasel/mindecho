@@ -2,15 +2,14 @@
 
 .root {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+
+  flex-flow: column wrap;
   // align-items: center;
   gap: var(--space_l);
 
   padding: var(--space_xl);
-  background-color: hsl(var(--secondary));
-
   color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
 
   // border-radius: var(--border-radius-l);
 
@@ -24,8 +23,9 @@
 
 .logo-panel {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
+  justify-content: space-between;
 }
 
 .copy {

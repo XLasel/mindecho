@@ -4,9 +4,7 @@
   @extend %text-button-sm;
 
   padding: var(--space_2xs) var(--space_xs);
-
-  border-radius: var(--border-radius-xs);
-
-  background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
+  border-radius: var(--border-radius-xs);
 }

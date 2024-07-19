@@ -2,18 +2,21 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-2lv);
 }
 
 .list-group {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-3lv);
 }
 
 .notes-list {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-4lv);
 }
@@ -22,11 +25,13 @@
   @extend %body-large;
 
   display: flex;
+
   justify-content: center;
 }
 
 .pagination-nav {
   display: inline-flex;
-  align-items: center;
   gap: var(--space_2xs);
+
+  align-items: center;
 }

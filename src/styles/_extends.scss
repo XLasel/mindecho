@@ -160,17 +160,19 @@
 %reset-list {
   margin: 0;
   padding: 0;
-  list-style: none;
   font-size: 1em;
+  list-style: none;
 }
 
 %styled-list {
-  list-style: disc;
   display: flex;
+
   flex-direction: column;
   gap: 0.75em;
+
   margin-left: 1.25em; // 1.25rem padding-left
   font-size: 1em;
+  list-style: disc;
 }
 
 // @mixin numbered-list($font-size: 1rem) {
@@ -185,12 +187,14 @@
 // }
 
 %numbered-list {
-  list-style: decimal;
   display: flex;
+
   flex-direction: column;
   gap: 0.5em;
+
   margin-left: 1.25em; // 1.25rem padding-left
   font-size: 1em;
+  list-style: decimal;
 }
 
 // %p-big {

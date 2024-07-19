@@ -2,12 +2,14 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_l);
 }
 
 .list {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_2xs);
 }
@@ -15,30 +17,27 @@
 .item {
   display: grid;
 
-  grid-template-columns: 1fr 10fr;
-  grid-template-rows: 1fr auto;
-
-  grid-template-areas:
-    "number thought"
-    "number response";
+  grid-template:
+    "number thought" 1fr "number response" auto / 1fr 10fr;
 }
 
 .number {
   grid-area: number;
-  place-self: center;
+  color: hsl(var(--secondary));
 
   font-size: 42px;
-  color: hsl(var(--secondary));
+
+  place-self: center;
 }
 
 .thought {
   @extend %body-small;
 
   grid-area: thought;
+
   align-self: center;
 
   padding: var(--space_xs) var(--space_s);
-
   font-style: italic;
 }
 
@@ -47,8 +46,9 @@
 }
 
 .button {
-  align-self: center;
   gap: var(--space_2xs);
+
+  align-self: center;
 
   &:hover .icon {
     color: hsl(var(--secondary) / 0.8);

@@ -6,17 +6,19 @@
   & input {
     @extend %diary-title;
 
-    // display: block;
-    background-color: transparent;
     flex-grow: 1;
+
     width: min(60vw, 800px);
     max-width: 100%;
+
+    // display: block;
+    background-color: transparent;
     // max-width: 50%;
     // overflow: hidden;
 
     &::placeholder {
-      font-style: italic;
       color: hsl(var(--white) / 0.5);
+      font-style: italic;
     }
   }
 }

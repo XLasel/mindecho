@@ -10,8 +10,9 @@
 }
 
 .column {
-  flex: 1;
   display: flex;
+
+  flex: 1;
   flex-direction: column;
   gap: var(--space_2xs);
 }

@@ -1,9 +1,11 @@
 .root {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: var(--space_s);
+  align-items: center;
+
+  justify-content: space-between;
+
+  width: 100%;
 }
 
 .modify {

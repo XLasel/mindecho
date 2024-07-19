@@ -2,32 +2,32 @@
 
 .benefits {
   display: grid;
-  grid-template-columns: 1fr 166px 1fr;
   grid-template-rows: 1fr 1fr;
+
+  grid-template-columns: 1fr 166px 1fr;
   gap: var(--space_l);
 
   @include tablet() {
-    grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
+
+    grid-template-columns: 1fr;
     gap: var(--space_m);
   }
 }
 
 .benefit {
   position: relative;
-
   display: flex;
+
   flex-direction: column;
-  justify-content: flex-end;
   gap: var(--space_3xl);
+  justify-content: flex-end;
 
   padding: var(--space_2xl);
-  border-radius: var(--border-radius-l);
-
   overflow: hidden;
-
-  background-color: hsl(var(--white));
   color: hsl(var(--black));
+  background-color: hsl(var(--white));
+  border-radius: var(--border-radius-l);
 
   &:first-child {
     grid-column: 1 / span 2;
@@ -47,7 +47,6 @@
 
 .svg {
   position: absolute;
-
   top: 0;
   right: 0;
 }

@@ -2,21 +2,21 @@
 
 .root {
   @extend %text-button-l;
+
   display: flex;
   gap: var(--space_s);
 
   width: 100%;
   padding: var(--space_s) var(--space_xl);
-
-  border-radius: var(--border-radius-full);
   background-color: hsl(var(--muted));
+  border-radius: var(--border-radius-full);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
+  transition-duration: 150ms;
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 
-  &:placeholder {
+  &::placeholder {
     color: hsl(var(--muted-foreground));
   }
 
@@ -32,8 +32,8 @@
 }
 
 .input {
-  background-color: transparent;
   flex: 1 1 auto;
+  background-color: transparent;
 }
 
 .btn-reset {

@@ -4,15 +4,13 @@
   @extend %body-large;
 
   display: flex;
-  justify-content: space-between;
   gap: var(--space_s);
 
-  width: 100%;
+  justify-content: space-between;
 
+  width: 100%;
   font-weight: 600;
   text-align: left;
-
   cursor: pointer;
-
   transition: background-color 0.3s ease;
 }

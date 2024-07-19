@@ -3,8 +3,8 @@
 .root {
   position: sticky;
   top: var(--header-height);
-
   display: flex;
+
   flex-direction: column;
   gap: var(--space_m);
 
@@ -18,11 +18,11 @@
 }
 
 .item {
-  cursor: pointer;
   color: hsl(var(--text-muted));
+  cursor: pointer;
 
   &:hover {
-    font-weight: 500;
     color: hsl(var(--white));
+    font-weight: 500;
   }
 }

@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  gap: var(--space_s);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modify {
+  display: flex;
+  gap: var(--space_2xs);
+}/*# sourceMappingURL=NoteActions.module.css.map */

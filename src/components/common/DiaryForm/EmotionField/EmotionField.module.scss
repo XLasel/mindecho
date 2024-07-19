@@ -2,6 +2,7 @@
 
 .root {
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space_m);
 
@@ -12,12 +13,14 @@
 
 .group {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_xs);
 }
 
 .emotion-group {
   display: inline-flex;
+
   flex-wrap: wrap;
   gap: var(--space_2xs);
 }

@@ -2,12 +2,12 @@
 
 .root {
   --separator-border: 2px solid hsl(var(--background) / 0.4);
-  // border: 1px solid grey;
-  background-color: hsl(var(--card));
-  border-radius: var(--border-radius-s);
   // border-collapse: collapse;
 
   padding: var(--space_xl);
+  // border: 1px solid grey;
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-s);
 
   table {
     width: 100%;

@@ -1,0 +1,33 @@
+.root {
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_m);
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space_l);
+  color: hsl(var(--black));
+  background: hsl(var(--white));
+  border-radius: var(--border-radius-m);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=ModalForConfirmation.module.css.map */

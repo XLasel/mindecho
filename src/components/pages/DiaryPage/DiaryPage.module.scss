@@ -2,13 +2,16 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-1lv);
+
   padding: var(--section-space-1lv) 0;
 }
 
 .controls {
   display: flex;
+
   flex-direction: column;
   gap: var(--section-space-4lv);
 }
@@ -18,10 +21,9 @@
 
   display: flex;
   gap: var(--space_s);
-
-  justify-content: center;
   align-items: end;
 
+  justify-content: center;
   font-style: italic;
 
   & img {
@@ -32,9 +34,10 @@
 
 .message {
   display: flex;
-  align-items: center;
-  justify-content: left;
   gap: var(--space_xs);
+  align-items: center;
+
+  justify-content: left;
 
   width: 300px;
 }

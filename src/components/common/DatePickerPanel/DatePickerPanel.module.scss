@@ -2,24 +2,20 @@
 
 .root {
   display: grid;
-  grid-template-columns: 69px auto 20%;
+
   grid-template-areas:
     "calendar calendar reset"
     "export submit submit";
+  grid-template-columns: 69px auto 20%;
   gap: var(--space_s);
 
   padding: var(--space_m);
-
-  border-radius: var(--border-radius-m);
   background-color: hsl(var(--card));
+  border-radius: var(--border-radius-m);
 
   @include tablet() {
-    grid-template-columns: 69px auto 20%;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "calendar calendar calendar"
-      "export submit submit"
-      "reset reset reset";
+    grid-template:
+      "calendar calendar calendar" auto "export submit submit" auto "reset reset reset" auto / 69px auto 20%;
   }
 }
 

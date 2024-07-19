@@ -6,9 +6,10 @@
 
 .inner {
   display: flex;
+
   flex-direction: column;
-  justify-content: center;
   gap: var(--space_l);
+  justify-content: center;
 
   padding: 0 var(--space_s);
 }

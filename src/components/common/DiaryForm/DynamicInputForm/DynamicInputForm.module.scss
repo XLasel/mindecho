@@ -2,18 +2,21 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_xs);
 }
 
 .list {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_2xs);
 }
 
 .item {
   display: grid;
+
   grid-template-columns: 24px auto;
 
   align-items: center;
@@ -21,11 +24,12 @@
 
 .input-row {
   display: flex;
+
   align-items: center;
 
   padding: var(--space_s) var(--space_xl);
-  border-radius: var(--border-radius-s);
   background-color: hsl(var(--card));
+  border-radius: var(--border-radius-s);
 
   & .icon-delete {
     flex: 0 0 auto;
@@ -36,21 +40,19 @@
 
     max-width: 100%;
     padding: 0;
-
     overflow: hidden;
-
+    text-overflow: ellipsis;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    text-overflow: ellipsis;
-
-    border-radius: 0;
     background-color: transparent;
+    border-radius: 0;
   }
 }
 
 .button {
-  align-self: center;
   gap: var(--space_2xs);
+
+  align-self: center;
 
   &:hover .icon {
     color: hsl(var(--secondary) / 0.8);

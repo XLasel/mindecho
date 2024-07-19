@@ -2,24 +2,27 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_m);
   // cursor: pointer;
 
   padding: var(--space_l);
-  border-radius: var(--border-radius-m);
-  background-color: hsl(var(--card));
   color: hsl(var(--card-foreground));
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-m);
 }
 
 .title {
   display: flex;
-  justify-content: space-between;
   gap: var(--space_s);
+
+  justify-content: space-between;
 }
 
 .content {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_s);
 
@@ -30,8 +33,9 @@
 
 .group {
   display: flex;
-  align-items: baseline;
   gap: var(--space_xs);
+
+  align-items: baseline;
 
   & ol {
     @extend %numbered-list;
@@ -46,15 +50,16 @@
 
 .field-name {
   @extend %text-explaining-style;
+
   font-style: italic;
 }
 
 .thought {
-  text-decoration: line-through;
   // @extend %text-explaining-style;
 
   // font-style: italic;
   color: hsl(var(--text-muted));
+  text-decoration: line-through;
 }
 
 // .subtitle {

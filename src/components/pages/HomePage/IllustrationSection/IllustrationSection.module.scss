@@ -2,8 +2,8 @@
 
 .root {
   width: 100%;
-  background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
 
   & p {
     // @include font(normal 600 36px / 140% "Inter");
@@ -17,9 +17,9 @@
 
 .content {
   display: grid;
+
   grid-template-columns: 2fr 3fr;
-  align-items: center;
-  justify-items: center;
+  place-items: center center;
 
   padding: var(--space_3xl) 0;
 

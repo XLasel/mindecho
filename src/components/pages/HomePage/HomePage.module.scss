@@ -2,9 +2,11 @@
 
 .root {
   display: flex;
+
   flex-direction: column;
-  align-items: stretch;
   gap: var(--section-space-home-1lv);
+  align-items: stretch;
+
   padding-top: var(--space_2xl);
   padding-bottom: var(--space_6xl);
 
@@ -33,11 +35,12 @@
 
 .section-accent {
   display: grid;
-  place-items: center;
   // height: 100vh;
   width: 100%;
-  background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
+
+  place-items: center;
 
   & p {
     // font-size: 36px;
@@ -47,17 +50,16 @@
     // font-family: "Bad Script";
 
     & span {
-      // @include font(normal 600 36px / 140% "Bad Script");
-      font-family: "Bad Script";
-
       color: hsl(var(--accent));
+      // @include font(normal 600 36px / 140% "Bad Script");
+      // font-family: "Bad Script";
     }
   }
 }
 
 .content-accent {
   display: grid;
+
   grid-template-columns: 2fr 3fr;
-  align-items: center;
-  justify-items: center;
+  place-items: center center;
 }

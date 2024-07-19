@@ -2,12 +2,12 @@
 // @config "./../tailwind.config.js";
 
 @import "./fonts.scss";
+@import "@styles";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "@styles";
 
 html {
   font-size: 18px;
@@ -153,10 +153,6 @@ body {
 
 /* bank.yandex.ru/pay */
 :root {
-  --desktop-screen-size: 1280px;
-  --tablet-screen-size: 1000px;
-  --mobile-screen-size: 550px;
-
   --header-height: 96px;
 
   --base-font-size: 18px;
@@ -171,23 +167,31 @@ body {
   --spacer-large: 128px;
   --spacer-huge: 256px;
 
-  /* translate.yandex.ru/editor*/
+  /* translate.yandex.ru/editor */
   --space_3xs: 2px;
-  /* +*/
+
+  /* + */
   --space_2xs: 4px;
-  /* +*/
+
+  /* + */
   --space_xs: 8px;
-  /* +*/
+
+  /* + */
   --space_s: 12px;
-  /* +*/
+
+  /* + */
   --space_m: 16px;
-  /* +*/
+
+  /* + */
   --space_l: 20px;
-  /* +*/
+
+  /* + */
   --space_xl: 24px;
-  /* +*/
+
+  /* + */
   --space_2xl: 32px;
-  /* +*/
+
+  /* + */
   --space_3xl: 40px;
   --space_4xl: 48px;
   --space_5xl: 72px;
@@ -273,10 +277,8 @@ body {
   --drawer-max-height: calc(var(--yabank-layout-app-height) * 0.83);
   --drawer-fullscreen-height: calc(var(--yabank-layout-app-height) * 0.93);
   --yabank-layout-app-height: 100vh;
-  --dialog-layout-safe-padding-bottom: max(
-    calc(var(--saib, 0px) + 8px),
-    var(--dialog-padding)
-  );
+  --dialog-layout-safe-padding-bottom: max(calc(var(--saib, 0px) + 8px),
+    var(--dialog-padding));
   --headline0-bold-font-size: 128px;
   --headline0-bold-line-height: 0.82;
   --headline0-bold-letter-spacing: -1.2px;
@@ -387,16 +389,17 @@ body {
   --sair: var(--android-safe-area-inset-right, env(safe-area-inset-right));
   --webview-grip-padding: 12px;
   --general-safe-area-inset-bottom: calc(var(--saib, 0) + 8px);
+
+  color: rgb(255 255 255 / 0.87);
+  background-color: #242424;
   // font-family: Inter;
   // line-height: 1.5;
   // font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -410,17 +413,16 @@ body {
 }
 
 button {
-  -webkit-appearance: none;
+
+  color: inherit;
+  vertical-align: baseline;
+  background: none;
+  border: 0;
   appearance: none;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  border: 0;
-  background: none;
-
-  vertical-align: baseline;
-  color: inherit;
 }
 
 :focus {
@@ -436,14 +438,14 @@ body {
   position: relative;
   // font-family: Inter Variable, sans-serif;
   // font: normal 400 var(--base-font-size) / var(--base-line-height) "Inter Variable";
-  font: normal 400 var(--base-font-size) / var(--base-line-height) "Inter";
+  font: normal 400 var(--base-font-size) / var(--base-line-height) Inter;
+  // filter: opacity(10%);
+  // opacity: 0.6;
+  background-repeat: repeat;
   // background-image: url("@/assets/noise.png");
   // background-image: url("@/assets/noise-texture2.png");
   // background-image: url("@/assets/noise-texture1.jpg");
   background-blend-mode: overlay;
-  // filter: opacity(10%);
-  // opacity: 0.6;
-  background-repeat: repeat;
   // background-image: url(/assets/noise-texture.png);
   // background: $beige100;
 
@@ -512,6 +514,7 @@ input::placeholder {
 
 .wrapper {
   display: flex;
+
   flex-direction: column;
 
   min-height: 100vh;

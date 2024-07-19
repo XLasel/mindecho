@@ -1,41 +1,38 @@
 .root {
   position: fixed;
   z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  background: rgb(0 0 0 / 0.5);
+  inset: 0;
 }
 
 .container {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_m);
 
-  padding: var(--space_l);
-  border-radius: var(--border-radius-m);
-
   width: 100%;
   max-width: 400px;
-
-  background: hsl(var(--white));
+  padding: var(--space_l);
   color: hsl(var(--black));
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: hsl(var(--white));
+  border-radius: var(--border-radius-m);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
+  justify-content: space-between;
 }
 
 .actions {
   display: flex;
+
   justify-content: space-between;
 }

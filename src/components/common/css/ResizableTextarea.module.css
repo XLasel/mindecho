@@ -1,0 +1,17 @@
+.root {
+  width: 100%;
+  padding: var(--space_s) var(--space_xl);
+  background-color: hsl(var(--card));
+  border: 2px;
+  border-color: hsl(var(--white)/0.8);
+  border-radius: var(--border-radius-s);
+  resize: none;
+}
+.root::-moz-placeholder {
+  color: hsl(var(--white)/0.5);
+  font-style: italic;
+}
+.root::placeholder {
+  color: hsl(var(--white)/0.5);
+  font-style: italic;
+}/*# sourceMappingURL=ResizableTextarea.module.css.map */

@@ -5,22 +5,20 @@
 
   display: inline-flex;
   gap: var(--space_2xs);
+  // background-color: hsl(var(--white) / 0.4);
+  padding: var(--space_2xs) var(--space_s);
+  color: hsl(var(--white));
+  background-color: hsl(var(--card));
 
   // border: 2px solid hsl(var(--white) / 0.7);
   // background-color: hsl(var(--card));
   // border: 2px solid transparent;
-  border: 2px solid hsl(var(--secondary));
   border: 2px solid hsl(var(--white));
   border: 2px solid transparent;
-  background-color: hsl(var(--card));
 
   // border-color: hsl(var(--black2));
   border-radius: var(--border-radius-full);
-  // background-color: hsl(var(--white) / 0.4);
-  padding: var(--space_2xs) var(--space_s);
-  box-shadow: 1px 1px 30px -4px rgba(43, 18, 73, 0.2);
-
-  color: hsl(var(--white));
+  box-shadow: 1px 1px 30px -4px rgb(43 18 73 / 0.2);
   // color: hsl(var(--secondary));
 
   transition: all 0.3s ease-out;
@@ -33,10 +31,11 @@
 }
 
 .selected {
-  border-color: transparent;
+
+  color: hsl(var(--secondary-foreground));
   // background-color: hsl(var(--white));
   background-color: hsl(var(--secondary));
-  color: hsl(var(--secondary-foreground));
+  border-color: transparent;
   // color: hsl(var(--black));
   // color: hsl(var(--blue));
 

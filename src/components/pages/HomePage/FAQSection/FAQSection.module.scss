@@ -6,15 +6,17 @@
 
 .content {
   display: flex;
+
   flex-direction: column;
-  justify-content: center;
   align-items: stretch;
+  justify-content: center;
 
   width: 100%;
 }
 
 .questions {
   display: flex;
+
   flex-direction: column;
   gap: var(--space_l);
 }

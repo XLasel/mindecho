@@ -9,15 +9,15 @@
 
 .nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: var(--space_xl);
+  align-items: center;
 
-  padding: var(--space_2xs) var(--space_xs);
+  justify-content: space-between;
   margin: var(--space_s) var(--space_m);
 
-  border-radius: var(--border-radius-m);
+  padding: var(--space_2xs) var(--space_xs);
   background-color: hsl(var(--background) / 0.8);
+  border-radius: var(--border-radius-m);
   backdrop-filter: blur(4px);
 }
 
@@ -40,6 +40,7 @@
 
 .nav-links {
   display: flex;
-  list-style: none;
+
   padding-left: 0;
+  list-style: none;
 }

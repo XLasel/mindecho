@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --ext ts,tsx --fix --report-unused-disable-directives --max-warnings 0",
     "lint:fix-imports": "eslint . --ext ts,tsx --fix --rule 'simple-import-sort/imports: [\"error\"]'",
     "lint:css": "stylelint '**/*.{css,scss}'",
-    "lint:css:fix": "stylelint --fix **/*.{scss,css}"
+    "lint:css:fix": "stylelint --fix '**/*.{css,scss}'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

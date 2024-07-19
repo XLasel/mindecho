@@ -2,6 +2,7 @@
 
 .root {
   display: flex;
+
   align-items: center;
 
   & input[type="range"] {
@@ -12,9 +13,8 @@
   & span {
     @extend %text-button-l;
 
-    color: hsl(var(--secondary));
-
     flex: 0 0 28px;
+    color: hsl(var(--secondary));
     text-align: center;
   }
 }

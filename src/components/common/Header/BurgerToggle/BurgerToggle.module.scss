@@ -1,10 +1,10 @@
 .root {
   position: fixed;
-  z-index: 11;
   top: 15px;
   right: 24px;
-
+  z-index: 11;
   display: grid;
+
   place-items: center;
 
   width: 40px;
@@ -15,12 +15,12 @@
 
 .wrapper {
   display: flex;
+
   flex-direction: column;
   justify-content: space-between;
 
   width: 24px;
   height: 8px;
-
   cursor: pointer;
 }
 
