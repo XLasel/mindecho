@@ -1,5 +1,5 @@
-import FeatherIcon from "feather-icons-react";
-import { motion } from "framer-motion";
+import FeatherIcon from 'feather-icons-react';
+import { motion } from 'framer-motion';
 
 const variants = {
   show: { rotate: 45 },
@@ -13,15 +13,13 @@ export const AccordionMotionToggle = ({
 }: {
   size?: number;
   isOpen: boolean;
-}) => {
-  return (
-    <motion.div
-      style={{ width: size, height: size }}
-      variants={variants}
-      animate={isOpen ? "show" : "shelter"}
-      transition={{ duration: 0.2 }}
-    >
-      <FeatherIcon icon="plus" size={size} />
-    </motion.div>
-  );
-};
+}) => (
+  <motion.div
+    style={{ width: size, height: size }}
+    variants={variants}
+    animate={isOpen ? 'show' : 'shelter'}
+    transition={{ duration: 0.2 }}
+  >
+    <FeatherIcon icon="plus" size={size} />
+  </motion.div>
+);

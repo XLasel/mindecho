@@ -1,5 +1,5 @@
-import s from "./CognitiveBiasBadge.module.scss";
+import s from './CognitiveBiasBadge.module.scss';
 
-export const CognitiveBiasBadge = ({ title }: { title: string }) => {
-  return <div className={s.root}>{title}</div>;
-};
+export const CognitiveBiasBadge = ({ title }: { title: string }) => (
+  <div className={s.root}>{title}</div>
+);

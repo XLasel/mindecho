@@ -1,13 +1,13 @@
-import React from "react";
-import { Control, Controller } from "react-hook-form";
+import React from 'react';
+import { Control, Controller } from 'react-hook-form';
 
-import { CognitiveBiasCard } from "@/components/common/CognitiveBiasCard";
-import { biases, CognitiveBias } from "@/constants";
-import { splitArrayInHalf } from "@/lib/utils";
+import { CognitiveBiasCard } from '@/components/common/CognitiveBiasCard';
+import { biases } from '@/constants';
+import { CognitiveBias } from '@/constants/types';
+import { type FormFieldsType } from '@/scheme';
+import { splitArrayInHalf } from '@/utils/helpers';
 
-import { type FormFieldsType } from "..";
-
-import s from "./CognitiveBiasField.module.scss";
+import s from './CognitiveBiasField.module.scss';
 
 interface CognitiveBiasFieldProps {
   name: keyof FormFieldsType;
@@ -15,15 +15,15 @@ interface CognitiveBiasFieldProps {
 }
 
 type CognitiveBiasNameProps =
-  `cognitiveDistortions.${keyof FormFieldsType["cognitiveDistortions"]}`;
+  `cognitiveDistortions.${keyof FormFieldsType['cognitiveDistortions']}`;
 
 const BiasColumn: React.FC<{
-  biases: CognitiveBias[];
+  biasesList: CognitiveBias[];
   name: keyof FormFieldsType;
   control: Control<FormFieldsType>;
-}> = ({ biases, name, control }) => (
+}> = ({ biasesList, name, control }) => (
   <>
-    {biases.map((bias) => {
+    {biasesList.map((bias) => {
       const fieldName = `${name}.${bias.id}` as CognitiveBiasNameProps;
       return (
         <Controller
@@ -53,10 +53,10 @@ export const CognitiveBiasField: React.FC<CognitiveBiasFieldProps> = ({
   return (
     <div className={s.root}>
       <div className={s.column}>
-        <BiasColumn biases={leftColumn} name={name} control={control} />
+        <BiasColumn biasesList={leftColumn} name={name} control={control} />
       </div>
       <div className={s.column}>
-        <BiasColumn biases={rightColumn} name={name} control={control} />
+        <BiasColumn biasesList={rightColumn} name={name} control={control} />
       </div>
     </div>
   );

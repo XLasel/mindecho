@@ -1,4 +1,4 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   display: flex;
@@ -9,37 +9,4 @@
 
 .description {
   @extend %text-explaining-style;
-  // @extend %body-small;
-
-  // color: hsl(var(--text-muted));
-
-  // & ol {
-  //     @include numbered-list;
-
-  // }
-
-  // & li {
-  //     @include styled-list;
-  // }
-
-  // & p:not(:last-child) {
-  //     margin-bottom: var(--base-margin);
-
-  // }
 }
-
-// .description {
-//     @extend %body-small;
-
-//     color: hsl(var(--white) / 0.7);
-
-//     & ol {
-//         @include styled-list;
-
-//     }
-
-//     & p:not(:last-child) {
-//         margin-bottom: var(--base-margin);
-
-//     }
-// }

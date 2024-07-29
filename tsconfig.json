@@ -30,9 +30,20 @@
         "./src/styles/"
       ]
     },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
   },
   "include": [
-    "src"
+    "src",
+    "vite.config.ts",
+    "tailwind.config.js",
+    "postcss.config.js",
+  ],
+  "exclude": [
+    "tailwind.config.js",
+    "postcss.config.js",
   ],
   "references": [
     {

@@ -1,4 +1,4 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   overflow: hidden;
@@ -13,5 +13,10 @@
 }
 
 .inner {
+  display: flex;
+
+  flex-direction: column;
+  gap: 1em;
+
   padding: var(--space_m) 0;
 }

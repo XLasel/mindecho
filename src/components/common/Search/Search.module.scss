@@ -1,4 +1,4 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   @extend %text-button-l;
@@ -32,10 +32,9 @@
 }
 
 .input {
-  flex: 1 1 auto;
-  background-color: transparent;
-}
+  flex-grow: 1;
 
-.btn-reset {
-  flex: 0 1 auto;
+  width: 150px;
+  max-width: 100%;
+  background-color: transparent;
 }

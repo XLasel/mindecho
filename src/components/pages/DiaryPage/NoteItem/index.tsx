@@ -1,23 +1,22 @@
-import { Link } from "react-router-dom";
-import FeatherIcon from "feather-icons-react";
+import { Link } from 'react-router-dom';
+import FeatherIcon from 'feather-icons-react';
 
-import { buttonVariants } from "@/components/common/Button";
-import { CognitiveBiasBadgeList } from "@/components/common/CognitiveBiasBadgeList";
-import { NoteActions } from "@/components/common/NoteActions";
-import { ThoughtList } from "@/components/common/ThoughtList";
-import { biases } from "@/constants";
-import { cn, filteredBiases,filterThoughts } from "@/lib/utils";
-import { Note } from "@/redux/noteSlice";
+import { Button } from '@/components/common/Button';
+import { CognitiveBiasBadgeList } from '@/components/common/CognitiveBiasBadgeList';
+import { NoteActions } from '@/components/common/NoteActions';
+import { ThoughtList } from '@/components/common/ThoughtList';
+import { biases, ROUTES } from '@/constants';
+import { cn, filteredBiases, filterThoughts } from '@/utils/helpers';
 
-import s from "./NoteItem.module.scss";
+import s from './NoteItem.module.scss';
 
 interface NoteItemProps {
-  id: Note["id"];
-  title: Note["title"];
-  date: Note["date"];
-  situation?: Note["situation"];
-  automaticThoughts?: Note["automaticThoughts"];
-  cognitiveDistortions?: Note["cognitiveDistortions"];
+  id: Note['id'];
+  title: Note['title'];
+  date: Note['date'];
+  situation: Note['situation'];
+  automaticThoughts: Note['automaticThoughts'];
+  cognitiveDistortions: Note['cognitiveDistortions'];
 }
 
 export const NoteItem: React.FC<NoteItemProps> = ({
@@ -33,20 +32,21 @@ export const NoteItem: React.FC<NoteItemProps> = ({
 
   return (
     <div className={s.root}>
-      <div className={s.title}>
-        <h4>{title}</h4>
-        <Link
-          aria-label="Перейти к записи"
-          title="Перейти к записи"
-          to={`/diary/${id}`}
-          className={cn(
-            buttonVariants({ size: "icon", variant: "ghostMuted" }),
-            "p-0"
-          )}
+      <Link
+        to={ROUTES.DIARY_ENTRY(id)}
+        className={cn(s.title, 'group')}
+        aria-label="Перейти к записи"
+        title="Перейти к записи"
+      >
+        <h3>{title}</h3>
+        <Button
+          size="icon"
+          variant="ghostMuted"
+          className="group-hover:text-foreground"
         >
           <FeatherIcon icon="arrow-up-right" size={32} />
-        </Link>
-      </div>
+        </Button>
+      </Link>
       <div className={s.content}>
         {!!situation && (
           <div className={s.group}>
@@ -55,7 +55,10 @@ export const NoteItem: React.FC<NoteItemProps> = ({
           </div>
         )}
         {!!currentBiasData.length && (
-          <CognitiveBiasBadgeList biasesData={currentBiasData} />
+          <div className={s.group}>
+            <span className={s.fieldName}>Когнитивные искажения:</span>
+            <CognitiveBiasBadgeList biasesData={currentBiasData} />
+          </div>
         )}
         {!!filterThoughtsForView.length && (
           <div className={s.group}>

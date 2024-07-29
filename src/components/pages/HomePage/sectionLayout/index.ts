@@ -1,3 +1,3 @@
-export { SectionContent } from "../sectionLayout/SectionContent";
-export { SectionTitle } from "../sectionLayout/SectionTitle";
-export { SectionWrapper } from "../sectionLayout/SectionWrapper";
+export { SectionContent } from './SectionContent';
+export { SectionTitle } from './SectionTitle';
+export { SectionWrapper } from './SectionWrapper';

@@ -2,7 +2,7 @@
 <a id="readme-top"></a>
 
 <!-- ABOUT THE PROJECT -->
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![MindEcho][product-image]]
 
 # ( • ᴗ - ) ✧ MindEcho
 
@@ -143,7 +143,7 @@ Project Link: [https://github.com/XLasel/mindecho](https://github.com/XLasel/min
 [issues-shield]: https://img.shields.io/github/issues/XLasel/mindecho.svg?style=for-the-badge
 [issues-url]: https://github.com/XLasel/mindecho/issues
 
-[product-screenshot]: /public/logo-readme.png
+[product-image]: /public/logo-readme.png
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { useAccordionContext } from "@/context/accordion";
+import { useAccordionContext } from '@/context/accordion';
 
-import { AccordionMotionToggle } from "../AccordionToggle";
+import { AccordionMotionToggle } from '../AccordionToggle';
 
-import s from "./AccordionHeader.module.scss";
+import s from './AccordionHeader.module.scss';
 
 interface AccordionHeaderProps {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export const AccordionHeader: React.FC<AccordionHeaderProps> = ({
 
   return (
     <div onClick={toggle} className={s.root}>
-      {typeof children === "string" ? (
+      {typeof children === 'string' ? (
         <>
           <span>{children}</span>
           <AccordionMotionToggle size={28} isOpen={isOpen} />

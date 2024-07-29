@@ -1,20 +1,20 @@
-import { ReactNode,useState } from "react";
+import { ReactNode, useState } from 'react';
 
-import { AnimatedCollapse } from "../AnimatedCollapse";
-import { Button } from "../Button";
+import { AnimatedCollapse } from '../AnimatedCollapse';
+import { Button } from '../Button';
 
-import s from "./SpoilerText.module.scss";
+import s from './SpoilerText.module.scss';
 
-type SpoilerTextProps = {
+interface SpoilerTextProps {
   titleOpen?: string;
   titleClosed?: string;
   statusOpen?: boolean;
   children: ReactNode;
-};
+}
 
 export const SpoilerText: React.FC<SpoilerTextProps> = ({
-  titleOpen = "Закрыть",
-  titleClosed = "Открыть",
+  titleOpen = 'Закрыть',
+  titleClosed = 'Открыть',
   statusOpen = false,
   children,
 }) => {
@@ -23,7 +23,7 @@ export const SpoilerText: React.FC<SpoilerTextProps> = ({
   const toggleSpoiler = () => setIsOpen(!isOpen);
 
   return (
-    <div className={s.root}>
+    <div>
       <Button variant="link" size="sm" type="button" onClick={toggleSpoiler}>
         {isOpen ? titleOpen : titleClosed}
       </Button>

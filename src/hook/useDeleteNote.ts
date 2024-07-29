@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from "@/redux/hook";
-import { deleteNote } from "@/redux/noteSlice";
+import { ROUTES } from '@/constants';
+import { useAppDispatch } from '@/redux/hook';
+import { deleteNote } from '@/redux/noteSlice';
 
 export const useDeleteNote = (
   initialId?: string,
   handleDelete?: () => void,
-  shouldNavigate: boolean = true,
+  shouldNavigate: boolean = true
 ) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(initialId);
@@ -28,7 +29,7 @@ export const useDeleteNote = (
       dispatch(deleteNote(taskToDelete));
     }
     if (shouldNavigate) {
-      navigate("/diary");
+      navigate(ROUTES.DIARY);
     }
     setIsModalOpen(false);
   };

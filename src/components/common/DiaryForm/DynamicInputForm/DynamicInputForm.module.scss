@@ -1,5 +1,3 @@
-@import "@styles";
-
 .root {
   display: flex;
 
@@ -36,14 +34,9 @@
   }
 
   & .textarea {
-    flex: 1 1 auto;
+    flex: 1 1 100%;
 
-    max-width: 100%;
     padding: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     background-color: transparent;
     border-radius: 0;
   }

@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import React, { useState } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import s from "./TitleField.module.scss";
+import s from './TitleField.module.scss';
 
 export const TitleField = React.forwardRef<
   HTMLInputElement,
   ReturnType<UseFormRegister<FieldValues>>
 >(({ onChange, onBlur, name }, ref) => {
   const [readOnly, setReadOnly] = useState(true);
-  console.log(readOnly);
 
   const handleFocus = () => {
     setReadOnly(false);
@@ -31,9 +30,10 @@ export const TitleField = React.forwardRef<
         onBlur={handleBlur}
         onFocus={handleFocus}
         placeholder="Новая запись"
-        // maxLength={22}
         autoComplete="off"
       />
     </div>
   );
 });
+
+TitleField.displayName = 'TitleField';

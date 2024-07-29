@@ -1,17 +1,18 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
-import { Container, ContainerProps } from "@/components/layout/Container";
-import { cn } from "@/lib/utils";
+import { Container, type ContainerProps } from '@/components/layout/Container';
+import { cn } from '@/utils/helpers';
 
-import { baseAimation } from "../../anim";
+import { baseAimation } from '../../anim';
 
-import s from "./SectionWrapper.module.scss";
+import s from './SectionWrapper.module.scss';
 
 interface SectionWrapperProps
-  extends React.ComponentProps<"section">,
+  extends React.ComponentProps<'section'>,
     ContainerProps {
   children: JSX.Element | JSX.Element[];
+  width?: ContainerProps['width'];
   innerClassName?: string;
 }
 
@@ -26,6 +27,7 @@ export const SectionWrapper = React.forwardRef<
           variants={baseAimation}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className={cn(s.inner, innerClassName)}
         >
           {children}
@@ -34,3 +36,5 @@ export const SectionWrapper = React.forwardRef<
     </section>
   );
 });
+
+SectionWrapper.displayName = 'SectionWrapper';

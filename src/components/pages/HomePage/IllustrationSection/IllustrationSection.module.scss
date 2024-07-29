@@ -1,13 +1,11 @@
-@import "@styles";
+@import '@styles';
 
 .root {
-  width: 100%;
   color: hsl(var(--secondary-foreground));
   background-color: hsl(var(--secondary));
 
   & p {
-    // @include font(normal 600 36px / 140% "Inter");
-    @extend %h1-home-subtitle-bold;
+    @extend %h1-home-subtitle-big;
 
     & em {
       color: hsl(var(--accent));

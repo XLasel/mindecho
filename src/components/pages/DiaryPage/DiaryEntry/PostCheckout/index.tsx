@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Button } from "@/components/common/Button";
-import { ModalForDeletion } from "@/components/common/ModalForDeletion";
-import { useDeleteNote } from "@/hook/useDeleteNote";
-import { cn } from "@/lib/utils";
-import { useAppDispatch } from "@/redux/hook";
-import { Note, updateNote } from "@/redux/noteSlice";
+import { Button } from '@/components/common/Button';
+import { ModalForDeletion } from '@/components/common/ModalForDeletion';
+import { useDeleteNote } from '@/hook/useDeleteNote';
+import { useAppDispatch } from '@/redux/hook';
+import { updateNote } from '@/redux/noteSlice';
+import { cn } from '@/utils/helpers';
 
-import { PostCheckoutForm } from "./PostCheckoutForm";
+import { PostCheckoutForm } from './PostCheckoutForm';
 
-import s from "./PostCheckout.module.scss";
+import s from './PostCheckout.module.scss';
 
-interface PostCheckoutProps extends React.ComponentPropsWithoutRef<"section"> {
+interface PostCheckoutProps extends React.ComponentPropsWithoutRef<'section'> {
   note: Note;
 }
 
@@ -19,24 +19,25 @@ export const PostCheckout: React.FC<PostCheckoutProps> = ({
   note,
   className,
 }) => {
+  const dispatch = useAppDispatch();
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDrity, setIsDrity] = useState(true);
+
   const handleDelete = () => {
     dispatch(
       updateNote({
         ...note,
         postComment: undefined,
         newDiscomfortLevel: undefined,
-      }),
+      })
     );
   };
 
-  const dispatch = useAppDispatch();
-  const [isEditing, setIsEditing] = useState(false);
-  const [isDrity, setIsDrity] = useState(true);
   const { isModalOpen, handleDeleteClick, handleConfirmDelete, closeModal } =
     useDeleteNote(undefined, handleDelete, false);
 
   useEffect(() => {
-    if (!!note.postComment || typeof note.newDiscomfortLevel !== "undefined") {
+    if (!!note.postComment || typeof note.newDiscomfortLevel !== 'undefined') {
       setIsDrity(false);
       return;
     }
@@ -68,11 +69,7 @@ export const PostCheckout: React.FC<PostCheckoutProps> = ({
               <div className={s.section}>
                 <h4>Комментарий</h4>
                 <div className={s.area}>
-                  {note.postComment !== "" ? (
-                    <i>«{note.postComment}»</i>
-                  ) : (
-                    "..."
-                  )}
+                  {note.postComment !== '' ? <p>{note.postComment}</p> : '...'}
                 </div>
               </div>
               <div className={s.layout}>
@@ -81,7 +78,7 @@ export const PostCheckout: React.FC<PostCheckoutProps> = ({
                   <div className={s.area}>
                     {note.newDiscomfortLevel
                       ? `${note.newDiscomfortLevel} / 10`
-                      : "Ощущение комфорта"}
+                      : 'Ощущение комфорта'}
                   </div>
                 </div>
                 <div className={s.buttons}>

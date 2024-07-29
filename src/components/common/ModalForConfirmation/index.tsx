@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
-import FeatherIcon from "feather-icons-react";
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import FeatherIcon from 'feather-icons-react';
 
-import { Button } from "@/components/common/Button";
+import { Button } from '@/components/common/Button';
 
-import s from "./ModalForConfirmation.module.scss";
+import s from './ModalForConfirmation.module.scss';
 
 interface ModalForConfirmationProps {
   isOpen: boolean;
@@ -12,7 +12,7 @@ interface ModalForConfirmationProps {
   onConfirm: () => void;
   title: string;
   message: string;
-  buttonConfirmStyle?: "default" | "destructive";
+  buttonConfirmStyle?: 'default' | 'destructive';
   confirmButtonText?: string;
   cancelButtonText?: string;
   children?: React.ReactNode;
@@ -24,23 +24,23 @@ export const ModalForConfirmation: React.FC<ModalForConfirmationProps> = ({
   onConfirm,
   title,
   message,
-  buttonConfirmStyle = "default",
-  confirmButtonText = "Подтвердить",
-  cancelButtonText = "Отмена",
+  buttonConfirmStyle = 'default',
+  confirmButtonText = 'Подтвердить',
+  cancelButtonText = 'Отмена',
   children,
 }) => {
   useEffect(() => {
     const closeOnEscapeKey = (e: KeyboardEvent) =>
-      e.key === "Escape" ? onClose() : null;
-    document.body.addEventListener("keydown", closeOnEscapeKey);
+      e.key === 'Escape' ? onClose() : null;
+    document.body.addEventListener('keydown', closeOnEscapeKey);
     return () => {
-      document.body.removeEventListener("keydown", closeOnEscapeKey);
+      document.body.removeEventListener('keydown', closeOnEscapeKey);
     };
   }, [onClose]);
 
   if (!isOpen) return null;
 
-  const portalRoot = document.getElementById("portal-root");
+  const portalRoot = document.getElementById('portal-root');
 
   if (!portalRoot) return null;
 
@@ -78,6 +78,6 @@ export const ModalForConfirmation: React.FC<ModalForConfirmationProps> = ({
         </div>
       </div>
     </div>,
-    portalRoot,
+    portalRoot
   );
 };

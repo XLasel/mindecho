@@ -1,23 +1,25 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   display: flex;
 
   flex-direction: column;
   gap: var(--space_m);
-  // cursor: pointer;
 
   padding: var(--space_l);
   color: hsl(var(--card-foreground));
   background-color: hsl(var(--card));
+
   border-radius: var(--border-radius-m);
 }
 
 .title {
   display: flex;
   gap: var(--space_s);
+  align-items: flex-start;
 
   justify-content: space-between;
+  overflow-wrap: anywhere;
 }
 
 .content {
@@ -39,11 +41,9 @@
 
   & ol {
     @extend %numbered-list;
-    // @include numbered-list;
   }
 
   & ul {
-    // @include styled-list;
     @extend %styled-list;
   }
 }
@@ -53,24 +53,3 @@
 
   font-style: italic;
 }
-
-.thought {
-  // @extend %text-explaining-style;
-
-  // font-style: italic;
-  color: hsl(var(--text-muted));
-  text-decoration: line-through;
-}
-
-// .subtitle {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: var(--space_xs);
-// }
-
-// .footer {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     gap: var(--space_3xs);
-// }

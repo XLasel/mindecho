@@ -1,46 +1,32 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   @extend %text-button-m;
 
   display: inline-flex;
   gap: var(--space_2xs);
-  // background-color: hsl(var(--white) / 0.4);
+
   padding: var(--space_2xs) var(--space_s);
   color: hsl(var(--white));
-  background-color: hsl(var(--card));
 
-  // border: 2px solid hsl(var(--white) / 0.7);
-  // background-color: hsl(var(--card));
-  // border: 2px solid transparent;
-  border: 2px solid hsl(var(--white));
-  border: 2px solid transparent;
+  text-align: center;
+  background-color: hsl(var(--white) / 0.18);
 
-  // border-color: hsl(var(--black2));
   border-radius: var(--border-radius-full);
   box-shadow: 1px 1px 30px -4px rgb(43 18 73 / 0.2);
-  // color: hsl(var(--secondary));
-
   transition: all 0.3s ease-out;
 
   &:hover {
-    // background-color: hsl(var(--white) / 0.22);
-    // background-color: hsl(var(--secondary));
-    // color: hsl(var(--secondary-foreground));
+    background-color: hsl(var(--white) / 0.23);
   }
 }
 
 .selected {
-
   color: hsl(var(--secondary-foreground));
-  // background-color: hsl(var(--white));
-  background-color: hsl(var(--secondary));
-  border-color: transparent;
-  // color: hsl(var(--black));
-  // color: hsl(var(--blue));
+  background-color: hsl(var(--green));
 
   &:hover {
-    // background-color: hsl(var(--white) / 0.9);
+    background-color: hsl(var(--green) / 0.85);
   }
 }
 

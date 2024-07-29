@@ -1,35 +1,25 @@
-import { CognitiveBiasBadgeList } from "@/components/common/CognitiveBiasBadgeList";
-import { EmotionChipList } from "@/components/common/EmotionChipList";
-import { biases, emotionGroups } from "@/constants";
+import { CognitiveBiasBadgeList } from '@/components/common/CognitiveBiasBadgeList';
+import { EmotionChipList } from '@/components/common/EmotionChipList';
+import { biases, emotionGroups } from '@/constants';
 import {
   filteredBiases,
   filteredEmotionsGroup,
   isEmptyObject,
-} from "@/lib/utils";
+} from '@/utils/helpers';
 
-import s from "./ThoughtTable.module.scss";
+import s from './ThoughtTable.module.scss';
 
-export const ThoughtTable = ({ data }) => {
+export const ThoughtTable = ({ data }: { data: Note }) => {
   const currentEmotionData = filteredEmotionsGroup(
     data?.emotions,
-    emotionGroups,
+    emotionGroups
   );
   const currentBiasData = filteredBiases(data?.cognitiveDistortions, biases);
 
   return (
     <div className={s.root}>
-      <table className={s.table}>
+      <table>
         <tbody>
-          {/* <tr>
-            <th>Автоматические мысли</th>
-            <td>
-              <ol>
-                {data.automaticThoughts.map((el, index) => (
-                  <li key={index}>{el.thought ? el.thought : "..."}</li>
-                ))}
-              </ol>
-            </td>
-          </tr> */}
           {!isEmptyObject(currentEmotionData) && (
             <tr>
               <th>Эмоции</th>
@@ -70,9 +60,6 @@ export const ThoughtTable = ({ data }) => {
               </td>
             </tr>
           )}
-
-          {/* <td>{item.thought}</td> */}
-          {/* <td>{item.response}</td> */}
         </tbody>
       </table>
     </div>

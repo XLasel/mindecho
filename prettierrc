@@ -1,9 +1,0 @@
-{
-  "singleQuote": true,
-  "tabWidth": 2,
-  "semi": true,
-  "printWidth": 100,
-  "stylelintIntegration": true,
-  "endOfLine": "auto",
-  "trailingComma": "es5"
-}

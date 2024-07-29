@@ -1,24 +1,15 @@
-@import "@styles";
-
 .root {
+  color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
+}
+
+.wrapper {
   display: flex;
 
   flex-flow: column wrap;
-  // align-items: center;
   gap: var(--space_l);
 
-  padding: var(--space_xl);
-  color: hsl(var(--secondary-foreground));
-  background-color: hsl(var(--secondary));
-
-  // border-radius: var(--border-radius-l);
-
-  // margin-left: 300px;
-
-  // width: 1000px;
-  // align-self: flex-end;
-
-  // text-align: center;
+  padding: var(--space_s) 0;
 }
 
 .logo-panel {

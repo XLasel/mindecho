@@ -1,23 +1,15 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { FormProvider, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button } from "@/components/common/Button";
-import { RangeInput } from "@/components/common/RangeInput";
-import { ResizableTextarea } from "@/components/common/ResizableTextarea";
-import { normalizeRangeValue } from "@/lib/utils";
-import { useAppDispatch } from "@/redux/hook";
-import { type Note } from "@/redux/noteSlice";
-import { updateNote } from "@/redux/noteSlice";
+import { Button } from '@/components/common/Button';
+import { RangeInput } from '@/components/common/RangeInput';
+import { ResizableTextarea } from '@/components/common/ResizableTextarea';
+import { useAppDispatch } from '@/redux/hook';
+import { updateNote } from '@/redux/noteSlice';
+import { type PostCheckoutFormDataType, PostCheckoutSchema } from '@/scheme';
+import { normalizeRangeValue } from '@/utils/helpers';
 
-import s from "./PostCheckoutForm.module.scss";
-
-const PostCheckoutSchema = z.object({
-  postComment: z.string().optional(),
-  newDiscomfortLevel: z.coerce.number().min(0).max(10).optional(),
-});
-
-type PostCheckoutFormData = z.infer<typeof PostCheckoutSchema>;
+import s from './PostCheckoutForm.module.scss';
 
 export const PostCheckoutForm = ({
   note,
@@ -26,9 +18,9 @@ export const PostCheckoutForm = ({
   note: Note;
   editModeHandler: (mode: boolean) => void;
 }) => {
-  const methods = useForm<PostCheckoutFormData>({
+  const methods = useForm<PostCheckoutFormDataType>({
     defaultValues: {
-      postComment: note?.postComment || "",
+      postComment: note?.postComment || '',
       newDiscomfortLevel: normalizeRangeValue(note.newDiscomfortLevel),
     },
     resolver: zodResolver(PostCheckoutSchema),
@@ -42,7 +34,7 @@ export const PostCheckoutForm = ({
 
   const dispatch = useAppDispatch();
 
-  const onSubmit = (data: PostCheckoutFormData) => {
+  const onSubmit = (data: PostCheckoutFormDataType) => {
     const currentData = { ...note, ...data };
     dispatch(updateNote(currentData));
     reset();

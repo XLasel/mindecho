@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { CognitiveBias } from "@/constants";
+import type { CognitiveBias } from '@/constants/types';
 
-import { CognitiveBiasBadge } from "../CognitiveBiasBadge";
+import { CognitiveBiasBadge } from '../CognitiveBiasBadge';
 
-import s from "./CognitiveBiasBadgeList.module.scss";
+import s from './CognitiveBiasBadgeList.module.scss';
 
 interface CognitiveBiasBadgeListProps {
   biasesData: CognitiveBias[];
@@ -12,12 +12,10 @@ interface CognitiveBiasBadgeListProps {
 
 export const CognitiveBiasBadgeList: React.FC<CognitiveBiasBadgeListProps> = ({
   biasesData,
-}) => {
-  return (
-    <div className={s.root}>
-      {biasesData.map((bias) => (
-        <CognitiveBiasBadge key={bias.id} {...bias} />
-      ))}
-    </div>
-  );
-};
+}) => (
+  <div className={s.root}>
+    {biasesData.map((bias) => (
+      <CognitiveBiasBadge key={bias.id} {...bias} />
+    ))}
+  </div>
+);

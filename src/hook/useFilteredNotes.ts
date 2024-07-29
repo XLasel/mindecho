@@ -1,5 +1,5 @@
-import { filterNotesByDateRange } from "@/lib/dateUtils";
-import { Note } from "@/redux/noteSlice";
+import { SearchParamsType } from '@/scheme';
+import { filterNotesByDateRange } from '@/utils/helpers';
 
 interface UseFilteredNotesResult {
   filteredNotes: Note[];
@@ -9,25 +9,25 @@ interface UseFilteredNotesResult {
 
 export const useFilteredNotes = (
   notes: Note[],
-  searchParams: string,
-  startDate: string,
-  endDate: string,
+  searchParams: SearchParamsType['q'],
+  startDate: SearchParamsType['start_date'],
+  endDate: SearchParamsType['end_date']
 ): UseFilteredNotesResult => {
   let filteredNotes = notes;
   let isFiltered = false;
-  let message: string | null = null;
+  let message = null;
 
   if (searchParams) {
     filteredNotes = filteredNotes.filter((note) =>
       Object.values(note).some(
         (value) =>
-          typeof value === "string" &&
-          value.toLowerCase().includes(searchParams.toLowerCase()),
-      ),
+          typeof value === 'string' &&
+          value.toLowerCase().includes(searchParams.toLowerCase())
+      )
     );
     isFiltered = true;
     if (filteredNotes.length === 0) {
-      message = "Записи с указанным запросом не найдены";
+      message = 'Записи с указанным запросом не найдены';
     }
   }
 
@@ -35,7 +35,7 @@ export const useFilteredNotes = (
     filteredNotes = filterNotesByDateRange(filteredNotes, startDate, endDate);
     isFiltered = true;
     if (filteredNotes.length === 0) {
-      message = "В указанном диапазоне записей не найдено";
+      message = 'В указанном диапазоне записей не найдено';
     }
   }
 

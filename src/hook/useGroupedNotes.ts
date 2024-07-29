@@ -6,37 +6,35 @@ import {
   isToday,
   isYesterday,
   subDays,
-} from "date-fns";
-
-import { Note } from "@/redux/noteSlice";
+} from 'date-fns';
 
 export const useGroupedNotes = (notes: Note[]) => {
   const grouped: { [key: string]: Note[] } = {};
 
   notes.forEach((note) => {
     const date = new Date(note.date);
-    let key = "";
+    let key = '';
     switch (true) {
       case isToday(date):
-        key = "Сегодня";
+        key = 'Сегодня';
         break;
       case isYesterday(date):
-        key = "Вчера";
+        key = 'Вчера';
         break;
       case isThisWeek(date):
-        key = "Последние 7 дней";
+        key = 'Последние 7 дней';
         break;
       case date >= subDays(new Date(), 30):
-        key = "Прошедшие 30 дней";
+        key = 'Прошедшие 30 дней';
         break;
       case isThisMonth(date):
-        key = "Текущий месяц";
+        key = 'Текущий месяц';
         break;
       case isThisYear(date):
-        key = "Текущий год";
+        key = 'Текущий год';
         break;
       default:
-        key = format(date, "yyyy");
+        key = format(date, 'yyyy');
         break;
     }
 

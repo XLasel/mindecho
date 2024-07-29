@@ -1,34 +1,17 @@
-import React, { forwardRef } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import React, { forwardRef } from 'react';
 
-import { type NameSectionProps } from "@/constants";
-import { useSectionContext } from "@/context/section";
+import { type NameSectionType } from '@/constants/types';
 
-import s from "./SectionForm.module.scss";
+import s from './SectionForm.module.scss';
 
 interface SectionFormProps extends React.HTMLAttributes<HTMLElement> {
-  section: NameSectionProps;
+  section: NameSectionType;
   description: JSX.Element | JSX.Element[];
   children: JSX.Element | JSX.Element[];
 }
 
 export const SectionForm = forwardRef<HTMLElement, SectionFormProps>(
   ({ section, description, children, ...props }, ref) => {
-    const { setActiveSection } = useSectionContext();
-    const { scrollYProgress } = useScroll({
-      target: ref,
-    });
-    console.log(ref);
-    // const { scrollY } = useScroll();
-
-    useMotionValueEvent(scrollYProgress, "change", (value) => {
-      // console.log(`prevent ${section.idFormInput} ${value}`);
-
-      if (value > 0 && value < 1) {
-        setActiveSection(section.idFormInput);
-        // console.log(`${section.idFormInput} ${value}`);
-      }
-    });
     return (
       <section
         className={s.root}
@@ -49,3 +32,5 @@ export const SectionForm = forwardRef<HTMLElement, SectionFormProps>(
     );
   }
 );
+
+SectionForm.displayName = 'SectionForm';

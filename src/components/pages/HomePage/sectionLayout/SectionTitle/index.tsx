@@ -1,6 +1,6 @@
-import { motion,MotionProps } from "framer-motion";
+import { motion, MotionProps } from 'framer-motion';
 
-import { aimationSlideLeft } from "../../anim";
+import { aimationSlideLeft } from '../../anim';
 
 type SectionTitleProps = MotionProps &
   React.HTMLAttributes<HTMLHeadingElement> & {
@@ -10,10 +10,8 @@ type SectionTitleProps = MotionProps &
 export const SectionTitle: React.FC<SectionTitleProps> = ({
   children,
   ...props
-}) => {
-  return (
-    <motion.h2 variants={aimationSlideLeft} {...props}>
-      {children}
-    </motion.h2>
-  );
-};
+}) => (
+  <motion.h2 variants={aimationSlideLeft} {...props}>
+    {children}
+  </motion.h2>
+);

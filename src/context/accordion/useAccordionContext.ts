@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { AccordionContext } from "./AccordionContext";
+import { AccordionContext } from './AccordionContext';
 
 export const useAccordionContext = () => {
   const context = useContext(AccordionContext);
   if (!context) {
     throw new Error(
-      "useAccordionContext must be used within an AccordionProvider"
+      'useAccordionContext must be used within an AccordionProvider'
     );
   }
   return context;

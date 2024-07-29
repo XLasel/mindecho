@@ -1,19 +1,8 @@
-@import "@styles";
-
 .root {
   display: flex;
 
   flex-direction: column;
   gap: var(--space_l);
-
-  // & textarea {
-  //     width: 100%;
-  //     background-color: transparent;
-  //     border-radius: var(--border-radius-s);
-  //     border: 2px;
-  //     border-color: hsl(var(--white) / 0.8);
-  //     resize: none;
-  // }
 
   & hr {
     height: 2px;
@@ -25,67 +14,6 @@
   display: flex;
 
   flex-direction: column;
-  // align-items: stretch;
-  // width: 100%;
-  // max-width: 100%;
-  // overflow: hidden;
-}
-
-// .input-group {
-//     display: grid;
-//     grid-template-columns: 2fr 1fr;
-
-//     gap: var(--space_m);
-
-//     & textarea {
-//         padding: 12px 24px;
-//         background-color: hsl(var(--card));
-//     }
-// }
-
-.input-group,
-.fieldset-group {
-  display: flex;
-
-  flex-direction: column;
-  gap: var(--space_m);
-
-  & label,
-  .fake-legend {
-    @extend %h3;
-  }
-
-  // & p {
-  //     @extend %body-small;
-  //     // font-style: italic;
-  //     color: hsl(var(--white) / 0.7);
-  // }
-
-  // & textarea {
-  //     padding: 12px 24px;
-  //     background-color: hsl(var(--card));
-  //     // color: hsl(var(--white) / 0.8);
-
-  //     &::placeholder {
-  //         color: hsl(var(--white) / 0.5);
-  //         font-style: italic;
-  //     }
-  // }
-}
-
-.description {
-  @extend %body-small;
-
-  color: hsl(var(--white) / 0.7);
-
-  & ol {
-    // @include styled-list;
-    @extend %styled-list;
-  }
-
-  & p:not(:last-child) {
-    margin-bottom: var(--base-margin);
-  }
 }
 
 .buttons {
@@ -94,16 +22,3 @@
   flex-direction: column;
   gap: var(--space_2xs);
 }
-
-// .label {
-//     display: flex;
-//     flex-direction: column;
-//     gap: var(--space_s);
-// }
-
-// .description {
-//     display: flex;
-//     align-items: center;
-//     border-left: 2px solid hsl(var(--secondary));
-//     padding-left: var(--space_m);
-// }

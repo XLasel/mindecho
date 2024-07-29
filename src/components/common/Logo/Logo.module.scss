@@ -1,16 +1,16 @@
-@import "@styles";
+@import '@styles';
 
 .root {
-  @include font(normal 400 48px / 100% "Inter");
+  @include font(normal 400 48px / 100% 'Inter');
 
   display: flex;
 
   align-items: center;
 
-  padding: var(--space_xs) var(--space_m);
+  padding: var(--space_xs) var(--space_xs);
 
   @include mobile() {
-    @include font(normal 400 28px / 48px "Inter");
+    @include font(normal 400 28px / 48px 'Inter');
   }
 }
 
@@ -41,9 +41,9 @@
 }
 
 .accent {
-  @include font(normal 800 48px / 100% "Inter");
+  @include font(normal 800 48px / 100% 'Inter');
 
   @include mobile() {
-    @include font(normal 800 28px / 48px "Inter");
+    @include font(normal 800 28px / 48px 'Inter');
   }
 }

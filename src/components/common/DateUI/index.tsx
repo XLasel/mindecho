@@ -1,8 +1,8 @@
-import FeatherIcon from "feather-icons-react";
+import FeatherIcon from 'feather-icons-react';
 
-import { formatDateForUI } from "@/lib/dateUtils";
+import { formatDateForUI } from '@/utils/helpers';
 
-import s from "./DateUI.module.scss";
+import s from './DateUI.module.scss';
 
 export const DateUI = ({ date }: { date: string }) => {
   const formattedDate = formatDateForUI(date);

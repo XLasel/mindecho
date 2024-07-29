@@ -1,4 +1,4 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   display: flex;
@@ -10,11 +10,7 @@
 
     width: min(60vw, 800px);
     max-width: 100%;
-
-    // display: block;
     background-color: transparent;
-    // max-width: 50%;
-    // overflow: hidden;
 
     &::placeholder {
       color: hsl(var(--white) / 0.5);

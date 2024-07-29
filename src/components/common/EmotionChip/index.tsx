@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/utils/helpers';
 
-import s from "./EmotionChip.module.scss";
+import s from './EmotionChip.module.scss';
 
 interface EmotionChipProps {
   emoji: string;
@@ -16,16 +16,14 @@ export const EmotionChip: React.FC<EmotionChipProps> = ({
   label,
   selected,
   onClick,
-}) => {
-  return (
-    <div
-      className={cn(s.root, selected && s.selected, !!onClick && s.clickable)}
-      onClick={onClick}
-    >
-      <span role="img" aria-label={label}>
-        {emoji}
-      </span>
-      <span>{label}</span>
-    </div>
-  );
-};
+}) => (
+  <div
+    className={cn(s.root, selected && s.selected, !!onClick && s.clickable)}
+    onClick={onClick}
+  >
+    <span role="img" aria-label={label}>
+      {emoji}
+    </span>
+    <span>{label}</span>
+  </div>
+);

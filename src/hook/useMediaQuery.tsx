@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useMediaQuery = (query: string) => {
   const [matches, setMatches] = useState(false);
@@ -7,11 +7,11 @@ export const useMediaQuery = (query: string) => {
     const mediaQueryList = window.matchMedia(query);
     const documentChangeHandler = () => setMatches(mediaQueryList.matches);
 
-    mediaQueryList.addEventListener("change", documentChangeHandler);
+    mediaQueryList.addEventListener('change', documentChangeHandler);
     documentChangeHandler();
 
     return () => {
-      mediaQueryList.removeEventListener("change", documentChangeHandler);
+      mediaQueryList.removeEventListener('change', documentChangeHandler);
     };
   }, [query]);
 

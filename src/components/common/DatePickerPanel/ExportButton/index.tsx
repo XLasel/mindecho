@@ -1,25 +1,25 @@
-import React, { useEffect,useState } from "react";
-import { pdf } from "@react-pdf/renderer";
-import FeatherIcon from "feather-icons-react";
-import { saveAs } from "file-saver";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from 'react';
+import { pdf } from '@react-pdf/renderer';
+import FeatherIcon from 'feather-icons-react';
+import { saveAs } from 'file-saver';
+import { motion } from 'framer-motion';
 
-import { Button, type ButtonProps } from "@/components/common/Button";
-import { filterNotesByDateRange } from "@/lib/dateUtils";
-import { useAppSelector } from "@/redux/hook";
-import { Note } from "@/redux/noteSlice";
+import { Button, type ButtonProps } from '@/components/common/Button';
+import { useAppSelector } from '@/redux/hook';
+import { selectAllNotes } from '@/redux/selectors';
+import { filterNotesByDateRange } from '@/utils/helpers';
 
-import { PDFTemplateNotes } from "../PDFTemplateNotes";
+import { PDFTemplateNotes } from '../PDFTemplateNotes';
 
 const spinTransition = {
   loop: Infinity,
-  ease: "linear",
+  ease: 'linear',
   duration: 1,
 };
 
 interface ExportButtonProps extends ButtonProps {
-  startDate: Date | string | undefined;
-  endDate: Date | string | undefined;
+  startDate: Date | undefined;
+  endDate: Date | undefined;
 }
 
 export const ExportButton: React.FC<ExportButtonProps> = ({
@@ -27,7 +27,7 @@ export const ExportButton: React.FC<ExportButtonProps> = ({
   endDate,
   ...props
 }) => {
-  const notes = useAppSelector((state) => state.notes.notes);
+  const notes = useAppSelector(selectAllNotes);
   const [filteredNotes, setFilteredNotes] = useState<Note[]>([]);
   const [isReadyToRender, setIsReadyToRender] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ export const ExportButton: React.FC<ExportButtonProps> = ({
     const asPdf = pdf();
     asPdf.updateContainer(doc);
     const blob = await asPdf.toBlob();
-    saveAs(blob, "notes.pdf");
+    saveAs(blob, 'notes.pdf');
     setLoading(false);
   };
 

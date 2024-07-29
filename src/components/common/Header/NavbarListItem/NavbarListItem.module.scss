@@ -1,11 +1,10 @@
-@import "@styles";
-
 .root {
   font-weight: 600;
 }
 
 .link {
   padding: var(--space_xs) var(--space_m);
+  text-align: center;
   text-transform: uppercase;
   list-style: none;
 
@@ -15,7 +14,7 @@
     color: hsl(var(--foreground) / 0.85);
   }
 
-  &[aria-current="page"] {
+  &[aria-current='page'] {
     color: hsl(var(--secondary));
 
     &:hover {

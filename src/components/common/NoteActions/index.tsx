@@ -1,26 +1,27 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import FeatherIcon from "feather-icons-react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import FeatherIcon from 'feather-icons-react';
 
-import { Button } from "@/components/common/Button";
-import { DateUI } from "@/components/common/DateUI";
-import { ModalForDeletion } from "@/components/common/ModalForDeletion";
-import { useBackNavigation } from "@/hook/useBackNavigation";
-import { useDeleteNote } from "@/hook/useDeleteNote";
+import { Button } from '@/components/common/Button';
+import { DateUI } from '@/components/common/DateUI';
+import { ModalForDeletion } from '@/components/common/ModalForDeletion';
+import { ROUTES } from '@/constants';
+import { useBackNavigation } from '@/hook/useBackNavigation';
+import { useDeleteNote } from '@/hook/useDeleteNote';
 
-import s from "./NoteActions.module.scss";
+import s from './NoteActions.module.scss';
 
 interface NoteActionsProps {
-  date: string;
-  id: string;
+  id: Note['id'];
+  date: Note['date'];
   isEditMode?: boolean;
   saveEdit?: () => void;
   resetChanges?: () => void;
 }
 
 export const NoteActions: React.FC<NoteActionsProps> = ({
-  date,
   id,
+  date,
   isEditMode = false,
   saveEdit,
   resetChanges,
@@ -36,7 +37,7 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
       goBack();
       return;
     }
-    navigate(`/diary/${id}/edit`);
+    navigate(ROUTES.DIARY_EDIT(id));
   };
 
   const resetChange = () => {
@@ -51,10 +52,10 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
       <DateUI date={date} />
       <div className={s.modify}>
         <Button
+          type="button"
           size="icon"
           variant="ghostMuted"
           animation="scale"
-          type="button"
           onClick={() => handleDeleteClick(id)}
           aria-label="Удалить запись"
           title="Удалить запись"
@@ -63,6 +64,7 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
         </Button>
         {isEditMode && (
           <Button
+            type="button"
             size="icon"
             variant="ghostMuted"
             animation="scale"
@@ -74,14 +76,15 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
           </Button>
         )}
         <Button
+          type="button"
           size="icon"
           variant="ghostMuted"
           animation="scale"
           onClick={handleEditMode}
-          aria-label={isEditMode ? "Сохранить" : "Редактировать"}
-          title={isEditMode ? "Сохранить" : "Редактировать"}
+          aria-label={isEditMode ? 'Сохранить' : 'Редактировать'}
+          title={isEditMode ? 'Сохранить' : 'Редактировать'}
         >
-          <FeatherIcon icon={isEditMode ? "check" : "edit-2"} size={22} />
+          <FeatherIcon icon={isEditMode ? 'check' : 'edit-2'} size={22} />
         </Button>
       </div>
       <ModalForDeletion

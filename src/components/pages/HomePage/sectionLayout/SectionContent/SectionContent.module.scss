@@ -1,9 +1,7 @@
-@import "@styles";
+@import '@styles';
 
 .root {
-  gap: var(--space_m);
-
-  // max-width: 900px;
+  gap: var(--section-space-home-3lv);
 }
 
 .column {
@@ -17,11 +15,6 @@
 
   flex-direction: row;
 }
-
-// .row {
-//     display: flex;
-//     flex-direction: row;
-// }
 
 .text-big {
   @extend %h1-home-subtitle;

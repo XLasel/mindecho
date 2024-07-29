@@ -1,26 +1,34 @@
-import React, { useEffect, useRef,useState } from "react";
-import { RegisterOptions,useFormContext } from "react-hook-form";
+import React, { useEffect, useRef, useState } from 'react';
+import { RegisterOptions, useFormContext } from 'react-hook-form';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/utils/helpers';
 
-import s from "./ResizableTextarea.module.scss";
+import s from './ResizableTextarea.module.scss';
 
 const maxHeight = 150;
 const minHeight = 0;
 
-type ResizableTextareaProps = {
+interface ResizableTextareaProps
+  extends React.ComponentPropsWithoutRef<'textarea'> {
   name: string;
-  placeholder?: string;
-  classNames?: string;
-};
+}
 
-export const ResizableTextarea: React.FC<
-  React.ComponentPropsWithoutRef<"textarea"> & ResizableTextareaProps
-> = ({ name, placeholder, classNames, ...props }) => {
+export const ResizableTextarea: React.FC<ResizableTextareaProps> = ({
+  name,
+  placeholder,
+  className,
+  ...props
+}) => {
   const { register, getValues, setValue } = useFormContext();
   const [init, setInit] = useState(true);
-  const [text, setText] = useState<string>(getValues(name) || "");
+  const [text, setText] = useState<string>(getValues(name) || '');
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = event.target;
+    setText(value);
+    setValue(name, value);
+  };
 
   const { ref, ...rest } = register(name, {
     onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => handleChange(e),
@@ -39,7 +47,7 @@ export const ResizableTextarea: React.FC<
         setInit(false);
       }
       textArea.style.height = `${minHeight + offsetBorder}px`;
-      const scrollHeight = textArea.scrollHeight;
+      const { scrollHeight } = textArea;
       if (scrollHeight > maxHeight) {
         textArea.style.height = `${maxHeight}px`;
       } else {
@@ -47,12 +55,6 @@ export const ResizableTextarea: React.FC<
       }
     }
   }, [text, init]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = event.target.value;
-    setText(value);
-    setValue(name, value);
-  };
 
   return (
     <textarea
@@ -63,7 +65,7 @@ export const ResizableTextarea: React.FC<
         textAreaRef.current = e;
       }}
       placeholder={placeholder}
-      className={cn(s.root, classNames)}
+      className={cn(s.root, className)}
       {...props}
     />
   );

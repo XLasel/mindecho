@@ -1,23 +1,25 @@
-import { Link } from "react-router-dom";
-import FeatherIcon from "feather-icons-react";
+import { Link } from 'react-router-dom';
+import FeatherIcon from 'feather-icons-react';
 
-import Arrow from "@/assets/arrow.svg";
-import { Button } from "@/components/common/Button";
-import { DatePickerPanel } from "@/components/common/DatePickerPanel";
-import { SearchInput } from "@/components/common/Search";
-import { Container } from "@/components/layout/Container";
-import IMAGE from "@/images";
-import { useAppSelector } from "@/redux/hook";
+import Arrow from '@/assets/arrow.svg';
+import { Button } from '@/components/common/Button';
+import { DatePickerPanel } from '@/components/common/DatePickerPanel';
+import { SearchInput } from '@/components/common/Search';
+import { Container } from '@/components/layout/Container';
+import { InnerPageLayout } from '@/components/layout/InnerPageLayout';
+import { IMAGE, ROUTES } from '@/constants';
+import { useAppSelector } from '@/redux/hook';
+import { selectAllNotes } from '@/redux/selectors';
 
-import { NotesList } from "./NotesList";
+import { NotesList } from './NotesList';
 
-import s from "./DiaryPage.module.scss";
+import s from './DiaryPage.module.scss';
 
 export const DiaryPage = () => {
-  const notes = useAppSelector((state) => state.notes.notes);
+  const notes = useAppSelector(selectAllNotes);
   return (
     <Container width="small">
-      <div className={s.root}>
+      <InnerPageLayout>
         <h1>Дневник эмоций</h1>
         <div className={s.controls}>
           {notes.length > 0 ? (
@@ -36,7 +38,7 @@ export const DiaryPage = () => {
               </div>
             </div>
           )}
-          <Link to="add">
+          <Link to={ROUTES.DIARY_ADD}>
             <Button
               size="lg"
               className="inline-flex gap-2 text-xl rounded-lg text-white border-2 border-dashed w-full h-12 bg-transparent hover:text-black  hover:border-transparent hover:bg-secondary"
@@ -47,7 +49,7 @@ export const DiaryPage = () => {
           </Link>
         </div>
         <NotesList />
-      </div>
+      </InnerPageLayout>
     </Container>
   );
 };

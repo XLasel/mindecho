@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { AccordionContext } from "./AccordionContext";
+import { AccordionContext } from './AccordionContext';
 
 interface AccordionProviderProps {
   children: React.ReactNode;

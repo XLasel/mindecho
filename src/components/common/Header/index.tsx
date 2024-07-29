@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 
-import { Logo } from "@/components/common/Logo";
-import { navLinks } from "@/constants/index";
-import { useMediaQueries } from "@/hook/useMediaQueries";
-import { cn } from "@/lib/utils";
+import { Logo } from '@/components/common/Logo';
+import { Container } from '@/components/layout/Container';
+import { navLinks, ROUTES } from '@/constants';
+import { useMediaQueries } from '@/hook/useMediaQueries';
+import { cn } from '@/utils/helpers';
 
-import { BurgerMenu } from "./BurgerMenu";
-import { BurgerToggle } from "./BurgerToggle";
-import { NavbarListItem } from "./NavbarListItem";
+import { BurgerMenu } from './BurgerMenu';
+import { BurgerToggle } from './BurgerToggle';
+import { NavbarListItem } from './NavbarListItem';
 
-import s from "./Header.module.scss";
+import s from './Header.module.scss';
 
 interface SidebarProps {
   className?: string;
@@ -21,44 +22,46 @@ const parentVariants = {
   visible: {
     y: 0,
   },
-  hidden: { y: "calc(-1 * var(--header-height))" },
+  hidden: { y: 'calc(-1 * var(--header-height))' },
 };
 
 export const Header: React.FC<SidebarProps> = ({ className }) => {
   const { scrollY } = useScroll();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [hidden, setHidden] = useState(false);
-  const [prev, setPrev] = useState(0);
+  const [prevScrollY, setPrevScrollY] = useState(0);
 
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const { isTablet } = useMediaQueries();
 
-  function update(latest: number, prev: number): void {
-    if (latest < prev) {
+  function updateScroll(latest: number, previous: number): void {
+    if (latest < previous) {
       setHidden(false);
-    } else if (latest > 100 && latest > prev) {
+    } else if (latest > 100 && latest > previous) {
       setHidden(true);
     }
   }
+
   const handleLogoClick = () => {
     if (isBurgerMenuOpen) {
-      setIsBurgerMenuOpen(!isBurgerMenuOpen);
+      setIsBurgerMenuOpen(false);
     }
-    if (location.pathname === "/") {
+    if (location.pathname === '/') {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     } else {
-      navigate("/");
+      navigate(ROUTES.HOME);
     }
   };
 
-  useMotionValueEvent(scrollY, "change", (latest: number) => {
+  useMotionValueEvent(scrollY, 'change', (latest: number) => {
     if (isBurgerMenuOpen) return;
-    update(latest, prev);
-    setPrev(latest);
+    updateScroll(latest, prevScrollY);
+    setPrevScrollY(latest);
   });
 
   const toggleBurgerMenu = () => {
@@ -71,9 +74,9 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
 
   useEffect(() => {
     if (isBurgerMenuOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
   }, [isBurgerMenuOpen]);
 
@@ -81,30 +84,32 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
     <>
       <motion.header
         variants={parentVariants}
-        animate={hidden ? "hidden" : "visible"}
+        animate={hidden ? 'hidden' : 'visible'}
         className={cn(s.root, className)}
         transition={{
           ease: [0.1, 0.25, 0.3, 1],
           duration: 0.6,
         }}
       >
-        <nav className={s.nav}>
-          <span className={s.logo} onClick={handleLogoClick}>
-            <Logo />
-          </span>
-          {isTablet ? (
-            <BurgerToggle
-              isOpen={isBurgerMenuOpen}
-              handleBurger={toggleBurgerMenu}
-            />
-          ) : (
-            <motion.ul className={s.navLinks}>
-              {navLinks.map((link) => (
-                <NavbarListItem key={link.label} {...link} />
-              ))}
-            </motion.ul>
-          )}
-        </nav>
+        <Container>
+          <nav className={s.nav}>
+            <span className={s.logo} onClick={handleLogoClick}>
+              <Logo />
+            </span>
+            {isTablet ? (
+              <BurgerToggle
+                isOpen={isBurgerMenuOpen}
+                handleBurger={toggleBurgerMenu}
+              />
+            ) : (
+              <motion.ul className={s.navLinks}>
+                {navLinks.map((link) => (
+                  <NavbarListItem key={link.label} {...link} />
+                ))}
+              </motion.ul>
+            )}
+          </nav>
+        </Container>
       </motion.header>
       {isTablet && (
         <BurgerMenu isOpen={isBurgerMenuOpen} onClose={toggleBurgerMenu} />

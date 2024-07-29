@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-import { sectionData } from "@/constants";
-import { useSectionContext } from "@/context/section";
-import { cn } from "@/lib/utils";
+import { sectionData, type SectionIdFormInput } from '@/constants';
 
-import s from "./NavigationSection.module.scss";
+import s from './NavigationSection.module.scss';
+
+interface NavigationSectionProps {
+  scrollToSection: (idSection: SectionIdFormInput) => void;
+}
 
 const itemAnimate = {
   initial: { opacity: 0, x: 0.5 },
@@ -16,8 +18,9 @@ const itemAnimate = {
   exit: { opacity: 0 },
 };
 
-export const NavigationSection = ({ scrollToSection }) => {
-  const { activeSection } = useSectionContext();
+export const NavigationSection = ({
+  scrollToSection,
+}: NavigationSectionProps) => {
   return (
     <motion.nav className={s.root}>
       <h5>Быстрая навигация</h5>
@@ -30,20 +33,10 @@ export const NavigationSection = ({ scrollToSection }) => {
             initial="initial"
             animate="enter"
             exit="exit"
-            className={cn(
-              s.item,
-              activeSection === section.idFormInput && s.itemActive
-            )}
+            className={s.item}
             onClick={() => scrollToSection(section.idFormInput)}
           >
-            {/* <HashLink
-              scroll={(el) =>
-                el.scrollIntoView({ behavior: "smooth", block: "start" })
-              }
-              to={`#${section.idFormInput}-label`}
-            > */}
             {section.title}
-            {/* </HashLink> */}
           </motion.li>
         ))}
       </motion.ul>

@@ -1,4 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { ROUTES } from '@/constants';
+
+export type UseBackNavigationProps = string | undefined;
 
 interface UseBackNavigationResult {
   canGoBack: boolean;
@@ -7,22 +11,20 @@ interface UseBackNavigationResult {
 }
 
 export const useBackNavigation = (
-  defaultHref: string = "/diary"
+  defaultHref: UseBackNavigationProps = ROUTES.DIARY
 ): UseBackNavigationResult => {
   const location = useLocation();
   const navigate = useNavigate();
   const { pathname } = location;
 
-  const isEditPage = pathname.endsWith("/edit");
-  const isViewPage = !isEditPage && pathname.includes("/diary/");
+  const isEditPage = pathname.endsWith('/edit');
+  const isViewPage = !isEditPage && pathname.includes('/diary/');
 
-  const canGoBack = location.key !== "default";
+  const canGoBack = location.key !== 'default';
 
   const goBack = () => {
     if (isViewPage) {
       navigate(defaultHref);
-      // } else if (isEditPage) {
-      //   navigate(pathname.replace("/edit", ""));
     } else if (canGoBack) {
       navigate(-1);
     } else {
@@ -33,7 +35,6 @@ export const useBackNavigation = (
   return {
     canGoBack,
     href: isViewPage ? defaultHref : canGoBack ? -1 : defaultHref,
-    // href: isViewPage ? defaultHref : canGoBack ? -1 : defaultHref,
     goBack,
   };
 };

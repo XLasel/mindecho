@@ -1,4 +1,4 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   @extend %body-small;
@@ -50,7 +50,7 @@
     border-color: hsl(var(--secondary));
   }
 
-  & input[type="checkbox"] {
+  & input[type='checkbox'] {
     position: absolute;
     opacity: 0;
     pointer-events: none;

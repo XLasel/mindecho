@@ -1,9 +1,8 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   padding: var(--space_xl);
   background: $gradient-primary;
-  background: $gradient-background;
   border-radius: var(--border-radius-l);
 }
 

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   ArrayPath,
   FieldArray,
   FieldValues,
   UseFieldArrayReturn,
   useFormContext,
-} from "react-hook-form";
-import FeatherIcon from "feather-icons-react";
+} from 'react-hook-form';
+import FeatherIcon from 'feather-icons-react';
 
-import { Button } from "@/components/common/Button";
-import { ResizableTextarea } from "@/components/common/ResizableTextarea";
+import { Button } from '@/components/common/Button';
+import { ResizableTextarea } from '@/components/common/ResizableTextarea';
 
-import s from "./DynamicInputForm.module.scss";
+import s from './DynamicInputForm.module.scss';
 
 interface DynamicInputFormProps<T extends FieldValues, K extends ArrayPath<T>> {
   label: K;
@@ -38,11 +38,11 @@ export const DynamicInputForm = <
 
   const removeInput = (
     event: React.MouseEvent<HTMLButtonElement>,
-    index: number,
+    index: number
   ) => {
     event.preventDefault();
     if (fields.length === 1) {
-      setValue(`${label as string}.${index}.${keysPattern[0]}`, "");
+      setValue(`${label as string}.${index}.${keysPattern[0]}`, '');
     } else {
       remove(index);
     }
@@ -58,7 +58,7 @@ export const DynamicInputForm = <
               <ResizableTextarea
                 name={`${label}.${index}.${keysPattern[0]}`}
                 placeholder={`...`}
-                classNames={s.textarea}
+                className={s.textarea}
               />
               <button onClick={(event) => removeInput(event, index)}>
                 <FeatherIcon icon="minus-circle" className={s.iconDelete} />

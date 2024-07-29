@@ -2,23 +2,16 @@ $desktopScreenSize: 1280;
 $tabletScreenSize: 1000;
 $mobileScreenSize: 550;
 
-// $gradient-primary: linear-gradient(45deg, #ff6b6b, #f94d6a);
-// $gradient-secondary: linear-gradient(45deg, #1fddff, #25a9e0);
-// $gradient-tertiary: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+$gradient-background: linear-gradient(
+  45deg,
+  hsl(var(--blue) / 0.9),
+  hsl(var(--blue) / 0.2),
+  rgb(0 0 0 / 0)
+);
 
-$gradient-primary: linear-gradient(45deg,
-    hsl(var(--purple)),
-    hsl(var(--blue-300)));
-$gradient-secondary: linear-gradient(45deg,
-    hsl(var(--green)),
-    hsl(var(--blue-300)));
-$gradient-accent: linear-gradient(45deg,
-    hsl(var(--pink)),
-    hsl(var(--blue-100)));
-$gradient-background: linear-gradient(45deg,
-    hsl(var(--blue)),
-    hsl(var(--blue-100)));
-$gradient-background: linear-gradient(20deg,
-    hsl(var(--green) / 0.5),
-    hsl(var(--blue)),
-    hsl(var(--blue-100)));
+$gradient-primary: linear-gradient(
+  20deg,
+  hsl(var(--green) / 0.5),
+  hsl(var(--blue)),
+  hsl(var(--blue-100))
+);

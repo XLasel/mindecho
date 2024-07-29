@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { AnimatedCollapse } from "@/components/common/AnimatedCollapse";
-import { useAccordionContext } from "@/context/accordion";
+import { AnimatedCollapse } from '@/components/common/AnimatedCollapse';
+import { useAccordionContext } from '@/context/accordion';
 
 interface AccordionContentProps {
   children: React.ReactNode;

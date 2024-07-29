@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-import { Button } from "@/components/common/Button";
-import IMAGE from "@/images";
+import { Button } from '@/components/common/Button';
+import { IMAGE, ROUTES } from '@/constants';
 
-import { aimationButton, aimationRotate, aimationSlideUp } from "../anim";
-import { SectionContent, SectionTitle, SectionWrapper } from "../sectionLayout";
+import { aimationButton, aimationRotate, aimationSlideUp } from '../anim';
+import { SectionContent, SectionTitle, SectionWrapper } from '../sectionLayout';
 
-import s from "./CallToActionSection.module.scss";
+import s from './CallToActionSection.module.scss';
 
 export const CallToActionSection = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export const CallToActionSection = () => {
           <Button
             size="lg"
             variant="secondary"
-            onClick={() => navigate("/diary/add")}
+            onClick={() => navigate(ROUTES.DIARY_ADD)}
           >
             Cделать запись
           </Button>

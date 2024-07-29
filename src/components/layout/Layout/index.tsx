@@ -1,9 +1,9 @@
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
-import { Footer } from "@/components/common/Footer";
-import { Header } from "@/components/common/Header";
+import { Footer } from '@/components/common/Footer';
+import { Header } from '@/components/common/Header';
 
-import s from "./Layout.module.scss";
+import s from './Layout.module.scss';
 
 export const Layout = () => {
   return (

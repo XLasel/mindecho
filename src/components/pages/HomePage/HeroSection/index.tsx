@@ -1,20 +1,20 @@
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-import { Button } from "@/components/common/Button";
-import IMAGE from "@/images";
+import { Button } from '@/components/common/Button';
+import { IMAGE, ROUTES } from '@/constants';
 
-import { aimationButton, aimationSlideLeft, aimationSlideUp } from "../anim";
-import { SectionContent, SectionWrapper } from "../sectionLayout";
+import { aimationButton, aimationSlideLeft, aimationSlideUp } from '../anim';
+import { SectionContent, SectionWrapper } from '../sectionLayout';
 
-import s from "./HeroSection.module.scss";
+import s from './HeroSection.module.scss';
 
 export const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
     <SectionWrapper width="full" innerClassName={s.root}>
-      <SectionContent className={s.content}>
+      <SectionContent className={s.content} direction="default">
         <motion.div variants={aimationSlideLeft} className={s.image}>
           <img src={IMAGE.welcomeIllustration} />
         </motion.div>
@@ -35,7 +35,7 @@ export const HeroSection = () => {
           variants={aimationButton}
           whileTap={{ scale: 0.9 }}
         >
-          <Button size="lg" onClick={() => navigate("/diary")}>
+          <Button size="lg" onClick={() => navigate(ROUTES.DIARY)}>
             Начнём
           </Button>
         </motion.div>

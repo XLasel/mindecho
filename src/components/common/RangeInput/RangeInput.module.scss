@@ -1,11 +1,11 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   display: flex;
 
   align-items: center;
 
-  & input[type="range"] {
+  & input[type='range'] {
     flex: 1 0 auto;
     accent-color: hsl(var(--secondary));
   }

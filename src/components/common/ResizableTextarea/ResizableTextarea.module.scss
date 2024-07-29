@@ -1,6 +1,7 @@
 .root {
   width: 100%;
   padding: var(--space_s) var(--space_xl);
+  overflow-wrap: anywhere;
   background-color: hsl(var(--card));
   border: 2px;
   border-color: hsl(var(--white) / 0.8);

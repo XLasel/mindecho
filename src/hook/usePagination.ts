@@ -1,14 +1,14 @@
-import { useEffect,useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 
 export const usePagination = (
   totalItems: number,
-  itemsPerPage: number = 10,
+  itemsPerPage: number = 10
 ) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(totalItems / itemsPerPage)),
-    [totalItems, itemsPerPage],
+    [totalItems, itemsPerPage]
   );
 
   useEffect(() => {
@@ -18,11 +18,11 @@ export const usePagination = (
   }, [totalPages]);
 
   const nextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
   const prevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
   };
 
   const goToPage = (page: number) => {

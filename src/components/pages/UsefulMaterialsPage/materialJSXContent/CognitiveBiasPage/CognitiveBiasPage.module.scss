@@ -1,0 +1,20 @@
+.bias-list {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_m);
+
+  & .bias-item h3 {
+    margin-top: 0;
+  }
+}
+
+.bias-item {
+  padding: var(--space_xl) var(--space_l);
+  background-color: hsl(var(--card));
+  border-radius: var(--space_l);
+}
+
+.examples {
+  margin-left: var(--base-margin);
+}

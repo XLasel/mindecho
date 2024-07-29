@@ -1,11 +1,9 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   --separator-border: 2px solid hsl(var(--background) / 0.4);
-  // border-collapse: collapse;
 
   padding: var(--space_xl);
-  // border: 1px solid grey;
   background-color: hsl(var(--card));
   border-radius: var(--border-radius-s);
 
@@ -15,35 +13,26 @@
 
   th {
     text-align: left;
-    // border: 2px solid hsl(var(--white) / 0.2);
-    // border-radius: var(--border-radius-s);
   }
 
   tr {
     min-height: 58px;
-    // padding: var(--space_s);
   }
 
   tr:not(:last-child) {
-    // border-bottom: 2px solid hsl(var(--secondary));
     border-bottom: var(--separator-border);
   }
 
   td {
-    // min-height: 60px;
     padding: var(--space_s);
     border-left: var(--separator-border);
-    // border: 1px solid rgb(0, 255, 85);
-    // border-radius: var(--border-radius-s);
   }
 
   ol {
-    // @include numbered-list;
     @extend %numbered-list;
   }
 
   ul {
-    // @include styled-list;
     @extend %styled-list;
   }
 }

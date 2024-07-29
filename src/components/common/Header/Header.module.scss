@@ -1,5 +1,3 @@
-@import "@styles";
-
 .root {
   position: fixed;
   z-index: 10;
@@ -13,25 +11,11 @@
   align-items: center;
 
   justify-content: space-between;
-  margin: var(--space_s) var(--space_m);
 
-  padding: var(--space_2xs) var(--space_xs);
+  margin: var(--space_s) 0;
   background-color: hsl(var(--background) / 0.8);
   border-radius: var(--border-radius-m);
   backdrop-filter: blur(4px);
-}
-
-// .burger-button-container {
-//     position: absolute;
-//     height: 20px;
-//     width: 30px;
-// }
-
-.burger-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 909;
 }
 
 .logo {

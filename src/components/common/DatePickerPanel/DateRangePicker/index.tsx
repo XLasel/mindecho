@@ -1,21 +1,20 @@
-import React from "react";
-import { DateRange } from "react-day-picker";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { ru } from "date-fns/locale";
+import React from 'react';
+import { DateRange } from 'react-day-picker';
+import { CalendarIcon } from '@radix-ui/react-icons';
+import { ru } from 'date-fns/locale';
 
-import { Button } from "@/components/common/Button";
-import { Calendar } from "@/components/common/Calendar";
+import { Button } from '@/components/common/Button';
+import { Calendar } from '@/components/common/Calendar';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/common/Popover";
-import { formatDateForUI } from "@/lib/dateUtils";
-import { cn } from "@/lib/utils";
+} from '@/components/common/Popover';
+import { cn, formatDateForUI } from '@/utils/helpers';
 
-import s from "./DateRangePicker.module.scss";
+import s from './DateRangePicker.module.scss';
 
-interface DateRangePickerProps extends React.ComponentPropsWithoutRef<"div"> {
+interface DateRangePickerProps extends React.ComponentPropsWithoutRef<'div'> {
   dateRange: DateRange | undefined;
   setDateRange: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
 }
@@ -25,28 +24,42 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
   setDateRange,
   className,
 }) => {
+  let dateDisplay;
+
+  if (dateRange?.from) {
+    if (dateRange.to) {
+      dateDisplay = (
+        <p>
+          <span className={cn('whitespace-nowrap')}>
+            {formatDateForUI(dateRange.from)}
+          </span>{' '}
+          -{' '}
+          <span className={cn('whitespace-nowrap')}>
+            {formatDateForUI(dateRange.to)}
+          </span>
+        </p>
+      );
+    } else {
+      dateDisplay = formatDateForUI(dateRange.from);
+    }
+  } else {
+    dateDisplay = <span>Выберете период</span>;
+  }
+
   return (
     <div className={cn(s.root, className)}>
       <Popover>
         <PopoverTrigger asChild>
           <Button
             id="date"
-            variant={"neutral"}
-            className={cn("", !dateRange && "text-muted-foreground")}
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {dateRange?.from ? (
-              dateRange.to ? (
-                <>
-                  {formatDateForUI(dateRange.from)} -{" "}
-                  {formatDateForUI(dateRange.to)}
-                </>
-              ) : (
-                formatDateForUI(dateRange.from)
-              )
-            ) : (
-              <span>Выберете период</span>
+            variant={'neutral'}
+            className={cn(
+              'whitespace-normal h-auto min-h-10',
+              !dateRange && 'text-muted-foreground'
             )}
+          >
+            <CalendarIcon className="shrink-0 mr-2 h-4 w-4" />
+            {dateDisplay}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">

@@ -1,0 +1,58 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  align-items: center;
+
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+
+  gap: var(--space_xl);
+  align-items: center;
+
+  justify-content: center;
+
+  @include tablet() {
+    flex-direction: column;
+
+    gap: var(--space_m);
+    text-align: center;
+  }
+}
+
+.illustration {
+  max-width: 30%;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @include tablet() {
+    max-width: clamp(150px, 50vw, 300px);
+  }
+}
+
+.content {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_m);
+
+  max-width: 70%;
+
+  @include tablet() {
+    gap: var(--space_xs);
+
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.message {
+  @extend %body-large;
+}

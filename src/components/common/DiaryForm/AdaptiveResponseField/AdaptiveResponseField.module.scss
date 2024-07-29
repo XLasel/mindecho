@@ -1,4 +1,4 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   display: flex;
@@ -17,8 +17,7 @@
 .item {
   display: grid;
 
-  grid-template:
-    "number thought" 1fr "number response" auto / 1fr 10fr;
+  grid-template: 'number thought' 1fr 'number response' auto / 1fr 10fr;
 }
 
 .number {
@@ -39,6 +38,8 @@
 
   padding: var(--space_xs) var(--space_s);
   font-style: italic;
+
+  overflow-wrap: anywhere;
 }
 
 .response {
@@ -49,8 +50,4 @@
   gap: var(--space_2xs);
 
   align-self: center;
-
-  &:hover .icon {
-    color: hsl(var(--secondary) / 0.8);
-  }
 }

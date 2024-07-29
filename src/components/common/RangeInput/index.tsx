@@ -1,21 +1,23 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext } from 'react-hook-form';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/utils/helpers';
 
-import s from "./RangeInput.module.scss";
+import s from './RangeInput.module.scss';
 
-type RangeInputProps = {
+interface RangeInputProps extends React.ComponentPropsWithoutRef<'input'> {
   name: string;
-  className?: string;
-};
+  classNames?: string;
+}
 
-export const RangeInput: React.FC<
-  React.ComponentPropsWithoutRef<"input"> & RangeInputProps
-> = ({ name, className, ...props }) => {
+export const RangeInput: React.FC<RangeInputProps> = ({
+  name,
+  classNames,
+  ...props
+}) => {
   const { register, watch } = useFormContext();
   const value = watch(name);
   return (
-    <div className={cn(s.root, className)}>
+    <div className={cn(s.root, classNames)}>
       <span aria-live="polite">{value}</span>
       <input
         type="range"

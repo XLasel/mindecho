@@ -3,68 +3,30 @@ import {
   SubmitHandler,
   useFieldArray,
   useForm,
-} from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+} from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Button } from "@/components/common/Button";
-import { type SectionsRefs } from "@/components/pages/DiaryPage/NoteEditorLayout";
-import { sectionData } from "@/constants";
-import { useAppDispatch } from "@/redux/hook";
-import { addNote, Note, updateNote } from "@/redux/noteSlice";
+import { Button } from '@/components/common/Button';
+import { type SectionsRefs } from '@/components/pages/DiaryPage/NoteEditorLayout';
+import { ROUTES, sectionData } from '@/constants';
+import { useAppDispatch } from '@/redux/hook';
+import { addNote, updateNote } from '@/redux/noteSlice';
+import { type FormFieldsType, schemaNote } from '@/scheme';
 
-import { NoteActions } from "../NoteActions";
-import { RangeInput } from "../RangeInput";
-import { ResizableTextarea } from "../ResizableTextarea";
-import { SpoilerText } from "../SpoilerText";
+import { NoteActions } from '../NoteActions';
+import { RangeInput } from '../RangeInput';
+import { ResizableTextarea } from '../ResizableTextarea';
+import { SpoilerText } from '../SpoilerText';
 
-import { AdaptiveResponseField } from "./AdaptiveResponseField";
-import { CognitiveBiasField } from "./CognitiveBiasField";
-import { DynamicInputForm } from "./DynamicInputForm";
-import { EmotionField } from "./EmotionField";
-import { SectionForm } from "./SectionForm";
-import { TitleField } from "./TitleField";
+import { AdaptiveResponseField } from './AdaptiveResponseField';
+import { CognitiveBiasField } from './CognitiveBiasField';
+import { DynamicInputForm } from './DynamicInputForm';
+import { EmotionField } from './EmotionField';
+import { SectionForm } from './SectionForm';
+import { TitleField } from './TitleField';
 
-import s from "./DiaryForm.module.scss";
-
-const cognitiveDistortionSchema = z.object({
-  everythingOrNothing: z.boolean(),
-  overgeneralization: z.boolean(),
-  negativeFilter: z.boolean(),
-  discountingThePositive: z.boolean(),
-  mindreading: z.boolean(),
-  fortuneTelling: z.boolean(),
-  catastrophizing: z.boolean(),
-  magnificationAndMinimization: z.boolean(),
-  emotionalReasoning: z.boolean(),
-  shouldStatements: z.boolean(),
-  labeling: z.boolean(),
-  personalization: z.boolean(),
-  retrospectiveDistortion: z.boolean(),
-});
-
-const emotionsSchema = z.record(z.boolean());
-
-const automaticThoughtsSchema = z.array(
-  z.object({
-    thought: z.string(),
-    response: z.string(),
-  })
-);
-
-const schemaNote = z.object({
-  title: z.string().optional(),
-  situation: z.string().optional(),
-  automaticThoughts: automaticThoughtsSchema,
-  emotions: emotionsSchema,
-  physicalSensations: z.string(),
-  behavior: z.string(),
-  discomfortLevel: z.coerce.number().min(0).max(10),
-  cognitiveDistortions: cognitiveDistortionSchema,
-});
-
-export type FormFieldsType = z.infer<typeof schemaNote>;
+import s from './DiaryForm.module.scss';
 
 interface DiaryFormProps {
   noteToEdit?: Note | null;
@@ -78,61 +40,56 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
 
   const methods = useForm<FormFieldsType>({
     defaultValues: {
-      title: noteToEdit?.title || "",
-      situation: noteToEdit?.situation || "",
+      title: noteToEdit?.title || '',
+      situation: noteToEdit?.situation || '',
       automaticThoughts: noteToEdit?.automaticThoughts || [
-        { thought: "", response: "" },
+        { thought: '', response: '' },
       ],
       emotions: noteToEdit?.emotions || {},
-      physicalSensations: noteToEdit?.physicalSensations || "",
-      behavior: noteToEdit?.behavior || "",
+      physicalSensations: noteToEdit?.physicalSensations || '',
+      behavior: noteToEdit?.behavior || '',
       discomfortLevel: noteToEdit?.discomfortLevel || 1,
       cognitiveDistortions: noteToEdit?.cognitiveDistortions || {},
     },
     resolver: zodResolver(schemaNote),
   });
 
-  const {
-    register,
-    control,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = methods;
+  const { register, control, handleSubmit, reset } = methods;
 
-  const thoughtsArray = useFieldArray<FormFieldsType, "automaticThoughts">({
+  const thoughtsArray = useFieldArray<FormFieldsType, 'automaticThoughts'>({
     control,
-    name: "automaticThoughts",
+    name: 'automaticThoughts',
   });
 
   const onSubmit: SubmitHandler<FormFieldsType> = (data) => {
     if (!data.title) {
-      data.title = "Новая запись";
+      // eslint-disable-next-line no-param-reassign
+      data.title = 'Новая запись';
     }
     if (isEditMode) {
       const currentData = { ...noteToEdit, ...data };
       dispatch(updateNote(currentData));
-      navigate(`/diary/${noteToEdit?.id}`);
+      navigate(ROUTES.DIARY_ENTRY(noteToEdit?.id ?? ''));
     } else {
       dispatch(addNote(data));
-      navigate("/diary");
+      navigate(ROUTES.DIARY);
     }
   };
-  console.log(sectionsRefs);
+
   return (
     <FormProvider {...methods}>
       <form className={s.root} onSubmit={handleSubmit(onSubmit)}>
         <header className={s.header}>
           {isEditMode && (
             <NoteActions
-              date={noteToEdit?.date}
-              id={noteToEdit?.id}
+              date={noteToEdit.date}
+              id={noteToEdit.id}
               isEditMode
               saveEdit={handleSubmit(onSubmit)}
               resetChanges={reset}
             />
           )}
-          <TitleField {...register("title")} />
+          <TitleField {...register('title')} />
         </header>
         <SectionForm
           section={sectionData.situation}
@@ -173,7 +130,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         >
           <DynamicInputForm
             label="automaticThoughts"
-            pattern={{ thought: "", response: "" }}
+            pattern={{ thought: '', response: '' }}
             fieldArray={thoughtsArray}
           />
         </SectionForm>
@@ -244,7 +201,7 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
                   <p>
                     Например, в ответ на мысль «У меня всегда всё не так», вы
                     можете сказать себе «Всё не может быть не так. У меня, по
-                    крайней мере, иногда все получается хорошо»
+                    крайней мере, иногда всё получается хорошо»
                   </p>
                   <p>
                     Вот несколько вопросов, которые можно задать себе при
@@ -275,15 +232,16 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
         <hr />
         <div className={s.buttons}>
           <Button type="submit" size="lg" className="text-xl h-12">
-            {isEditMode ? "Сохранить" : "Отправить"}
+            {isEditMode ? 'Сохранить' : 'Отправить'}
           </Button>
           <Button
+            type="button"
             variant="ghost"
             size="lg"
             className="text-xl h-12"
             onClick={() => reset()}
           >
-            Сбросить
+            {isEditMode ? 'Сбросить изменения' : 'Сбросить'}
           </Button>
         </div>
       </form>

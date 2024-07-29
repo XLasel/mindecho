@@ -1,10 +1,12 @@
-@import "@styles";
+@import '@styles';
 
 .root {
   @extend %text-button-sm;
 
-  padding: var(--space_2xs) var(--space_xs);
-  color: hsl(var(--secondary-foreground));
-  background-color: hsl(var(--secondary));
-  border-radius: var(--border-radius-xs);
+  padding: var(--space_2xs) var(--space_s);
+  color: hsl(var(--foreground));
+
+  text-align: center;
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-s);
 }

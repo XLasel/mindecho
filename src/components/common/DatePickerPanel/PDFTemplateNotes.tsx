@@ -5,26 +5,24 @@ import {
   StyleSheet,
   Text,
   View,
-} from "@react-pdf/renderer";
+} from '@react-pdf/renderer';
 
-import { formatDateForUI } from "@/lib/dateUtils";
-import { prepareTableData } from "@/lib/utils";
-import { Note } from "@/redux/noteSlice";
+import { formatDateForUI, prepareTableData } from '@/utils/helpers';
 
-import InterRegular from "/fonts/Inter-Regular.ttf";
+import InterRegular from '/fonts/Inter-Regular.ttf';
 
 Font.register({
-  family: "Inter",
+  family: 'Inter',
   src: InterRegular,
 });
 
 const isVowel = (char: string): boolean =>
-  "аеёиоуыэюяАЕЁИОУЫЭЮЯ".includes(char);
+  'аеёиоуыэюяАЕЁИОУЫЭЮЯ'.includes(char);
 const isLetter = (char: string): boolean => /[a-zA-Zа-яА-Я]/.test(char);
 
 const findHyphenationPoint = (word: string): number => {
-  const specialChars = ",.!?:;-";
-  if (!word.split("").some(isLetter)) {
+  const specialChars = ',.!?:;-';
+  if (!word.split('').some(isLetter)) {
     return word.length;
   }
   for (let i = word.length - 1; i > 0; i--) {
@@ -52,45 +50,45 @@ Font.registerHyphenationCallback((word: string) => {
 const styles = StyleSheet.create({
   page: {
     padding: 10,
-    fontFamily: "Inter",
+    fontFamily: 'Inter',
   },
   title: {
     fontSize: 14,
     marginBottom: 10,
-    textAlign: "left",
+    textAlign: 'left',
   },
   table: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
   },
   cell: {
     fontSize: 11,
-    padding: "5px",
-    borderRight: "1px solid black",
+    padding: '5px',
+    borderRight: '1px solid black',
     width: `${100 / 8}%`,
   },
   header: {
     fontSize: 11,
-    padding: "5px",
-    borderRight: "1px solid black",
-    borderTop: "1px solid black",
+    padding: '5px',
+    borderRight: '1px solid black',
+    borderTop: '1px solid black',
     width: `${100 / 8}%`,
-    backgroundColor: "#3D3B8E",
-    color: "#fff",
+    backgroundColor: '#3D3B8E',
+    color: '#fff',
   },
   row: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
-    borderLeft: "1px solid black",
-    borderBottom: "1px solid black",
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    borderLeft: '1px solid black',
+    borderBottom: '1px solid black',
   },
 });
 
 interface PDFTemplateNotesProps {
   notes: Note[];
-  startDate: string | Date;
-  endDate: string | Date;
+  startDate: Date;
+  endDate: Date;
 }
 
 export const PDFTemplateNotes: React.FC<PDFTemplateNotesProps> = ({
@@ -101,19 +99,19 @@ export const PDFTemplateNotes: React.FC<PDFTemplateNotesProps> = ({
   const tableData = prepareTableData(notes);
 
   const data = {
-    title: "Дневник автоматических мыслей",
+    title: 'Дневник автоматических мыслей',
     headers: [
-      "Ситуация",
-      "Автоматическая мысль",
-      "Эмоции",
-      "Ощущения",
-      "Поведение",
-      "Когнитивные искажения",
-      "Адаптивный ответ",
-      "Повторная оценка",
+      'Ситуация',
+      'Автоматическая мысль',
+      'Эмоции',
+      'Ощущения',
+      'Поведение',
+      'Когнитивные искажения',
+      'Адаптивный ответ',
+      'Повторная оценка',
     ],
     rows: tableData,
-    footer: "footer",
+    footer: 'footer',
   };
 
   if (notes.length < 0) return null;
@@ -122,7 +120,7 @@ export const PDFTemplateNotes: React.FC<PDFTemplateNotesProps> = ({
     <Document>
       <Page size="A4" orientation="landscape" style={styles.page}>
         <Text style={styles.title}>
-          «Дневник автоматических мыслей» за период:{" "}
+          «Дневник автоматических мыслей» за период:{' '}
           {formatDateForUI(startDate)} - {formatDateForUI(endDate)}
         </Text>
         <View style={styles.table}>
@@ -136,8 +134,8 @@ export const PDFTemplateNotes: React.FC<PDFTemplateNotesProps> = ({
 
           {data.rows.map((row, i) => (
             <View key={i} style={styles.row} wrap={false}>
-              {row.map((cell, i) => (
-                <Text key={i} style={styles.cell}>
+              {row.map((cell, index) => (
+                <Text key={index} style={styles.cell}>
                   {cell}
                 </Text>
               ))}
