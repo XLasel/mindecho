@@ -1,0 +1,67 @@
+@import '@styles';
+
+.root {
+  display: grid;
+
+  grid-template-columns: 3fr 4fr;
+
+  gap: var(--space_l);
+
+  @include tablet() {
+    display: grid;
+
+    grid-template-columns: 1fr;
+  }
+
+  & h1 {
+    margin-bottom: 0.3em;
+  }
+
+  & h2 {
+    margin-top: var(--section-space-1lv);
+    margin-bottom: 0.6em;
+  }
+
+  & h3 {
+    margin-top: var(--section-space-3lv);
+    margin-bottom: 0.5em;
+  }
+
+  & ol {
+    @extend %numbered-list;
+  }
+
+  & ul {
+    @extend %styled-list;
+  }
+
+  & p {
+    line-height: 1.8;
+
+    &:not(:last-child) {
+      margin-bottom: var(--base-margin);
+    }
+  }
+}
+
+.title-container {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-top: var(--section-space-1lv);
+
+  @include tablet() {
+    margin-top: 0;
+  }
+}
+
+.image {
+  overflow: hidden;
+  border-radius: var(--border-radius-l);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

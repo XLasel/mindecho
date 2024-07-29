@@ -1,0 +1,35 @@
+@import '@styles';
+
+.root {
+  @extend %text-button-m;
+
+  display: inline-flex;
+  gap: var(--space_2xs);
+
+  padding: var(--space_2xs) var(--space_s);
+  color: hsl(var(--white));
+
+  text-align: center;
+  background-color: hsl(var(--white) / 0.18);
+
+  border-radius: var(--border-radius-full);
+  box-shadow: 1px 1px 30px -4px rgb(43 18 73 / 0.2);
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: hsl(var(--white) / 0.23);
+  }
+}
+
+.selected {
+  color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--green));
+
+  &:hover {
+    background-color: hsl(var(--green) / 0.85);
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}

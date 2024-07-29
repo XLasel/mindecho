@@ -1,0 +1,28 @@
+@mixin font($font, $letter-spacing: 0) {
+  font: $font, sans-serif;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) and (min-width: #{$tabletScreenSize}px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media only screen and (max-width: #{$desktopScreenSize}px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media only screen and (max-width: #{$tabletScreenSize}px) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @media only screen and (max-width: #{$mobileScreenSize}px) {
+    @content;
+  }
+}

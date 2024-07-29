@@ -1,0 +1,178 @@
+@import "./fonts.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@styles";
+
+@layer base {
+  :root {
+    box-sizing: border-box;
+
+    --header-height: 88px;
+
+    --base-font-size: 18px;
+    --base-line-height: 1.6;
+    --base-margin: 0.7rem;
+    --base-padding: 0.7rem;
+
+    --white: 0 0% 100%;
+    --white-100: 0 0% 100% / 0.18;
+    --white-900: 0 0% 100% / 0.3;
+    --white-700: 0 0% 100% / 0.7;
+
+    --black: 240 62% 5%;
+    --black-100: 240 62% 5% / 0.1;
+    --black-200: 240 62% 5% / 0.18;
+
+    --blue: 241 41% 39%;
+    --blue-100: 242 27% 50%;
+    --blue-300: 237 52% 33%;
+
+    --purple: 270 100% 83%;
+    --green: 79 100% 75%;
+    --pink: 349 100% 63%;
+
+    --background: var(--blue);
+    --foreground: var(--white);
+
+    --card: var(--white-100);
+    --card-foreground: var(--white);
+
+    --popover: var(--blue-100);
+    --popover-foreground: var(--white);
+
+    --primary: var(--purple);
+    --primary-foreground: var(--blue-300);
+
+    --secondary: var(--green);
+    --secondary-foreground: var(--blue-300);
+
+    --muted: var(--white-100);
+    --muted-foreground: var(--white);
+
+    --accent: var(--pink);
+    --accent-foreground: var(--white);
+
+    --destructive: var(--pink);
+    --destructive-foreground: var(--white);
+
+    --border: var(--black-200);
+    --input: var(--black-200);
+    --ring: var(--black-100);
+
+    --text-muted: var(--white-700);
+
+    --radius: 0.5rem;
+
+    --space_3xs: 2px;
+    --space_2xs: 4px;
+    --space_xs: 8px;
+    --space_s: 12px;
+    --space_m: 16px;
+    --space_l: 20px;
+    --space_xl: 24px;
+    --space_2xl: 32px;
+    --space_3xl: 40px;
+    --space_4xl: 48px;
+    --space_5xl: 72px;
+    --space_6xl: 96px;
+
+    --section-space-intro: var(--space_4xl);
+    --section-space: var(--space_6xl);
+
+    --section-space-1lv: var(--space_3xl);
+    --section-space-2lv: var(--space_2xl);
+    --section-space-3lv: var(--space_xl);
+    --section-space-4lv: var(--space_l);
+    --section-space-5lv: var(--space_m);
+
+    --section-space-home-1lv: var(--space_6xl);
+    --section-space-home-2lv: var(--space_l);
+    --section-space-home-3lv: var(--space_m);
+
+    --border-radius-xxs: 4px;
+    --border-radius-xs: 10px;
+    --border-radius-s: 12px;
+    --border-radius-m: 16px;
+    --border-radius-l: 24px;
+    --border-radius-full: 999px;
+
+    @include tablet() {
+      --section-space-home-1lv: var(--space_3xl);
+
+      --section-space-1lv: var(--space_2xl);
+      --section-space-4lv: var(--space_m);
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+
+  margin: 0;
+}
+
+:focus {
+  outline: 0;
+}
+
+html,
+body {
+  // margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+
+  position: relative;
+  font: normal 400 var(--base-font-size) / var(--base-line-height) Inter;
+}
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h4;
+}
+
+h5 {
+  @extend %h5;
+}
+
+input::placeholder {
+  color: hsl(var(--foreground) / 0.8);
+}
+
+button {
+  color: inherit;
+  vertical-align: baseline;
+  background: none;
+  border: 0;
+  appearance: none;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

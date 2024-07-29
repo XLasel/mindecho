@@ -1,0 +1,16 @@
+@import '@styles';
+
+.root {
+  display: grid;
+
+  grid-template-columns: auto 1fr;
+  gap: var(--space_xl);
+
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aside {
+  max-width: 230px;
+}

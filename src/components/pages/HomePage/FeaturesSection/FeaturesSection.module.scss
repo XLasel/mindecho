@@ -1,0 +1,45 @@
+@import '@styles';
+
+.cards {
+  display: flex;
+
+  flex-flow: row wrap;
+  counter-reset: feature 0;
+}
+
+.card {
+  position: relative;
+  display: flex;
+
+  flex: 1 1 calc(33.33% - 16px);
+  flex-direction: column;
+
+  padding: var(--space_2xl);
+  text-align: left;
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-l);
+  counter-increment: feature 1;
+
+  @include mobile() {
+    padding: var(--space_xl);
+    border-radius: var(--border-radius-m);
+  }
+}
+
+.card-text::before {
+  position: absolute;
+  top: var(--space_2xl);
+  right: var(--space_2xl);
+  color: hsl(var(--foreground) / 0.4);
+  font-weight: 600;
+
+  font-size: 50px;
+  line-height: 100%;
+  content: counter(feature);
+
+  @include mobile() {
+    top: auto;
+    right: var(--space_xl);
+    bottom: var(--space_xl);
+  }
+}

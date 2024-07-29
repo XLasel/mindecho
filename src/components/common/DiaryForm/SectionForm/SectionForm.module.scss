@@ -1,0 +1,12 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_m);
+}
+
+.description {
+  @extend %text-explaining-style;
+}

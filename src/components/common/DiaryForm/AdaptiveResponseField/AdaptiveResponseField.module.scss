@@ -1,0 +1,53 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_l);
+}
+
+.list {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_2xs);
+}
+
+.item {
+  display: grid;
+
+  grid-template: 'number thought' 1fr 'number response' auto / 1fr 10fr;
+}
+
+.number {
+  grid-area: number;
+  color: hsl(var(--secondary));
+
+  font-size: 42px;
+
+  place-self: center;
+}
+
+.thought {
+  @extend %body-small;
+
+  grid-area: thought;
+
+  align-self: center;
+
+  padding: var(--space_xs) var(--space_s);
+  font-style: italic;
+
+  overflow-wrap: anywhere;
+}
+
+.response {
+  grid-area: response;
+}
+
+.button {
+  gap: var(--space_2xs);
+
+  align-self: center;
+}

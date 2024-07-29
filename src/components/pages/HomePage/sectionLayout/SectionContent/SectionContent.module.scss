@@ -1,0 +1,21 @@
+@import '@styles';
+
+.root {
+  gap: var(--section-space-home-3lv);
+}
+
+.column {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+
+  flex-direction: row;
+}
+
+.text-big {
+  @extend %h1-home-subtitle;
+}

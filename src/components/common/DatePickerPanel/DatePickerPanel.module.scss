@@ -1,0 +1,35 @@
+@import '@styles';
+
+.root {
+  display: grid;
+
+  grid-template-areas:
+    'calendar calendar reset'
+    'export submit submit';
+  grid-template-columns: 69px auto 20%;
+  gap: var(--space_s);
+
+  padding: var(--space_m);
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-m);
+
+  @include tablet() {
+    grid-template: 'calendar calendar calendar' auto 'export submit submit' auto 'reset reset reset' auto / 69px auto 20%;
+  }
+}
+
+.calendar {
+  grid-area: calendar;
+}
+
+.export {
+  grid-area: export;
+}
+
+.submit {
+  grid-area: submit;
+}
+
+.reset {
+  grid-area: reset;
+}

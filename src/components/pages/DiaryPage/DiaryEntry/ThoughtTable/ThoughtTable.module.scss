@@ -1,0 +1,38 @@
+@import '@styles';
+
+.root {
+  --separator-border: 2px solid hsl(var(--background) / 0.4);
+
+  padding: var(--space_xl);
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-s);
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  tr {
+    min-height: 58px;
+  }
+
+  tr:not(:last-child) {
+    border-bottom: var(--separator-border);
+  }
+
+  td {
+    padding: var(--space_s);
+    border-left: var(--separator-border);
+  }
+
+  ol {
+    @extend %numbered-list;
+  }
+
+  ul {
+    @extend %styled-list;
+  }
+}

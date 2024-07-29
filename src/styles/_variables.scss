@@ -1,0 +1,17 @@
+$desktopScreenSize: 1280;
+$tabletScreenSize: 1000;
+$mobileScreenSize: 550;
+
+$gradient-background: linear-gradient(
+  45deg,
+  hsl(var(--blue) / 0.9),
+  hsl(var(--blue) / 0.2),
+  rgb(0 0 0 / 0)
+);
+
+$gradient-primary: linear-gradient(
+  20deg,
+  hsl(var(--green) / 0.5),
+  hsl(var(--blue)),
+  hsl(var(--blue-100))
+);

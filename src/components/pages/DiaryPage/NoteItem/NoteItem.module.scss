@@ -1,0 +1,55 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_m);
+
+  padding: var(--space_l);
+  color: hsl(var(--card-foreground));
+  background-color: hsl(var(--card));
+
+  border-radius: var(--border-radius-m);
+}
+
+.title {
+  display: flex;
+  gap: var(--space_s);
+  align-items: flex-start;
+
+  justify-content: space-between;
+  overflow-wrap: anywhere;
+}
+
+.content {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_s);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.group {
+  display: flex;
+  gap: var(--space_xs);
+
+  align-items: baseline;
+
+  & ol {
+    @extend %numbered-list;
+  }
+
+  & ul {
+    @extend %styled-list;
+  }
+}
+
+.field-name {
+  @extend %text-explaining-style;
+
+  font-style: italic;
+}

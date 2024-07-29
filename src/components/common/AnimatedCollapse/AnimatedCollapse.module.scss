@@ -1,0 +1,22 @@
+@import '@styles';
+
+.root {
+  overflow: hidden;
+
+  & ul {
+    @extend %styled-list;
+  }
+
+  & ol {
+    @extend %numbered-list;
+  }
+}
+
+.inner {
+  display: flex;
+
+  flex-direction: column;
+  gap: 1em;
+
+  padding: var(--space_m) 0;
+}

@@ -1,0 +1,170 @@
+%h1-home {
+  @include font(normal 700 74px / 100% 'Inter');
+
+  @include tablet() {
+    @include font(normal 700 58px / 110% 'Inter');
+  }
+
+  @include mobile() {
+    @include font(normal 700 36px / 110% 'Inter');
+  }
+}
+
+%h1-home-subtitle {
+  @include font(normal 400 28px / 140% 'Inter');
+
+  @include tablet() {
+    @include font(normal 400 22px / 140% 'Inter');
+  }
+
+  @include mobile() {
+    @include font(normal 400 18px / 140% 'Inter');
+  }
+}
+
+%h1-home-subtitle-big {
+  @include font(normal 600 36px / 140% 'Inter');
+
+  @include tablet() {
+    @include font(normal 600 28px / 140% 'Inter');
+  }
+
+  @include mobile() {
+    @include font(normal 600 22px / 140% 'Inter');
+  }
+}
+
+%h2-home {
+  @include font(normal 700 48px / 64px 'Inter');
+
+  @include tablet() {
+    @include font(normal 700 36px / 120% 'Inter');
+  }
+
+  @include mobile() {
+    @include font(normal 700 28px / 120% 'Inter');
+  }
+}
+
+%h3-home {
+  @include font(normal 700 36px / 110% 'Inter');
+
+  @include tablet() {
+    @include font(normal 700 28px / 110% 'Inter');
+  }
+
+  @include mobile() {
+    @include font(normal 700 22px / 110% 'Inter');
+  }
+}
+
+%h1 {
+  @include font(normal 700 48px / 64px 'Inter');
+
+  @include tablet() {
+    @include font(normal 700 36px / 140% 'Inter');
+  }
+}
+
+%h2 {
+  @include font(normal 700 32px / 120% 'Inter');
+
+  @include tablet() {
+    @include font(normal 700 28px / 120% 'Inter');
+  }
+}
+
+%h3 {
+  @include font(normal 700 24px / 32px 'Inter');
+
+  @include tablet() {
+    @include font(normal 700 22px / 120% 'Inter');
+  }
+}
+
+%h4 {
+  @include font(normal 600 20px / 28px 'Inter');
+
+  @include tablet() {
+    @include font(normal 600 18px / 28px 'Inter');
+  }
+}
+
+%h5 {
+  @include font(normal 700 18px / 120% 'Inter');
+}
+
+%diary-title {
+  @extend %h1;
+}
+
+%body-small {
+  @include font(normal 400 16px / 140% 'Inter');
+}
+
+%body-large {
+  @include font(normal 400 20px / 140% 'Inter');
+}
+
+%text-button-lg {
+  @include font(normal 500 20px / 24px 'Inter');
+}
+
+%text-button-l {
+  @include font(normal 500 18px / 24px 'Inter');
+}
+
+%text-button-m {
+  @include font(normal 500 16px / 18px 'Inter');
+}
+
+%text-button-sm {
+  @include font(normal 500 14px / 18px 'Inter');
+}
+
+%reset-list {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  list-style: none;
+}
+
+%styled-list {
+  display: flex;
+
+  flex-direction: column;
+  gap: 0.6em;
+
+  margin-left: 1.25em;
+  font-size: 1em;
+  list-style: disc;
+}
+
+%numbered-list {
+  display: flex;
+
+  flex-direction: column;
+  gap: 0.6em;
+
+  margin-left: 1.25em;
+  font-size: 1em;
+  list-style: decimal;
+}
+
+%text-explaining-style {
+  @extend %body-small;
+
+  color: hsl(var(--text-muted));
+
+  & ol {
+    @extend %numbered-list;
+  }
+
+  & ul {
+    @extend %styled-list;
+  }
+
+  & p:not(:last-child) {
+    margin-bottom: var(--base-margin);
+  }
+}

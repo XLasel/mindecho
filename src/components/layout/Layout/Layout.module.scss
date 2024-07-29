@@ -1,0 +1,25 @@
+.root {
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+
+  flex-direction: column;
+  // display: grid;
+
+  // grid-template-rows: 1fr min-content;
+  gap: var(--space_2xl);
+
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+
+  width: 100%;
+  padding-top: var(--header-height);
+}

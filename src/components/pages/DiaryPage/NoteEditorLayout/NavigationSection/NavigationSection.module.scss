@@ -1,0 +1,28 @@
+@import '@styles';
+
+.root {
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_m);
+
+  padding: var(--space_xs) 0;
+}
+
+.list {
+  @extend %styled-list;
+
+  gap: var(--space_xs);
+}
+
+.item {
+  color: hsl(var(--text-muted));
+  cursor: pointer;
+
+  &:hover {
+    color: hsl(var(--white));
+    font-weight: 500;
+  }
+}

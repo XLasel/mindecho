@@ -1,0 +1,105 @@
+@import '@styles';
+
+.root {
+  position: relative;
+  min-height: 80vh;
+}
+
+.content {
+  display: grid;
+
+  grid-template:
+    'title image'
+    'subtitle image'
+    'button image'
+    / minmax(0, 700px) 1fr;
+
+  place-self: center;
+  text-align: center;
+
+  @include tablet() {
+    grid-template:
+      'title .'
+      'subtitle subtitle'
+      'button button'
+      / 75% auto;
+    text-align: left;
+  }
+}
+
+.image {
+  position: relative;
+  grid-area: image;
+
+  width: 500px;
+  overflow: hidden;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+
+  @include tablet() {
+    position: absolute;
+    top: 3vh;
+    left: 50vw;
+    z-index: 1;
+    max-width: 400px;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background: $gradient-background;
+      content: '';
+    }
+
+    @include mobile() {
+      top: 15vh;
+
+      left: 40vw;
+      max-width: 280px;
+    }
+  }
+}
+
+.title {
+  z-index: 2;
+  grid-area: title;
+}
+
+.logo {
+  color: hsl(var(--secondary));
+  font-size: 1.2em;
+
+  & > span {
+    font-weight: 400;
+  }
+}
+
+.subtitle {
+  @extend %h1-home-subtitle;
+
+  z-index: 3;
+  grid-area: subtitle;
+}
+
+.button {
+  z-index: 5;
+  display: flex;
+  grid-area: button;
+
+  justify-content: center;
+
+  width: 100%;
+
+  @include tablet() {
+    & button {
+      width: 100%;
+    }
+  }
+}

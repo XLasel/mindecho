@@ -1,0 +1,20 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  align-items: center;
+
+  & input[type='range'] {
+    flex: 1 0 auto;
+    accent-color: hsl(var(--secondary));
+  }
+
+  & span {
+    @extend %text-button-l;
+
+    flex: 0 0 28px;
+    color: hsl(var(--secondary));
+    text-align: center;
+  }
+}

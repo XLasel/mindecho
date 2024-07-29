@@ -1,0 +1,30 @@
+.root {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: var(--header-height);
+}
+
+.nav {
+  display: flex;
+  gap: var(--space_xl);
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin: var(--space_s) 0;
+  background-color: hsl(var(--background) / 0.8);
+  border-radius: var(--border-radius-m);
+  backdrop-filter: blur(4px);
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+
+  padding-left: 0;
+  list-style: none;
+}

@@ -1,0 +1,24 @@
+.root {
+  color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
+}
+
+.wrapper {
+  display: flex;
+
+  flex-flow: column wrap;
+  gap: var(--space_l);
+
+  padding: var(--space_s) 0;
+}
+
+.logo-panel {
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.copy {
+  align-self: flex-end;
+}

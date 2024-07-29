@@ -1,0 +1,38 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--section-space-2lv);
+}
+
+.list-group {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--section-space-3lv);
+}
+
+.notes-list {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--section-space-4lv);
+}
+
+.message {
+  @extend %body-large;
+
+  display: flex;
+
+  justify-content: center;
+  text-align: center;
+}
+
+.pagination-nav {
+  display: inline-flex;
+  gap: var(--space_2xs);
+
+  align-items: center;
+}

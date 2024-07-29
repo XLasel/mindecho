@@ -1,0 +1,38 @@
+@import '@styles';
+
+.controls {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--section-space-4lv);
+}
+
+.plug {
+  @extend %body-large;
+
+  display: flex;
+  gap: var(--space_s);
+  align-items: end;
+
+  justify-content: center;
+  font-style: italic;
+
+  & img {
+    width: 250px;
+    padding: 0 24px;
+  }
+}
+
+.message {
+  display: flex;
+  gap: var(--space_xs);
+  align-items: center;
+
+  justify-content: left;
+
+  width: 300px;
+}
+
+.svg-container {
+  padding-top: 32px;
+}

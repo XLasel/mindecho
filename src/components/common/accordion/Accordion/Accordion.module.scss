@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 100%;
+  text-align: left;
+}
+
+.container {
+  padding: var(--space_l);
+  background-color: hsl(var(--card));
+  border-radius: var(--border-radius-m);
+}
+
+.flow {
+  background-color: transparent;
+}

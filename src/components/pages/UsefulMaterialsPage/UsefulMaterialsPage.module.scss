@@ -1,0 +1,57 @@
+@import '@styles';
+
+.content {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--section-space-4lv);
+
+  max-width: 1000px;
+}
+
+.description {
+  & p:not(:last-child) {
+    margin-bottom: var(--base-margin);
+  }
+}
+
+.list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--section-space-3lv);
+
+  @include tablet() {
+    & li {
+      flex-basis: 47%;
+    }
+  }
+
+  @include mobile() {
+    & li {
+      flex-basis: auto;
+    }
+  }
+}
+
+.item {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_m);
+
+  max-width: 433px;
+  color: hsl(var(--card-foreground));
+  border-radius: var(--border-radius-m);
+}
+
+.image {
+  overflow: hidden;
+  border-radius: var(--border-radius-l);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

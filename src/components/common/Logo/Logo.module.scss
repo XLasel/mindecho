@@ -1,0 +1,49 @@
+@import '@styles';
+
+.root {
+  @include font(normal 400 48px / 100% 'Inter');
+
+  display: flex;
+
+  align-items: center;
+
+  padding: var(--space_xs) var(--space_xs);
+
+  @include mobile() {
+    @include font(normal 400 28px / 48px 'Inter');
+  }
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+
+  @include mobile() {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.default {
+  color: hsl(var(--foreground));
+}
+
+.monochrome {
+  color: hsl(var(--secondary-foreground));
+}
+
+.default .icon {
+  fill: hsl(var(--secondary));
+}
+
+.monochrome .icon {
+  fill: hsl(var(--secondary-foreground));
+}
+
+.accent {
+  @include font(normal 800 48px / 100% 'Inter');
+
+  @include mobile() {
+    @include font(normal 800 28px / 48px 'Inter');
+  }
+}

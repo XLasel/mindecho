@@ -1,0 +1,27 @@
+@import '@styles';
+
+.root {
+  color: hsl(var(--secondary-foreground));
+  background-color: hsl(var(--secondary));
+
+  & p {
+    @extend %h1-home-subtitle-big;
+
+    & em {
+      color: hsl(var(--accent));
+    }
+  }
+}
+
+.content {
+  display: grid;
+
+  grid-template-columns: 2fr 3fr;
+  place-items: center center;
+
+  padding: var(--space_3xl) 0;
+
+  @include tablet() {
+    grid-template-columns: 1fr;
+  }
+}

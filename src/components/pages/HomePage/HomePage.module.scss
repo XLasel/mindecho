@@ -1,0 +1,36 @@
+@import '@styles';
+
+.root {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--section-space-home-1lv);
+  align-items: stretch;
+
+  padding-top: var(--space_2xl);
+  padding-bottom: var(--space_6xl);
+
+  @include tablet() {
+    padding-top: var(--space_xl);
+    padding-bottom: var(--space_4xl);
+  }
+
+  @include mobile() {
+    padding-top: 0;
+    padding-bottom: var(--space_l);
+  }
+
+  & h1 {
+    @extend %h1-home;
+  }
+
+  & h2 {
+    @extend %h2-home;
+  }
+
+  & h3 {
+    @extend %h3-home;
+
+    margin-bottom: var(--space_s);
+  }
+}

@@ -1,0 +1,10 @@
+@import '@styles';
+
+.root {
+  @extend %text-explaining-style;
+
+  display: inline-flex;
+  gap: var(--space_xs);
+
+  align-items: center;
+}
