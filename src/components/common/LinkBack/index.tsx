@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 
 import { buttonVariants } from '@/components/common/Button';
@@ -14,14 +14,25 @@ export const LinkBack = ({
   defaultHref?: UseBackNavigationProps;
 }) => {
   const { href } = useBackNavigation(defaultHref);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (typeof href === 'string') {
+      navigate(href, { preventScrollReset: true });
+    } else {
+      navigate(href);
+    }
+  };
 
   return (
-    <Link
-      to={href}
-      preventScrollReset={false}
-      className={cn(buttonVariants({ variant: 'link' }), 'self-start gap-1')}
+    <a
+      onClick={handleClick}
+      className={cn(
+        buttonVariants({ variant: 'link' }),
+        'self-start gap-1 cursor-pointer'
+      )}
     >
       <FeatherIcon icon="chevron-left" /> Назад
-    </Link>
+    </a>
   );
 };
