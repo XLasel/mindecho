@@ -23,7 +23,17 @@
       'subtitle subtitle'
       'button button'
       / 75% auto;
+
+    gap: var(--space_2xl);
     text-align: left;
+  }
+
+  @include mobile() {
+    grid-template:
+      'title title'
+      'subtitle subtitle'
+      'button button'
+      / 75% auto;
   }
 }
 
@@ -32,7 +42,6 @@
   grid-area: image;
 
   width: 500px;
-  overflow: hidden;
 
   & img {
     width: 100%;
@@ -42,7 +51,7 @@
 
   @include tablet() {
     position: absolute;
-    top: 3vh;
+    top: 16vh;
     left: 50vw;
     z-index: 1;
     max-width: 400px;
@@ -59,10 +68,10 @@
     }
 
     @include mobile() {
-      top: 15vh;
+      top: 24vh;
 
       left: 40vw;
-      max-width: 280px;
+      max-width: 340px;
     }
   }
 }

@@ -27,7 +27,7 @@ export const SectionWrapper = React.forwardRef<
           variants={baseAimation}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           className={cn(s.inner, innerClassName)}
         >
           {children}

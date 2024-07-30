@@ -6,7 +6,7 @@
   }
 
   @include mobile() {
-    @include font(normal 700 36px / 110% 'Inter');
+    @include font(normal 700 44px / 130% 'Inter');
   }
 }
 
@@ -35,14 +35,14 @@
 }
 
 %h2-home {
-  @include font(normal 700 48px / 64px 'Inter');
+  @include font(normal 700 48px / 120% 'Inter');
 
   @include tablet() {
     @include font(normal 700 36px / 120% 'Inter');
   }
 
   @include mobile() {
-    @include font(normal 700 28px / 120% 'Inter');
+    @include font(normal 700 28px / 140% 'Inter');
   }
 }
 

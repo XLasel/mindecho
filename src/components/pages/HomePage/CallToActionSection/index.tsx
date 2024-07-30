@@ -30,7 +30,7 @@ export const CallToActionSection = () => {
         <motion.div
           className={s.button}
           variants={aimationButton}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.99 }}
         >
           <Button
             size="lg"
