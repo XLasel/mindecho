@@ -2,7 +2,7 @@
 <a id="readme-top"></a>
 
 <!-- ABOUT THE PROJECT -->
-[![MindEcho][product-image]]
+![MindEcho][product-image]
 
 # ( • ᴗ - ) ✧ MindEcho
 

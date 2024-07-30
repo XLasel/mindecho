@@ -21,6 +21,7 @@
 
 .header {
   display: flex;
+  gap: (var(--space_2xs));
   align-items: flex-start;
 
   justify-content: space-between;

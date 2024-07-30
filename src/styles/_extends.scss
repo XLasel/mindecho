@@ -102,6 +102,10 @@
   @include font(normal 400 16px / 140% 'Inter');
 }
 
+%body-extra-small {
+  @include font(normal 400 14px / 140% 'Inter');
+}
+
 %body-large {
   @include font(normal 400 20px / 140% 'Inter');
 }

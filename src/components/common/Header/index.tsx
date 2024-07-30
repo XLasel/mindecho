@@ -36,13 +36,13 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const { isTablet } = useMediaQueries();
 
-  function updateScroll(latest: number, previous: number): void {
+  const updateScroll = (latest: number, previous: number): void => {
     if (latest < previous) {
       setHidden(false);
     } else if (latest > 100 && latest > previous) {
       setHidden(true);
     }
-  }
+  };
 
   const handleLogoClick = () => {
     if (isBurgerMenuOpen) {
@@ -69,7 +69,9 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
   };
 
   useEffect(() => {
-    isBurgerMenuOpen ?? setHidden(false);
+    if (isBurgerMenuOpen) {
+      setHidden(false);
+    }
   }, [isBurgerMenuOpen]);
 
   useEffect(() => {

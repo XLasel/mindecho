@@ -28,10 +28,7 @@
   padding: var(--space_s) var(--space_xl);
   background-color: hsl(var(--card));
   border-radius: var(--border-radius-s);
-
-  & .icon-delete {
-    flex: 0 0 auto;
-  }
+  transition: var(--transition-base);
 
   & .textarea {
     flex: 1 1 100%;
@@ -40,6 +37,10 @@
     background-color: transparent;
     border-radius: 0;
   }
+}
+
+.error {
+  box-shadow: var(--box-shadow-form);
 }
 
 .button {

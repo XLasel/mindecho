@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ArrayPath,
   FieldArray,
@@ -10,6 +10,7 @@ import FeatherIcon from 'feather-icons-react';
 
 import { Button } from '@/components/common/Button';
 import { ResizableTextarea } from '@/components/common/ResizableTextarea';
+import { cn } from '@/utils/helpers';
 
 import s from './DynamicInputForm.module.scss';
 
@@ -27,47 +28,60 @@ export const DynamicInputForm = <
   pattern,
   fieldArray,
 }: DynamicInputFormProps<T, K>) => {
-  const { setValue } = useFormContext();
+  const {
+    getValues,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
   const { fields, append, remove } = fieldArray;
   const keysPattern = Object.keys(pattern);
 
-  const addInput = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    append(pattern as FieldArray<T, K>);
-  };
+  const addInput = () => append(pattern as FieldArray<T, K>);
 
-  const removeInput = (
-    event: React.MouseEvent<HTMLButtonElement>,
-    index: number
-  ) => {
-    event.preventDefault();
-    if (fields.length === 1) {
-      setValue(`${label as string}.${index}.${keysPattern[0]}`, '');
-    } else {
-      remove(index);
-    }
+  const removeInput = (index: number) => {
+    if (fields.length !== 1) return remove(index);
+    setValue(`${label as string}.${index}.${keysPattern[0]}`, '');
   };
 
   return (
     <div className={s.root}>
       <ul className={s.list}>
-        {fields.map((field, index) => (
-          <li key={field.id} className={s.item}>
-            <span>{index + 1}</span>
-            <div className={s.inputRow}>
-              <ResizableTextarea
-                name={`${label}.${index}.${keysPattern[0]}`}
-                placeholder={`...`}
-                className={s.textarea}
-              />
-              <button onClick={(event) => removeInput(event, index)}>
-                <FeatherIcon icon="minus-circle" className={s.iconDelete} />
-              </button>
-            </div>
-          </li>
-        ))}
+        {fields.map((field, index) => {
+          const errorField = (errors?.[label] as Record<number, any>)?.[
+            index
+          ]?.[keysPattern[0]];
+          return (
+            <li key={field.id} className={s.item}>
+              <span>{index + 1}</span>
+              <div className={cn(s.inputRow, errorField && s.error)}>
+                <ResizableTextarea
+                  name={`${label}.${index}.${keysPattern[0]}`}
+                  placeholder={`...`}
+                  className={s.textarea}
+                />
+                <Button
+                  type="button"
+                  disabled={
+                    fields.length === 1 &&
+                    getValues(`${label}.${index}.${keysPattern[0]}`) === ''
+                  }
+                  onClick={() => removeInput(index)}
+                  variant="ghost"
+                  className="p-0 shrink-0"
+                >
+                  <FeatherIcon icon="minus-circle" />
+                </Button>
+              </div>
+            </li>
+          );
+        })}
       </ul>
-      <Button variant="ghost" onClick={addInput} className={s.button}>
+      <Button
+        type="button"
+        variant="ghost"
+        onClick={addInput}
+        className={s.button}
+      >
         <FeatherIcon icon="plus-circle" className={s.iconAdd} />
         Добавить
       </Button>

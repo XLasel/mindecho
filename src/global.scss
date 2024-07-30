@@ -63,6 +63,8 @@
     --ring: var(--black-100);
 
     --text-muted: var(--white-700);
+    --box-shadow-form: inset 0 0 20px 2px hsl(var(--secondary) / 0.7);
+    --transition-base: all 0.5s ease-out;
 
     --radius: 0.5rem;
 
@@ -131,7 +133,6 @@
 
 html,
 body {
-  // margin: 0;
   padding: 0;
 }
 
