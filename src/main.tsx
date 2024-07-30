@@ -17,40 +17,35 @@ import store from '@/redux/store';
 
 import './global.scss';
 
-const router = createBrowserRouter(
-  [
-    {
-      element: <Layout />,
-      children: [
-        { path: ROUTES.HOME, element: <HomePage /> },
-        {
-          path: ROUTES.DIARY,
-          element: <ValidateSearchParams />,
-          children: [
-            { index: true, element: <DiaryPage /> },
-            { path: ROUTES.DIARY_ADD, element: <NoteEditorLayout /> },
-            { path: ROUTES.DIARY_ENTRY(':id'), element: <DiaryEntry /> },
-            { path: ROUTES.DIARY_EDIT(':id'), element: <NoteEditorLayout /> },
-          ],
-        },
-        {
-          path: ROUTES.USEFUL_MATERIALS,
-          children: [
-            { index: true, element: <UsefulMaterialsPage /> },
-            {
-              path: ROUTES.MATERIALS_ENTRY(':id'),
-              element: <UsefulMaterialTemplate />,
-            },
-          ],
-        },
-        { path: ROUTES.NOT_FOUND, element: <NotFoundPage /> },
-      ],
-    },
-  ],
+const router = createBrowserRouter([
   {
-    basename: '/mindecho/',
-  }
-);
+    element: <Layout />,
+    children: [
+      { path: ROUTES.HOME, element: <HomePage /> },
+      {
+        path: ROUTES.DIARY,
+        element: <ValidateSearchParams />,
+        children: [
+          { index: true, element: <DiaryPage /> },
+          { path: ROUTES.DIARY_ADD, element: <NoteEditorLayout /> },
+          { path: ROUTES.DIARY_ENTRY(':id'), element: <DiaryEntry /> },
+          { path: ROUTES.DIARY_EDIT(':id'), element: <NoteEditorLayout /> },
+        ],
+      },
+      {
+        path: ROUTES.USEFUL_MATERIALS,
+        children: [
+          { index: true, element: <UsefulMaterialsPage /> },
+          {
+            path: ROUTES.MATERIALS_ENTRY(':id'),
+            element: <UsefulMaterialTemplate />,
+          },
+        ],
+      },
+      { path: ROUTES.NOT_FOUND, element: <NotFoundPage /> },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

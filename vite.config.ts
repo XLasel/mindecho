@@ -15,7 +15,6 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/mindecho/',
   resolve: {
     alias: {
       '@': resolve(root),
