@@ -27,7 +27,7 @@ export const SectionForm = forwardRef<HTMLElement, SectionFormProps>(
         >
           {description}
         </div>
-        {children}
+        <div className={s.inner}>{children}</div>
       </section>
     );
   }

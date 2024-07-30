@@ -10,3 +10,10 @@
 .description {
   @extend %text-explaining-style;
 }
+
+.inner {
+  display: flex;
+
+  flex-direction: column;
+  gap: var(--space_2xs);
+}

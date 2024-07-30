@@ -19,7 +19,12 @@ export const ResizableTextarea: React.FC<ResizableTextareaProps> = ({
   className,
   ...props
 }) => {
-  const { register, getValues, setValue } = useFormContext();
+  const {
+    register,
+    getValues,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
   const [init, setInit] = useState(true);
   const [text, setText] = useState<string>(getValues(name) || '');
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -35,7 +40,7 @@ export const ResizableTextarea: React.FC<ResizableTextareaProps> = ({
   } as RegisterOptions);
 
   useEffect(() => {
-    const offsetBorder = 2;
+    const offsetBorder = 0;
     const textArea = textAreaRef.current;
 
     if (textArea) {
@@ -65,7 +70,7 @@ export const ResizableTextarea: React.FC<ResizableTextareaProps> = ({
         textAreaRef.current = e;
       }}
       placeholder={placeholder}
-      className={cn(s.root, className)}
+      className={cn(s.root, errors[name] && s.error, className)}
       {...props}
     />
   );

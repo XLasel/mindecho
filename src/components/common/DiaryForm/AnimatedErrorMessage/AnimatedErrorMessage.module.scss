@@ -1,0 +1,6 @@
+@import '@styles';
+
+.error {
+  @extend %body-extra-small;
+  color: hsl(var(--secondary));
+}

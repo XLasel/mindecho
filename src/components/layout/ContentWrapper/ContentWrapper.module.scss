@@ -1,10 +1,18 @@
+@import '@styles';
+
 .root {
+  --content-spacing: var(--space_l);
   display: flex;
 
   flex-direction: column;
-  gap: var(--space_l);
+  gap: var(--content-spacing);
 
   width: 100%;
-  padding-top: var(--space_l);
   margin-bottom: var(--space_2xl);
+  padding-top: var(--content-spacing);
+
+  @include mobile() {
+    --content-spacing: var(--space_xs);
+    margin-bottom: var(--space_l);
+  }
 }

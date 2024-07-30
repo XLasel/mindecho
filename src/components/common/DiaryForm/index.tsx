@@ -20,6 +20,7 @@ import { ResizableTextarea } from '../ResizableTextarea';
 import { SpoilerText } from '../SpoilerText';
 
 import { AdaptiveResponseField } from './AdaptiveResponseField';
+import { AnimatedErrorMessage } from './AnimatedErrorMessage';
 import { CognitiveBiasField } from './CognitiveBiasField';
 import { DynamicInputForm } from './DynamicInputForm';
 import { EmotionField } from './EmotionField';
@@ -52,9 +53,16 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
       cognitiveDistortions: noteToEdit?.cognitiveDistortions || {},
     },
     resolver: zodResolver(schemaNote),
+    mode: 'onSubmit',
   });
 
-  const { register, control, handleSubmit, reset } = methods;
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = methods;
 
   const thoughtsArray = useFieldArray<FormFieldsType, 'automaticThoughts'>({
     control,
@@ -101,11 +109,16 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
             </p>
           }
         >
-          <ResizableTextarea
-            id="situation"
-            name="situation"
-            placeholder="Опишите ситуацию"
-          />
+          <>
+            <AnimatedErrorMessage
+              message={errors.situation && errors.situation.message}
+            />
+            <ResizableTextarea
+              id="situation"
+              name="situation"
+              placeholder="Опишите ситуацию"
+            />
+          </>
         </SectionForm>
         <hr />
         <SectionForm
@@ -128,11 +141,16 @@ export const DiaryForm = ({ noteToEdit, sectionsRefs }: DiaryFormProps) => {
             <p>Какая мысль или мысли вертелись у вас в голове в тот момент?</p>
           }
         >
-          <DynamicInputForm
-            label="automaticThoughts"
-            pattern={{ thought: '', response: '' }}
-            fieldArray={thoughtsArray}
-          />
+          <>
+            <AnimatedErrorMessage
+              message={errors.automaticThoughts && 'Добавьте мысль'}
+            />
+            <DynamicInputForm
+              label="automaticThoughts"
+              pattern={{ thought: '', response: '' }}
+              fieldArray={thoughtsArray}
+            />
+          </>
         </SectionForm>
         <hr />
         <SectionForm
