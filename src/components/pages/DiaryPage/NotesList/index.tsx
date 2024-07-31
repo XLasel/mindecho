@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import FeatherIcon from 'feather-icons-react';
 
 import { Button } from '@/components/common/Button';
 import { useFilteredNotes } from '@/hook/useFilteredNotes';
@@ -72,19 +73,21 @@ export const NotesList: React.FC = () => {
       {showNavigation && (
         <div className={s.paginationNav}>
           <Button
+            size="icon"
             variant="ghost"
             onClick={() => prevPage()}
             disabled={currentPage === 1}
           >
-            Предыдущая
+            <FeatherIcon icon="arrow-left" />
           </Button>
           <span>{`${currentPage} / ${totalPages}`}</span>
           <Button
+            size="icon"
             variant="ghost"
             onClick={() => nextPage()}
             disabled={currentPage === totalPages}
           >
-            Следующая
+            <FeatherIcon icon="arrow-right" />
           </Button>
         </div>
       )}

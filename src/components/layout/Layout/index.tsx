@@ -9,7 +9,7 @@ export const Layout = () => {
   return (
     <div className={s.root}>
       <div className={s.wrapper}>
-        <Header className={s.header} />
+        <Header />
         <main className={s.main}>
           <Outlet />
           <ScrollRestoration

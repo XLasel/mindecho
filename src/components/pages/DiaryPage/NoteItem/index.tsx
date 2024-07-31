@@ -42,7 +42,7 @@ export const NoteItem: React.FC<NoteItemProps> = ({
         <Button
           size="icon"
           variant="ghostMuted"
-          className="group-hover:text-foreground"
+          className="group-hover:text-foreground p-0"
         >
           <FeatherIcon icon="arrow-up-right" size={32} />
         </Button>
