@@ -1,3 +1,5 @@
+@import '@styles';
+
 .root {
   font-weight: 600;
 }
@@ -10,15 +12,19 @@
 
   border-radius: var(--border-radius-s);
 
-  &:hover {
-    color: hsl(var(--foreground) / 0.85);
+  @include hover() {
+    &:hover {
+      color: hsl(var(--foreground) / 0.85);
+    }
   }
 
   &[aria-current='page'] {
     color: hsl(var(--secondary));
 
-    &:hover {
-      color: hsl(var(--secondary) / 0.85);
+    @include hover() {
+      &:hover {
+        color: hsl(var(--secondary) / 0.85);
+      }
     }
   }
 }
