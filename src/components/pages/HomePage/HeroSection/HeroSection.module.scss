@@ -66,13 +66,13 @@
       background: $gradient-background;
       content: '';
     }
+  }
 
-    @include mobile() {
-      top: 24vh;
+  @include mobile() {
+    top: 28vh;
 
-      left: 40vw;
-      max-width: 340px;
-    }
+    left: 38vw;
+    max-width: 340px;
   }
 }
 
@@ -85,7 +85,7 @@
   color: hsl(var(--secondary));
   font-size: 1.2em;
 
-  & > span {
+  &>span {
     font-weight: 400;
   }
 }

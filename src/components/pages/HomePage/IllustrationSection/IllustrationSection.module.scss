@@ -21,6 +21,8 @@
 
   padding: var(--space_3xl) 0;
 
+  overflow: hidden;
+
   @include tablet() {
     grid-template-columns: 1fr;
   }
