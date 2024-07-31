@@ -21,8 +21,10 @@
   color: hsl(var(--text-muted));
   cursor: pointer;
 
-  &:hover {
-    color: hsl(var(--white));
-    font-weight: 500;
+  @include hover() {
+    &:hover {
+      color: hsl(var(--white));
+      font-weight: 500;
+    }
   }
 }

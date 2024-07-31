@@ -12,7 +12,7 @@ export const ThoughtList = ({
       {thoughts.map((el, index) => (
         <li key={index}>
           <span className={s.thought}>{el.thought}</span>
-          {` -> ${el.response}`}
+          {` \u00A0->\u00A0 ${el.response}`}
         </li>
       ))}
     </ol>

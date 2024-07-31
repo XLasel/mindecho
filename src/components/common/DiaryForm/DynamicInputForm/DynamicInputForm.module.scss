@@ -1,3 +1,5 @@
+@import '@styles';
+
 .root {
   display: flex;
 
@@ -48,8 +50,10 @@
 
   align-self: center;
 
-  &:hover .icon {
-    color: hsl(var(--secondary) / 0.8);
+  @include hover() {
+    &:hover .icon {
+      color: hsl(var(--secondary) / 0.8);
+    }
   }
 }
 

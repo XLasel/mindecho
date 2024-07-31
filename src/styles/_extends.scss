@@ -6,7 +6,7 @@
   }
 
   @include mobile() {
-    @include font(normal 700 44px / 130% 'Inter');
+    @include font(normal 700 40px / 130% 'Inter');
   }
 }
 
