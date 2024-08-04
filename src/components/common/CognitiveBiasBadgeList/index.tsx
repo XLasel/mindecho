@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import type { CognitiveBias } from '@/constants/types';
 
@@ -12,10 +13,43 @@ interface CognitiveBiasBadgeListProps {
 
 export const CognitiveBiasBadgeList: React.FC<CognitiveBiasBadgeListProps> = ({
   biasesData,
-}) => (
-  <div className={s.root}>
-    {biasesData.map((bias) => (
-      <CognitiveBiasBadge key={bias.id} {...bias} />
-    ))}
-  </div>
-);
+}) => {
+  const constraintsRef = useRef(null);
+  const [isDraggable, setIsDraggable] = useState(false);
+
+  useEffect(() => {
+    const checkIfDraggable = () => {
+      if (constraintsRef.current) {
+        const { clientWidth, scrollWidth } = constraintsRef.current;
+        setIsDraggable(scrollWidth > clientWidth);
+      }
+    };
+
+    checkIfDraggable();
+    window.addEventListener('resize', checkIfDraggable);
+    return () => {
+      window.removeEventListener('resize', checkIfDraggable);
+    };
+  }, []);
+
+  return (
+    <div className={s.root}>
+      <div className={s.container} ref={constraintsRef}>
+        <motion.div
+          drag={isDraggable ? 'x' : false}
+          dragConstraints={constraintsRef}
+          dragElastic={0.1}
+          style={{
+            cursor: isDraggable ? 'grab' : 'auto',
+          }}
+          whileDrag={{ cursor: 'grabbing' }}
+          className={s.list}
+        >
+          {biasesData.map((bias) => (
+            <CognitiveBiasBadge key={bias.id} {...bias} />
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+};

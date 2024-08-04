@@ -4,10 +4,9 @@
   --separator-border: 2px solid hsl(var(--background) / 0.4);
 
   padding: var(--space_xl);
+  overflow-wrap: normal;
   background-color: hsl(var(--card));
   border-radius: var(--border-radius-s);
-
-  overflow-wrap: normal;
 
   table {
     width: 100%;
