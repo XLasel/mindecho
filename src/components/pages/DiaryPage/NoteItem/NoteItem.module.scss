@@ -37,6 +37,8 @@
   display: flex;
   gap: var(--space_xs);
 
+  align-items: flex-start;
+
   align-items: baseline;
 
   & ol {

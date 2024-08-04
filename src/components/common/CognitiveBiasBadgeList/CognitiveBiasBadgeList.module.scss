@@ -1,6 +1,27 @@
+@import '@styles';
+
 .root {
+  flex-grow: 1;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+}
+
+.list {
   display: flex;
 
   flex-wrap: wrap;
   gap: var(--space_2xs);
+
+  max-width: 100%;
+
+  @include mobile {
+    flex-shrink: 0;
+
+    max-width: 500px;
+  }
 }
