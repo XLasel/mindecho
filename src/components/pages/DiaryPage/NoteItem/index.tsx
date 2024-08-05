@@ -36,7 +36,6 @@ export const NoteItem: React.FC<NoteItemProps> = ({
         to={ROUTES.DIARY_ENTRY(id)}
         className={cn(s.title, 'group')}
         aria-label="Перейти к записи"
-        title="Перейти к записи"
       >
         <h3>{title}</h3>
         <Button

@@ -32,8 +32,8 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
 
   const [hidden, setHidden] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
-
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
   const { isTablet } = useMediaQueries();
 
   const updateScroll = (latest: number, previous: number): void => {
@@ -71,11 +71,6 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
   useEffect(() => {
     if (isBurgerMenuOpen) {
       setHidden(false);
-    }
-  }, [isBurgerMenuOpen]);
-
-  useEffect(() => {
-    if (isBurgerMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';

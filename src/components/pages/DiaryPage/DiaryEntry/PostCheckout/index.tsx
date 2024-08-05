@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 import { Button } from '@/components/common/Button';
 import { ModalForDeletion } from '@/components/common/ModalForDeletion';
@@ -36,7 +36,7 @@ export const PostCheckout: React.FC<PostCheckoutProps> = ({
   const { isModalOpen, handleDeleteClick, handleConfirmDelete, closeModal } =
     useDeleteNote(undefined, handleDelete, false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!!note.postComment || typeof note.newDiscomfortLevel !== 'undefined') {
       setIsDrity(false);
       return;

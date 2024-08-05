@@ -5,6 +5,12 @@ import { saveAs } from 'file-saver';
 import { motion } from 'framer-motion';
 
 import { Button, type ButtonProps } from '@/components/common/Button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/common/Tooltip';
 import { useAppSelector } from '@/redux/hook';
 import { selectAllNotes } from '@/redux/selectors';
 import { filterNotesByDateRange } from '@/utils/helpers';
@@ -31,14 +37,22 @@ export const ExportButton: React.FC<ExportButtonProps> = ({
   const [filteredNotes, setFilteredNotes] = useState<Note[]>([]);
   const [isReadyToRender, setIsReadyToRender] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (startDate && endDate) {
       const filtered = filterNotesByDateRange(notes, startDate, endDate);
       setFilteredNotes(filtered);
-      setIsReadyToRender(filtered.length > 0);
+      if (filtered.length > 0) {
+        setIsReadyToRender(true);
+        setMessage(null);
+      } else {
+        setIsReadyToRender(false);
+        setMessage('В указанном диапазоне записей не найдено');
+      }
     } else {
       setIsReadyToRender(false);
+      setMessage('Сначала задайте диапазон');
     }
   }, [notes, startDate, endDate]);
 
@@ -60,21 +74,34 @@ export const ExportButton: React.FC<ExportButtonProps> = ({
   };
 
   return (
-    <Button
-      type="button"
-      aria-label="Экпортировать записи за указанный период в PDF"
-      title="Экпортировать записи за указанный период в PDF"
-      disabled={!isReadyToRender || loading}
-      onClick={handleDownload}
-      {...props}
-    >
-      {loading ? (
-        <motion.span animate={{ rotate: 360 }} transition={spinTransition}>
-          <FeatherIcon icon="loader" />
-        </motion.span>
-      ) : (
-        <FeatherIcon icon="download" />
-      )}
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button
+            type="button"
+            aria-label="Экпортировать записи за указанный период в PDF"
+            disabled={!isReadyToRender || loading}
+            onClick={handleDownload}
+            {...props}
+          >
+            {loading ? (
+              <motion.span
+                animate={{ rotate: 360 }}
+                transition={spinTransition}
+              >
+                <FeatherIcon icon="loader" />
+              </motion.span>
+            ) : (
+              <FeatherIcon icon="download" />
+            )}
+          </Button>
+        </TooltipTrigger>
+        {!loading && message && (
+          <TooltipContent>
+            <p>{message}</p>
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
   );
 };
