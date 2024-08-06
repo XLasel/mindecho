@@ -158,7 +158,7 @@
 %text-explaining-style {
   @extend %body-small;
 
-  color: hsl(var(--text-muted));
+  color: hsl(var(--muted-text));
 
   & ol {
     @extend %numbered-list;

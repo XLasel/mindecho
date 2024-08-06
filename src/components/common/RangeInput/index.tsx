@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './RangeInput.module.scss';
 

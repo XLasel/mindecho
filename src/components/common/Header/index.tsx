@@ -6,7 +6,7 @@ import { Logo } from '@/components/common/Logo';
 import { Container } from '@/components/layout/Container';
 import { navLinks, ROUTES } from '@/constants';
 import { useMediaQueries } from '@/hook/useMediaQueries';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import { BurgerMenu } from './BurgerMenu';
 import { BurgerToggle } from './BurgerToggle';
@@ -32,8 +32,8 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
 
   const [hidden, setHidden] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
-
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
   const { isTablet } = useMediaQueries();
 
   const updateScroll = (latest: number, previous: number): void => {
@@ -71,11 +71,6 @@ export const Header: React.FC<SidebarProps> = ({ className }) => {
   useEffect(() => {
     if (isBurgerMenuOpen) {
       setHidden(false);
-    }
-  }, [isBurgerMenuOpen]);
-
-  useEffect(() => {
-    if (isBurgerMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';

@@ -10,7 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/common/Popover';
-import { cn, formatDateForUI } from '@/utils/helpers';
+import { cn, formatDateForUI } from '@/utils';
 
 import s from './DateRangePicker.module.scss';
 

@@ -5,7 +5,7 @@ import { CognitiveBiasCard } from '@/components/common/CognitiveBiasCard';
 import { biases } from '@/constants';
 import { CognitiveBias } from '@/constants/types';
 import { type FormFieldsType } from '@/scheme';
-import { splitArrayInHalf } from '@/utils/helpers';
+import { splitArrayInHalf } from '@/utils';
 
 import s from './CognitiveBiasField.module.scss';
 

@@ -1,9 +1,9 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import { motion } from 'framer-motion';
 
-import { cn } from '@/utils/helpers';
+import { cn, hasMultipleChildren } from '@/utils';
 
-import { aimationSlideUp } from '../../anim';
+import { aimationSlideUpWithChildren } from '../../anim';
 
 import s from './SectionContent.module.scss';
 
@@ -39,7 +39,9 @@ export const SectionContent: React.FC<SectionContentProps> = ({
 }) => (
   <motion.div
     className={cn(sectionContentVariants({ direction, sizeText, className }))}
-    variants={aimationSlideUp}
+    variants={
+      hasMultipleChildren(children) ? aimationSlideUpWithChildren : undefined
+    }
   >
     {children}
   </motion.div>

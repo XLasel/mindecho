@@ -8,7 +8,7 @@ import { usePagination } from '@/hook/usePagination';
 import { useAppSelector } from '@/redux/hook';
 import { selectAllNotes } from '@/redux/selectors';
 import { searchParamsSchema } from '@/scheme';
-import { sortNotesByDate } from '@/utils/helpers';
+import { sortNotesByDate } from '@/utils';
 
 import { NoteItem } from '../NoteItem';
 
