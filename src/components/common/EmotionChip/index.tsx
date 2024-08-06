@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './EmotionChip.module.scss';
 

@@ -58,7 +58,6 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
           animation="scale"
           onClick={() => handleDeleteClick(id)}
           aria-label="Удалить запись"
-          title="Удалить запись"
         >
           <FeatherIcon icon="trash-2" size={22} />
         </Button>
@@ -70,7 +69,6 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
             animation="scale"
             onClick={resetChange}
             aria-label="Сбросить изменения"
-            title="Сбросить изменения"
           >
             <FeatherIcon icon="x" size={22} />
           </Button>
@@ -82,7 +80,6 @@ export const NoteActions: React.FC<NoteActionsProps> = ({
           animation="scale"
           onClick={handleEditMode}
           aria-label={isEditMode ? 'Сохранить' : 'Редактировать'}
-          title={isEditMode ? 'Сохранить' : 'Редактировать'}
         >
           <FeatherIcon icon={isEditMode ? 'check' : 'edit-2'} size={22} />
         </Button>

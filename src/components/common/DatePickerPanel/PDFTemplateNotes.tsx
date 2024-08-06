@@ -7,7 +7,7 @@ import {
   View,
 } from '@react-pdf/renderer';
 
-import { formatDateForUI, prepareTableData } from '@/utils/helpers';
+import { formatDateForUI, prepareTableData } from '@/utils';
 
 import InterRegular from '/fonts/Inter-Regular.ttf';
 

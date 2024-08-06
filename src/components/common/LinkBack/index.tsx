@@ -6,7 +6,7 @@ import {
   useBackNavigation,
   type UseBackNavigationProps,
 } from '@/hook/useBackNavigation';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 export const LinkBack = ({
   defaultHref,

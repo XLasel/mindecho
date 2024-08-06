@@ -166,3 +166,10 @@ export const filterNotesByDateRange = (
     isWithinInterval(parseISO(note.date), { start: startDate, end: endDate })
   );
 };
+
+// Function to check if an element has multiple children
+export const hasMultipleChildren = (
+  children: JSX.Element | JSX.Element[]
+): boolean => {
+  return Array.isArray(children) && children.length > 1;
+};

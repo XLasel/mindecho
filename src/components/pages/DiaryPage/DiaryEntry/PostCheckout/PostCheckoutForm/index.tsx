@@ -7,7 +7,7 @@ import { ResizableTextarea } from '@/components/common/ResizableTextarea';
 import { useAppDispatch } from '@/redux/hook';
 import { updateNote } from '@/redux/noteSlice';
 import { type PostCheckoutFormDataType, PostCheckoutSchema } from '@/scheme';
-import { normalizeRangeValue } from '@/utils/helpers';
+import { normalizeRangeValue } from '@/utils';
 
 import s from './PostCheckoutForm.module.scss';
 

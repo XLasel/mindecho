@@ -4,7 +4,7 @@ import { aimationSlideLeft } from '../../anim';
 
 type SectionTitleProps = MotionProps &
   React.HTMLAttributes<HTMLHeadingElement> & {
-    children: React.ReactNode;
+    children: string;
   };
 
 export const SectionTitle: React.FC<SectionTitleProps> = ({

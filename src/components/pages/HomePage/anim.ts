@@ -2,12 +2,24 @@ export const baseAimation = {
   visible: {
     opacity: 1,
     transition: {
-      ease: 'easeOut',
-      when: 'beforeChildren',
-      staggerChildren: 0.1,
+      ease: [0.42, 0, 0.58, 1],
+      duration: 0.7,
     },
   },
   hidden: { opacity: 0 },
+};
+
+export const baseAimationWithChildren = {
+  visible: {
+    opacity: 1,
+    transition: {
+      ...baseAimation.visible.transition,
+      duration: 0,
+      when: 'beforeChildren',
+      staggerChildren: 0.3,
+    },
+  },
+  hidden: { opacity: 1 },
 };
 
 export const aimationSlideLeft = {
@@ -26,6 +38,15 @@ export const aimationSlideUp = {
   },
 
   hidden: { ...baseAimation.hidden, y: 50 },
+};
+
+export const aimationSlideUpWithChildren = {
+  visible: {
+    ...baseAimationWithChildren.visible,
+    y: 0,
+  },
+
+  hidden: { ...baseAimationWithChildren.hidden, y: 50 },
 };
 
 export const aimationSlideDown = {
@@ -52,7 +73,7 @@ export const aimationScaleUp = {
     scale: 1,
   },
 
-  hidden: { ...baseAimation.hidden, scale: 1.4 },
+  hidden: { ...baseAimation.hidden, scale: 1.2 },
 };
 
 export const aimationRotate = {

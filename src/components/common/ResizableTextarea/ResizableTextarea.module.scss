@@ -5,7 +5,7 @@
   background-color: hsl(var(--card));
   border-width: 0;
   border-radius: var(--border-radius-s);
-  transition: var(--transition-base);
+  transition: var(--transition-color);
   resize: none;
 
   &::placeholder {

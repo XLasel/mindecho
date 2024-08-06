@@ -2,7 +2,7 @@ import React from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 
 import { AccordionProvider } from '@/context/accordion';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './Accordion.module.scss';
 

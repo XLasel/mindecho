@@ -7,7 +7,7 @@ import {
 } from '@/components/common/accordion';
 import { SpoilerText } from '@/components/common/SpoilerText';
 import type { CognitiveBias } from '@/constants/types';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './CognitiveBiasCard.module.scss';
 

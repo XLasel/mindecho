@@ -8,31 +8,41 @@ interface NavigationSectionProps {
   scrollToSection: (idSection: SectionIdFormInput) => void;
 }
 
-const itemAnimate = {
-  initial: { opacity: 0, x: 0.5 },
-  enter: (i: number) => ({
+const listVariant = {
+  initial: {},
+  enter: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const itemVariant = {
+  initial: { opacity: 0, x: -20 },
+  enter: {
     opacity: 1,
-    x: 0.4,
-    transition: { delay: 0.3 + i * 0.1 },
-  }),
-  exit: { opacity: 0 },
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+  exit: { opacity: 0, x: 20, transition: { duration: 0.5 } },
 };
 
 export const NavigationSection = ({
   scrollToSection,
 }: NavigationSectionProps) => {
   return (
-    <motion.nav className={s.root}>
+    <motion.nav
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className={s.root}
+    >
       <h5>Быстрая навигация</h5>
-      <motion.ul className={s.list}>
+      <motion.ul variants={listVariant} className={s.list}>
         {Object.values(sectionData).map((section, i) => (
           <motion.li
             key={i}
-            variants={itemAnimate}
-            custom={i}
-            initial="initial"
-            animate="enter"
-            exit="exit"
+            variants={itemVariant}
             className={s.item}
             onClick={() => scrollToSection(section.idFormInput)}
           >

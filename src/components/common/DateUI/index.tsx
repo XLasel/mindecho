@@ -1,6 +1,6 @@
 import FeatherIcon from 'feather-icons-react';
 
-import { formatDateForUI } from '@/utils/helpers';
+import { formatDateForUI } from '@/utils';
 
 import s from './DateUI.module.scss';
 

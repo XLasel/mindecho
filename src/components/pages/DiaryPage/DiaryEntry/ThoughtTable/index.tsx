@@ -1,11 +1,7 @@
 import { CognitiveBiasBadgeList } from '@/components/common/CognitiveBiasBadgeList';
 import { EmotionChipList } from '@/components/common/EmotionChipList';
 import { biases, emotionGroups } from '@/constants';
-import {
-  filteredBiases,
-  filteredEmotionsGroup,
-  isEmptyObject,
-} from '@/utils/helpers';
+import { filteredBiases, filteredEmotionsGroup, isEmptyObject } from '@/utils';
 
 import s from './ThoughtTable.module.scss';
 

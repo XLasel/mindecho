@@ -18,7 +18,7 @@
 }
 
 .item {
-  color: hsl(var(--text-muted));
+  color: hsl(var(--muted-text));
   cursor: pointer;
 
   @include hover() {

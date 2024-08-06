@@ -1,4 +1,4 @@
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './Logo.module.scss';
 

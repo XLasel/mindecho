@@ -25,6 +25,7 @@
     --black: 240 62% 5%;
     --black-100: 240 62% 5% / 0.1;
     --black-200: 240 62% 5% / 0.18;
+    --black-400: 240 62% 5% / 0.8;
 
     --blue: 241 41% 39%;
     --blue-100: 242 27% 50%;
@@ -52,19 +53,24 @@
     --muted: var(--white-100);
     --muted-foreground: var(--white);
 
+    --tertiary: var(--black-400);
+    --tertiary-foreground: var(--white);
+
     --accent: var(--pink);
     --accent-foreground: var(--white);
 
     --destructive: var(--pink);
     --destructive-foreground: var(--white);
 
+    --muted-text: var(--white-700);
     --border: var(--black-200);
     --input: var(--black-200);
     --ring: var(--black-100);
 
-    --text-muted: var(--white-700);
     --box-shadow-form: inset 0 0 20px 2px hsl(var(--secondary) / 0.7);
-    --transition-base: all 0.5s ease-out;
+    --transition-color: transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 
     --radius: 0.5rem;
 

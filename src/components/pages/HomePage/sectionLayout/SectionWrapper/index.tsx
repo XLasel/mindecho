@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import { Container, type ContainerProps } from '@/components/layout/Container';
-import { cn } from '@/utils/helpers';
+import { cn, hasMultipleChildren } from '@/utils';
 
-import { baseAimation } from '../../anim';
+import { baseAimationWithChildren } from '../../anim';
 
 import s from './SectionWrapper.module.scss';
 
@@ -24,10 +24,12 @@ export const SectionWrapper = React.forwardRef<
     <section className={s.root} ref={ref} {...props}>
       <Container width={width}>
         <motion.div
-          variants={baseAimation}
+          variants={
+            hasMultipleChildren(children) ? baseAimationWithChildren : undefined
+          }
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
           className={cn(s.inner, innerClassName)}
         >
           {children}
