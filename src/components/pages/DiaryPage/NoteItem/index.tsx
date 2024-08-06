@@ -6,7 +6,7 @@ import { CognitiveBiasBadgeList } from '@/components/common/CognitiveBiasBadgeLi
 import { NoteActions } from '@/components/common/NoteActions';
 import { ThoughtList } from '@/components/common/ThoughtList';
 import { biases, ROUTES } from '@/constants';
-import { cn, filteredBiases, filterThoughts } from '@/utils/helpers';
+import { cn, filteredBiases, filterThoughts } from '@/utils';
 
 import s from './NoteItem.module.scss';
 

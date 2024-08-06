@@ -5,7 +5,7 @@ import { ModalForDeletion } from '@/components/common/ModalForDeletion';
 import { useDeleteNote } from '@/hook/useDeleteNote';
 import { useAppDispatch } from '@/redux/hook';
 import { updateNote } from '@/redux/noteSlice';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import { PostCheckoutForm } from './PostCheckoutForm';
 

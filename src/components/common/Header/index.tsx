@@ -6,7 +6,7 @@ import { Logo } from '@/components/common/Logo';
 import { Container } from '@/components/layout/Container';
 import { navLinks, ROUTES } from '@/constants';
 import { useMediaQueries } from '@/hook/useMediaQueries';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import { BurgerMenu } from './BurgerMenu';
 import { BurgerToggle } from './BurgerToggle';

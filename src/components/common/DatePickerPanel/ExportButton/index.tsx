@@ -13,7 +13,7 @@ import {
 } from '@/components/common/Tooltip';
 import { useAppSelector } from '@/redux/hook';
 import { selectAllNotes } from '@/redux/selectors';
-import { filterNotesByDateRange } from '@/utils/helpers';
+import { filterNotesByDateRange } from '@/utils';
 
 import { PDFTemplateNotes } from '../PDFTemplateNotes';
 

@@ -10,7 +10,7 @@ import { ContentWrapper } from '@/components/layout/ContentWrapper';
 import { ROUTES } from '@/constants';
 import { useAppSelector } from '@/redux/hook';
 import { selectAllNotes } from '@/redux/selectors';
-import { cn, filterThoughts } from '@/utils/helpers';
+import { cn, filterThoughts } from '@/utils';
 
 import { PostCheckout } from './PostCheckout';
 import { ThoughtTable } from './ThoughtTable';

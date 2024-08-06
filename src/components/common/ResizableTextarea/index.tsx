@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './ResizableTextarea.module.scss';
 

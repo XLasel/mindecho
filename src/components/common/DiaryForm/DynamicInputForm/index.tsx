@@ -10,7 +10,7 @@ import FeatherIcon from 'feather-icons-react';
 
 import { Button } from '@/components/common/Button';
 import { ResizableTextarea } from '@/components/common/ResizableTextarea';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/utils';
 
 import s from './DynamicInputForm.module.scss';
 

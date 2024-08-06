@@ -1,5 +1,5 @@
 import { SearchParamsType } from '@/scheme';
-import { filterNotesByDateRange } from '@/utils/helpers';
+import { filterNotesByDateRange } from '@/utils';
 
 interface UseFilteredNotesResult {
   filteredNotes: Note[];
